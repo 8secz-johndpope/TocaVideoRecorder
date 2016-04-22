@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FEF6A1E71CCA6A3900743F07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1E61CCA6A3900743F07 /* main.m */; };
+		FEF6A1EA1CCA6A3900743F07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */; };
+		FEF6A1ED1CCA6A3900743F07 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1EC1CCA6A3900743F07 /* ViewController.m */; };
+		FEF6A1F01CCA6A3900743F07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A1EE1CCA6A3900743F07 /* Main.storyboard */; };
+		FEF6A1F21CCA6A3900743F07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A1F11CCA6A3900743F07 /* Assets.xcassets */; };
+		FEF6A1F51CCA6A3900743F07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A1F31CCA6A3900743F07 /* LaunchScreen.storyboard */; };
+		FEF6A2001CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1FF1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m */; };
+		FEF6A20B1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A20A1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FEF6A1FC1CCA6A3900743F07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEF6A1DA1CCA6A3900743F07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FEF6A1E11CCA6A3900743F07;
+			remoteInfo = TocaBocaVideoRecorder;
+		};
+		FEF6A2071CCA6A3900743F07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEF6A1DA1CCA6A3900743F07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FEF6A1E11CCA6A3900743F07;
+			remoteInfo = TocaBocaVideoRecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FEF6A1E21CCA6A3900743F07 /* TocaBocaVideoRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TocaBocaVideoRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEF6A1E61CCA6A3900743F07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FEF6A1E81CCA6A3900743F07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FEF6A1EB1CCA6A3900743F07 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FEF6A1EC1CCA6A3900743F07 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FEF6A1EF1CCA6A3900743F07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FEF6A1F11CCA6A3900743F07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FEF6A1F41CCA6A3900743F07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FEF6A1F61CCA6A3900743F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEF6A1FB1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TocaBocaVideoRecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEF6A1FF1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TocaBocaVideoRecorderTests.m; sourceTree = "<group>"; };
+		FEF6A2011CCA6A3900743F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEF6A2061CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TocaBocaVideoRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEF6A20A1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TocaBocaVideoRecorderUITests.m; sourceTree = "<group>"; };
+		FEF6A20C1CCA6A3900743F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FEF6A1DF1CCA6A3900743F07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF6A1F81CCA6A3900743F07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF6A2031CCA6A3900743F07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FEF6A1D91CCA6A3900743F07 = {
+			isa = PBXGroup;
+			children = (
+				FEF6A1E41CCA6A3900743F07 /* TocaBocaVideoRecorder */,
+				FEF6A1FE1CCA6A3900743F07 /* TocaBocaVideoRecorderTests */,
+				FEF6A2091CCA6A3900743F07 /* TocaBocaVideoRecorderUITests */,
+				FEF6A1E31CCA6A3900743F07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEF6A1E31CCA6A3900743F07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEF6A1E21CCA6A3900743F07 /* TocaBocaVideoRecorder.app */,
+				FEF6A1FB1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.xctest */,
+				FEF6A2061CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FEF6A1E41CCA6A3900743F07 /* TocaBocaVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				FEF6A1E81CCA6A3900743F07 /* AppDelegate.h */,
+				FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */,
+				FEF6A1EB1CCA6A3900743F07 /* ViewController.h */,
+				FEF6A1EC1CCA6A3900743F07 /* ViewController.m */,
+				FEF6A1EE1CCA6A3900743F07 /* Main.storyboard */,
+				FEF6A1F11CCA6A3900743F07 /* Assets.xcassets */,
+				FEF6A1F31CCA6A3900743F07 /* LaunchScreen.storyboard */,
+				FEF6A1F61CCA6A3900743F07 /* Info.plist */,
+				FEF6A1E51CCA6A3900743F07 /* Supporting Files */,
+			);
+			path = TocaBocaVideoRecorder;
+			sourceTree = "<group>";
+		};
+		FEF6A1E51CCA6A3900743F07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FEF6A1E61CCA6A3900743F07 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FEF6A1FE1CCA6A3900743F07 /* TocaBocaVideoRecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				FEF6A1FF1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m */,
+				FEF6A2011CCA6A3900743F07 /* Info.plist */,
+			);
+			path = TocaBocaVideoRecorderTests;
+			sourceTree = "<group>";
+		};
+		FEF6A2091CCA6A3900743F07 /* TocaBocaVideoRecorderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FEF6A20A1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m */,
+				FEF6A20C1CCA6A3900743F07 /* Info.plist */,
+			);
+			path = TocaBocaVideoRecorderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FEF6A1E11CCA6A3900743F07 /* TocaBocaVideoRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEF6A20F1CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorder" */;
+			buildPhases = (
+				FEF6A1DE1CCA6A3900743F07 /* Sources */,
+				FEF6A1DF1CCA6A3900743F07 /* Frameworks */,
+				FEF6A1E01CCA6A3900743F07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TocaBocaVideoRecorder;
+			productName = TocaBocaVideoRecorder;
+			productReference = FEF6A1E21CCA6A3900743F07 /* TocaBocaVideoRecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FEF6A1FA1CCA6A3900743F07 /* TocaBocaVideoRecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEF6A2121CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorderTests" */;
+			buildPhases = (
+				FEF6A1F71CCA6A3900743F07 /* Sources */,
+				FEF6A1F81CCA6A3900743F07 /* Frameworks */,
+				FEF6A1F91CCA6A3900743F07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FEF6A1FD1CCA6A3900743F07 /* PBXTargetDependency */,
+			);
+			name = TocaBocaVideoRecorderTests;
+			productName = TocaBocaVideoRecorderTests;
+			productReference = FEF6A1FB1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FEF6A2051CCA6A3900743F07 /* TocaBocaVideoRecorderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEF6A2151CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorderUITests" */;
+			buildPhases = (
+				FEF6A2021CCA6A3900743F07 /* Sources */,
+				FEF6A2031CCA6A3900743F07 /* Frameworks */,
+				FEF6A2041CCA6A3900743F07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FEF6A2081CCA6A3900743F07 /* PBXTargetDependency */,
+			);
+			name = TocaBocaVideoRecorderUITests;
+			productName = TocaBocaVideoRecorderUITests;
+			productReference = FEF6A2061CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FEF6A1DA1CCA6A3900743F07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Gramercy Tech";
+				TargetAttributes = {
+					FEF6A1E11CCA6A3900743F07 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					FEF6A1FA1CCA6A3900743F07 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = FEF6A1E11CCA6A3900743F07;
+					};
+					FEF6A2051CCA6A3900743F07 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = FEF6A1E11CCA6A3900743F07;
+					};
+				};
+			};
+			buildConfigurationList = FEF6A1DD1CCA6A3900743F07 /* Build configuration list for PBXProject "TocaBocaVideoRecorder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FEF6A1D91CCA6A3900743F07;
+			productRefGroup = FEF6A1E31CCA6A3900743F07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FEF6A1E11CCA6A3900743F07 /* TocaBocaVideoRecorder */,
+				FEF6A1FA1CCA6A3900743F07 /* TocaBocaVideoRecorderTests */,
+				FEF6A2051CCA6A3900743F07 /* TocaBocaVideoRecorderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FEF6A1E01CCA6A3900743F07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEF6A1F51CCA6A3900743F07 /* LaunchScreen.storyboard in Resources */,
+				FEF6A1F21CCA6A3900743F07 /* Assets.xcassets in Resources */,
+				FEF6A1F01CCA6A3900743F07 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF6A1F91CCA6A3900743F07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF6A2041CCA6A3900743F07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FEF6A1DE1CCA6A3900743F07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEF6A1ED1CCA6A3900743F07 /* ViewController.m in Sources */,
+				FEF6A1EA1CCA6A3900743F07 /* AppDelegate.m in Sources */,
+				FEF6A1E71CCA6A3900743F07 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF6A1F71CCA6A3900743F07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEF6A2001CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF6A2021CCA6A3900743F07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEF6A20B1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FEF6A1FD1CCA6A3900743F07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FEF6A1E11CCA6A3900743F07 /* TocaBocaVideoRecorder */;
+			targetProxy = FEF6A1FC1CCA6A3900743F07 /* PBXContainerItemProxy */;
+		};
+		FEF6A2081CCA6A3900743F07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FEF6A1E11CCA6A3900743F07 /* TocaBocaVideoRecorder */;
+			targetProxy = FEF6A2071CCA6A3900743F07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FEF6A1EE1CCA6A3900743F07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEF6A1EF1CCA6A3900743F07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FEF6A1F31CCA6A3900743F07 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEF6A1F41CCA6A3900743F07 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FEF6A20D1CCA6A3900743F07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		FEF6A20E1CCA6A3900743F07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FEF6A2101CCA6A3900743F07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TocaBocaVideoRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FEF6A2111CCA6A3900743F07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TocaBocaVideoRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FEF6A2131CCA6A3900743F07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TocaBocaVideoRecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TocaBocaVideoRecorder.app/TocaBocaVideoRecorder";
+			};
+			name = Debug;
+		};
+		FEF6A2141CCA6A3900743F07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TocaBocaVideoRecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TocaBocaVideoRecorder.app/TocaBocaVideoRecorder";
+			};
+			name = Release;
+		};
+		FEF6A2161CCA6A3900743F07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TocaBocaVideoRecorderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TocaBocaVideoRecorder;
+			};
+			name = Debug;
+		};
+		FEF6A2171CCA6A3900743F07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TocaBocaVideoRecorderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TocaBocaVideoRecorder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FEF6A1DD1CCA6A3900743F07 /* Build configuration list for PBXProject "TocaBocaVideoRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEF6A20D1CCA6A3900743F07 /* Debug */,
+				FEF6A20E1CCA6A3900743F07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FEF6A20F1CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEF6A2101CCA6A3900743F07 /* Debug */,
+				FEF6A2111CCA6A3900743F07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FEF6A2121CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEF6A2131CCA6A3900743F07 /* Debug */,
+				FEF6A2141CCA6A3900743F07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FEF6A2151CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEF6A2161CCA6A3900743F07 /* Debug */,
+				FEF6A2171CCA6A3900743F07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FEF6A1DA1CCA6A3900743F07 /* Project object */;
+}
