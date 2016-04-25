@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02F428D82C5036BFBBF96042 /* libPods-TocaBocaVideoRecorder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */; };
+		FE12CC1B1CCE685D00FD993E /* bee.png in Resources */ = {isa = PBXBuildFile; fileRef = FE12CC1A1CCE685D00FD993E /* bee.png */; };
 		FEF6A1E71CCA6A3900743F07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1E61CCA6A3900743F07 /* main.m */; };
 		FEF6A1EA1CCA6A3900743F07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */; };
 		FEF6A1ED1CCA6A3900743F07 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1EC1CCA6A3900743F07 /* ViewController.m */; };
@@ -15,6 +17,17 @@
 		FEF6A1F51CCA6A3900743F07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A1F31CCA6A3900743F07 /* LaunchScreen.storyboard */; };
 		FEF6A2001CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1FF1CCA6A3900743F07 /* TocaBocaVideoRecorderTests.m */; };
 		FEF6A20B1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A20A1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m */; };
+		FEF6A21A1CCA6FB000743F07 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF6A2181CCA6FB000743F07 /* CoreMedia.framework */; };
+		FEF6A21B1CCA6FB000743F07 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF6A2191CCA6FB000743F07 /* CoreVideo.framework */; };
+		FEF6A21D1CCA6FB500743F07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF6A21C1CCA6FB500743F07 /* OpenGLES.framework */; };
+		FEF6A21F1CCA6FBB00743F07 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF6A21E1CCA6FBB00743F07 /* AVFoundation.framework */; };
+		FEF6A2211CCA6FC000743F07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF6A2201CCA6FC000743F07 /* QuartzCore.framework */; };
+		FEF6A22E1CCAA3E300743F07 /* CustomCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A22D1CCAA3E300743F07 /* CustomCollectionCell.m */; };
+		FEF6A2361CCAB69200743F07 /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A2321CCAB69200743F07 /* lookup_amatorka.png */; };
+		FEF6A2371CCAB69200743F07 /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A2331CCAB69200743F07 /* lookup_miss_etikate.png */; };
+		FEF6A2381CCAB69200743F07 /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A2341CCAB69200743F07 /* lookup_soft_elegance_1.png */; };
+		FEF6A2391CCAB69200743F07 /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FEF6A2351CCAB69200743F07 /* lookup_soft_elegance_2.png */; };
+		FEF6A23E1CCABEF300743F07 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF6A23D1CCABEF300743F07 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TocaBocaVideoRecorder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60DB076185C255535110BFE1 /* Pods-TocaBocaVideoRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TocaBocaVideoRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TocaBocaVideoRecorder/Pods-TocaBocaVideoRecorder.debug.xcconfig"; sourceTree = "<group>"; };
+		835E25FCA3405B7610808165 /* Pods-TocaBocaVideoRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TocaBocaVideoRecorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TocaBocaVideoRecorder/Pods-TocaBocaVideoRecorder.release.xcconfig"; sourceTree = "<group>"; };
+		FE12CC1A1CCE685D00FD993E /* bee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bee.png; sourceTree = "<group>"; };
 		FEF6A1E21CCA6A3900743F07 /* TocaBocaVideoRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TocaBocaVideoRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF6A1E61CCA6A3900743F07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FEF6A1E81CCA6A3900743F07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +68,18 @@
 		FEF6A2061CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TocaBocaVideoRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF6A20A1CCA6A3900743F07 /* TocaBocaVideoRecorderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TocaBocaVideoRecorderUITests.m; sourceTree = "<group>"; };
 		FEF6A20C1CCA6A3900743F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEF6A2181CCA6FB000743F07 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		FEF6A2191CCA6FB000743F07 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		FEF6A21C1CCA6FB500743F07 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		FEF6A21E1CCA6FBB00743F07 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FEF6A2201CCA6FC000743F07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FEF6A22C1CCAA3E300743F07 /* CustomCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionCell.h; sourceTree = "<group>"; };
+		FEF6A22D1CCAA3E300743F07 /* CustomCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionCell.m; sourceTree = "<group>"; };
+		FEF6A2321CCAB69200743F07 /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_amatorka.png; sourceTree = "<group>"; };
+		FEF6A2331CCAB69200743F07 /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_miss_etikate.png; sourceTree = "<group>"; };
+		FEF6A2341CCAB69200743F07 /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_1.png; sourceTree = "<group>"; };
+		FEF6A2351CCAB69200743F07 /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_2.png; sourceTree = "<group>"; };
+		FEF6A23D1CCABEF300743F07 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +87,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEF6A23E1CCABEF300743F07 /* MediaPlayer.framework in Frameworks */,
+				FEF6A2211CCA6FC000743F07 /* QuartzCore.framework in Frameworks */,
+				FEF6A21F1CCA6FBB00743F07 /* AVFoundation.framework in Frameworks */,
+				FEF6A21D1CCA6FB500743F07 /* OpenGLES.framework in Frameworks */,
+				FEF6A21A1CCA6FB000743F07 /* CoreMedia.framework in Frameworks */,
+				FEF6A21B1CCA6FB000743F07 /* CoreVideo.framework in Frameworks */,
+				02F428D82C5036BFBBF96042 /* libPods-TocaBocaVideoRecorder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,13 +114,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1631C1B39D61DCAF48A99DFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60DB076185C255535110BFE1 /* Pods-TocaBocaVideoRecorder.debug.xcconfig */,
+				835E25FCA3405B7610808165 /* Pods-TocaBocaVideoRecorder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C72B8DEE9B8227E15FE13F67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FEF6A23D1CCABEF300743F07 /* MediaPlayer.framework */,
+				0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEF6A1D91CCA6A3900743F07 = {
 			isa = PBXGroup;
 			children = (
+				FEF6A2201CCA6FC000743F07 /* QuartzCore.framework */,
+				FEF6A21E1CCA6FBB00743F07 /* AVFoundation.framework */,
+				FEF6A21C1CCA6FB500743F07 /* OpenGLES.framework */,
+				FEF6A2181CCA6FB000743F07 /* CoreMedia.framework */,
+				FEF6A2191CCA6FB000743F07 /* CoreVideo.framework */,
 				FEF6A1E41CCA6A3900743F07 /* TocaBocaVideoRecorder */,
 				FEF6A1FE1CCA6A3900743F07 /* TocaBocaVideoRecorderTests */,
 				FEF6A2091CCA6A3900743F07 /* TocaBocaVideoRecorderUITests */,
 				FEF6A1E31CCA6A3900743F07 /* Products */,
+				1631C1B39D61DCAF48A99DFF /* Pods */,
+				C72B8DEE9B8227E15FE13F67 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +166,8 @@
 				FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */,
 				FEF6A1EB1CCA6A3900743F07 /* ViewController.h */,
 				FEF6A1EC1CCA6A3900743F07 /* ViewController.m */,
+				FEF6A22C1CCAA3E300743F07 /* CustomCollectionCell.h */,
+				FEF6A22D1CCAA3E300743F07 /* CustomCollectionCell.m */,
 				FEF6A1EE1CCA6A3900743F07 /* Main.storyboard */,
 				FEF6A1F11CCA6A3900743F07 /* Assets.xcassets */,
 				FEF6A1F31CCA6A3900743F07 /* LaunchScreen.storyboard */,
@@ -117,6 +180,11 @@
 		FEF6A1E51CCA6A3900743F07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FE12CC1A1CCE685D00FD993E /* bee.png */,
+				FEF6A2321CCAB69200743F07 /* lookup_amatorka.png */,
+				FEF6A2331CCAB69200743F07 /* lookup_miss_etikate.png */,
+				FEF6A2341CCAB69200743F07 /* lookup_soft_elegance_1.png */,
+				FEF6A2351CCAB69200743F07 /* lookup_soft_elegance_2.png */,
 				FEF6A1E61CCA6A3900743F07 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -147,9 +215,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEF6A20F1CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorder" */;
 			buildPhases = (
+				BB70045E1A713F8EFC7A3B1D /* Check Pods Manifest.lock */,
 				FEF6A1DE1CCA6A3900743F07 /* Sources */,
 				FEF6A1DF1CCA6A3900743F07 /* Frameworks */,
 				FEF6A1E01CCA6A3900743F07 /* Resources */,
+				D2C7AEA1692A6626A721C15F /* Embed Pods Frameworks */,
+				56C4DB079D384790D508271A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +278,7 @@
 				TargetAttributes = {
 					FEF6A1E11CCA6A3900743F07 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = XVM6S28FTY;
 					};
 					FEF6A1FA1CCA6A3900743F07 = {
 						CreatedOnToolsVersion = 7.3;
@@ -246,6 +318,11 @@
 				FEF6A1F51CCA6A3900743F07 /* LaunchScreen.storyboard in Resources */,
 				FEF6A1F21CCA6A3900743F07 /* Assets.xcassets in Resources */,
 				FEF6A1F01CCA6A3900743F07 /* Main.storyboard in Resources */,
+				FEF6A2391CCAB69200743F07 /* lookup_soft_elegance_2.png in Resources */,
+				FEF6A2381CCAB69200743F07 /* lookup_soft_elegance_1.png in Resources */,
+				FEF6A2361CCAB69200743F07 /* lookup_amatorka.png in Resources */,
+				FE12CC1B1CCE685D00FD993E /* bee.png in Resources */,
+				FEF6A2371CCAB69200743F07 /* lookup_miss_etikate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +342,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56C4DB079D384790D508271A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TocaBocaVideoRecorder/Pods-TocaBocaVideoRecorder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB70045E1A713F8EFC7A3B1D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D2C7AEA1692A6626A721C15F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TocaBocaVideoRecorder/Pods-TocaBocaVideoRecorder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FEF6A1DE1CCA6A3900743F07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -272,6 +397,7 @@
 			files = (
 				FEF6A1ED1CCA6A3900743F07 /* ViewController.m in Sources */,
 				FEF6A1EA1CCA6A3900743F07 /* AppDelegate.m in Sources */,
+				FEF6A22E1CCAA3E300743F07 /* CustomCollectionCell.m in Sources */,
 				FEF6A1E71CCA6A3900743F07 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,9 +539,12 @@
 		};
 		FEF6A2101CCA6A3900743F07 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60DB076185C255535110BFE1 /* Pods-TocaBocaVideoRecorder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TocaBocaVideoRecorder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,9 +553,12 @@
 		};
 		FEF6A2111CCA6A3900743F07 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 835E25FCA3405B7610808165 /* Pods-TocaBocaVideoRecorder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TocaBocaVideoRecorder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,6 +630,7 @@
 				FEF6A2111CCA6A3900743F07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FEF6A2121CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorderTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +639,7 @@
 				FEF6A2141CCA6A3900743F07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FEF6A2151CCA6A3900743F07 /* Build configuration list for PBXNativeTarget "TocaBocaVideoRecorderUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +648,7 @@
 				FEF6A2171CCA6A3900743F07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
