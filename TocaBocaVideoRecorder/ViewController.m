@@ -182,7 +182,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             [_filter addTarget:blendFilter];
             [uiElementInput addTarget:blendFilter];
             
-            __block int animationTrigger = 0;
             __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                 timeLabel.text = [NSString stringWithFormat:@"Time: %.0f s", -[sTime timeIntervalSinceNow]];
