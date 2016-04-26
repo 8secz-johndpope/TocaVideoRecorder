@@ -44,7 +44,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     videoCamera.horizontallyMirrorFrontFacingCamera = NO;
     videoCamera.horizontallyMirrorRearFacingCamera = NO;
     //videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+    videoCamera.outputImageOrientation = [[UIDevice currentDevice] orientation];
+
     _filter = [[GPUImageFilter alloc] init];
     [videoCamera addTarget:_filter];
     [_filter addTarget:_filteredVideoView];
@@ -60,6 +61,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     _isFaceSwitched = NO;
     _isUserInterfaceElementVideo = NO;
+    
+    
+    _filteredVideoView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -103,19 +107,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
     
-    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:currentCameraPosition];
-    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft) {
-        videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
-    }else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-        videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
-    }
-    videoCamera.horizontallyMirrorFrontFacingCamera = NO;
-    videoCamera.horizontallyMirrorRearFacingCamera = NO;
-    
     //record the video
     if (_isRecording){
         //stop recording
         _isRecording = false;
+        
         [_recordButton setTitle:@"RECORD" forState:UIControlStateNormal];
         
         _activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame), 30, 30)];
@@ -143,6 +139,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     }else{
         _isRecording = true;
         [_recordButton setTitle:@"STOP" forState:UIControlStateNormal];
+        
+        videoCamera = nil;
+        videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:currentCameraPosition];
+        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft) {
+            videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
+        }else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
+            videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+        }
+        videoCamera.horizontallyMirrorFrontFacingCamera = NO;
+        videoCamera.horizontallyMirrorRearFacingCamera = NO;
         
         //stored in Documents which can  be accessed by iTunes (this can change)
         NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Toca-%@.m4v", [self videoFileName:6]]];
@@ -176,32 +182,23 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             [_filter addTarget:blendFilter];
             [uiElementInput addTarget:blendFilter];
             
-            [blendFilter addTarget:_filteredVideoView];
-            
+            __block int animationTrigger = 0;
             __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
-                timeLabel.text = [NSString stringWithFormat:@"Time: %f s", -[sTime timeIntervalSinceNow]];
-                [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionRepeat animations:^{
-                    timeLabel.frame = CGRectMake(timeLabel.frame.origin.x - 50, timeLabel.frame.origin.y, timeLabel.frame.size.width, timeLabel.frame.size.height);
-                } completion:^(BOOL finished) {
-                    //completed
-                }];
+                timeLabel.text = [NSString stringWithFormat:@"Time: %.0f s", -[sTime timeIntervalSinceNow]];
                 [weakUIElementInput update];
             }];
             
             [blendFilter addTarget:_movieWriter];
+            [blendFilter addTarget:_filteredVideoView];
+            
         }else{
-            _filter = [[GPUImageSaturationFilter alloc] init];
-            [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
+            [videoCamera addTarget:_filter];
             
             [_filter addTarget:_movieWriter];
             [_filter addTarget:_filteredVideoView];
             
-            
-            [_filter addTarget:_filteredVideoView];
-            [videoCamera addTarget:_filter];
-            //    _filteredVideoView.fillMode = kGPUImageFillModeStretch;
-            //    _filteredVideoView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+            //_filteredVideoView.fillMode = kGPUImageFillModeStretch;
         }
         
         [videoCamera stopCameraCapture];
@@ -306,7 +303,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             _isUserInterfaceElementVideo = YES;
             //bee face
             [videoCamera rotateCamera];
-            
             _filter = [[GPUImageSaturationFilter alloc] init];
             [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
             GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
@@ -316,7 +312,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             NSDate *startTime = [NSDate date];
             
-            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 240.0f, 320.0f)];
+            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 340.0f, 240.0f)];
             timeLabel.font = [UIFont systemFontOfSize:17.0f];
             timeLabel.text = @"Time: 0.0 s";
             timeLabel.textAlignment = NSTextAlignmentCenter;
@@ -333,11 +329,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                 timeLabel.text = [NSString stringWithFormat:@"Time: %f s", -[startTime timeIntervalSinceNow]];
-                [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionRepeat animations:^{
-                    timeLabel.frame = CGRectMake(timeLabel.frame.origin.x - 50, timeLabel.frame.origin.y, timeLabel.frame.size.width, timeLabel.frame.size.height);
-                } completion:^(BOOL finished) {
-                    //completed
-                }];
+                
                 [weakUIElementInput update];
             }];
             
@@ -385,7 +377,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 // utility routing used during image capture to set up capture orientation
 - (AVCaptureVideoOrientation)avOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation
 {
-    AVCaptureVideoOrientation result = AVCaptureVideoOrientationPortrait;
+    AVCaptureVideoOrientation result = deviceOrientation;
     if ( deviceOrientation == UIDeviceOrientationLandscapeLeft )
         result = AVCaptureVideoOrientationLandscapeRight;
     else if ( deviceOrientation == UIDeviceOrientationLandscapeRight )
@@ -546,13 +538,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             switch (curDeviceOrientation) {
                 case UIDeviceOrientationPortrait:
-                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];
+                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
                     break;
                 case UIDeviceOrientationPortraitUpsideDown:
                     [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(180.))];
                     break;
                 case UIDeviceOrientationLandscapeLeft:
-                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
+                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(90.))];
                     break;
                 case UIDeviceOrientationLandscapeRight:
                     [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];

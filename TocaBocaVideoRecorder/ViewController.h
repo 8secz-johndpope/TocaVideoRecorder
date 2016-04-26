@@ -16,7 +16,6 @@
 
     GPUImageVideoCamera *videoCamera;
     BOOL faceThinking;
-    
     GPUImageUIElement *uiElementInput;
 }
 
