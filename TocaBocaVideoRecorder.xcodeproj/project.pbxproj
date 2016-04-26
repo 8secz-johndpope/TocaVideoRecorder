@@ -8,6 +8,150 @@
 
 /* Begin PBXBuildFile section */
 		02F428D82C5036BFBBF96042 /* libPods-TocaBocaVideoRecorder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */; };
+		59EFD29C1CCFE035000F7246 /* OL_STICKER_CLOUD_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD20C1CCFE035000F7246 /* OL_STICKER_CLOUD_00000.png */; };
+		59EFD29D1CCFE035000F7246 /* OL_STICKER_CLOUD_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD20D1CCFE035000F7246 /* OL_STICKER_CLOUD_00001.png */; };
+		59EFD29E1CCFE035000F7246 /* OL_STICKER_CLOUD_00002.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD20E1CCFE035000F7246 /* OL_STICKER_CLOUD_00002.png */; };
+		59EFD29F1CCFE035000F7246 /* OL_STICKER_CLOUD_00003.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD20F1CCFE035000F7246 /* OL_STICKER_CLOUD_00003.png */; };
+		59EFD2A01CCFE035000F7246 /* OL_STICKER_CLOUD_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2101CCFE035000F7246 /* OL_STICKER_CLOUD_00004.png */; };
+		59EFD2A11CCFE035000F7246 /* OL_STICKER_CLOUD_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2111CCFE035000F7246 /* OL_STICKER_CLOUD_00005.png */; };
+		59EFD2A21CCFE035000F7246 /* OL_STICKER_CLOUD_00006.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2121CCFE035000F7246 /* OL_STICKER_CLOUD_00006.png */; };
+		59EFD2A31CCFE035000F7246 /* OL_STICKER_CLOUD_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2131CCFE035000F7246 /* OL_STICKER_CLOUD_00007.png */; };
+		59EFD2A41CCFE035000F7246 /* OL_STICKER_CLOUD_00008.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2141CCFE035000F7246 /* OL_STICKER_CLOUD_00008.png */; };
+		59EFD2A51CCFE035000F7246 /* OL_STICKER_CLOUD_00009.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2151CCFE035000F7246 /* OL_STICKER_CLOUD_00009.png */; };
+		59EFD2A61CCFE035000F7246 /* OL_STICKER_CLOUD_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2161CCFE035000F7246 /* OL_STICKER_CLOUD_00010.png */; };
+		59EFD2A71CCFE035000F7246 /* OL_STICKER_CLOUD_00011.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2171CCFE035000F7246 /* OL_STICKER_CLOUD_00011.png */; };
+		59EFD2A81CCFE035000F7246 /* OL_STICKER_CLOUD_00012.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2181CCFE035000F7246 /* OL_STICKER_CLOUD_00012.png */; };
+		59EFD2A91CCFE035000F7246 /* OL_STICKER_CLOUD_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2191CCFE035000F7246 /* OL_STICKER_CLOUD_00013.png */; };
+		59EFD2AA1CCFE035000F7246 /* OL_STICKER_CLOUD_00014.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD21A1CCFE035000F7246 /* OL_STICKER_CLOUD_00014.png */; };
+		59EFD2AB1CCFE035000F7246 /* OL_STICKER_CLOUD_00015.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD21B1CCFE035000F7246 /* OL_STICKER_CLOUD_00015.png */; };
+		59EFD2AC1CCFE035000F7246 /* OL_STICKER_CLOUD_00016.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD21C1CCFE035000F7246 /* OL_STICKER_CLOUD_00016.png */; };
+		59EFD2AD1CCFE035000F7246 /* OL_STICKER_CLOUD_00017.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD21D1CCFE035000F7246 /* OL_STICKER_CLOUD_00017.png */; };
+		59EFD2AE1CCFE035000F7246 /* OL_STICKER_CLOUD_00018.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD21E1CCFE035000F7246 /* OL_STICKER_CLOUD_00018.png */; };
+		59EFD2AF1CCFE035000F7246 /* OL_STICKER_CLOUD_00019.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD21F1CCFE035000F7246 /* OL_STICKER_CLOUD_00019.png */; };
+		59EFD2B01CCFE035000F7246 /* OL_STICKER_CLOUD_00020.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2201CCFE035000F7246 /* OL_STICKER_CLOUD_00020.png */; };
+		59EFD2B11CCFE035000F7246 /* OL_STICKER_CLOUD_00021.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2211CCFE035000F7246 /* OL_STICKER_CLOUD_00021.png */; };
+		59EFD2B21CCFE035000F7246 /* OL_STICKER_CLOUD_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2221CCFE035000F7246 /* OL_STICKER_CLOUD_00022.png */; };
+		59EFD2B31CCFE035000F7246 /* OL_STICKER_CLOUD_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2231CCFE035000F7246 /* OL_STICKER_CLOUD_00023.png */; };
+		59EFD2B41CCFE035000F7246 /* OL_STICKER_CLOUD_00024.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2241CCFE035000F7246 /* OL_STICKER_CLOUD_00024.png */; };
+		59EFD2B51CCFE035000F7246 /* OL_STICKER_CLOUD_00025.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2251CCFE035000F7246 /* OL_STICKER_CLOUD_00025.png */; };
+		59EFD2B61CCFE035000F7246 /* OL_STICKER_CLOUD_00026.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2261CCFE035000F7246 /* OL_STICKER_CLOUD_00026.png */; };
+		59EFD2B71CCFE035000F7246 /* OL_STICKER_CLOUD_00027.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2271CCFE035000F7246 /* OL_STICKER_CLOUD_00027.png */; };
+		59EFD2B81CCFE035000F7246 /* OL_STICKER_CLOUD_00028.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2281CCFE035000F7246 /* OL_STICKER_CLOUD_00028.png */; };
+		59EFD2B91CCFE035000F7246 /* OL_STICKER_CLOUD_00029.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2291CCFE035000F7246 /* OL_STICKER_CLOUD_00029.png */; };
+		59EFD2BA1CCFE035000F7246 /* OL_STICKER_CLOUD_00030.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD22A1CCFE035000F7246 /* OL_STICKER_CLOUD_00030.png */; };
+		59EFD2BB1CCFE035000F7246 /* OL_STICKER_CLOUD_00031.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD22B1CCFE035000F7246 /* OL_STICKER_CLOUD_00031.png */; };
+		59EFD2BC1CCFE035000F7246 /* OL_STICKER_CLOUD_00032.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD22C1CCFE035000F7246 /* OL_STICKER_CLOUD_00032.png */; };
+		59EFD2BD1CCFE035000F7246 /* OL_STICKER_CLOUD_00033.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD22D1CCFE035000F7246 /* OL_STICKER_CLOUD_00033.png */; };
+		59EFD2BE1CCFE035000F7246 /* OL_STICKER_CLOUD_00034.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD22E1CCFE035000F7246 /* OL_STICKER_CLOUD_00034.png */; };
+		59EFD2BF1CCFE035000F7246 /* OL_STICKER_CLOUD_00035.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD22F1CCFE035000F7246 /* OL_STICKER_CLOUD_00035.png */; };
+		59EFD2C01CCFE035000F7246 /* OL_STICKER_CLOUD_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2301CCFE035000F7246 /* OL_STICKER_CLOUD_00036.png */; };
+		59EFD2C11CCFE035000F7246 /* OL_STICKER_CLOUD_00037.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2311CCFE035000F7246 /* OL_STICKER_CLOUD_00037.png */; };
+		59EFD2C21CCFE035000F7246 /* OL_STICKER_CLOUD_00038.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2321CCFE035000F7246 /* OL_STICKER_CLOUD_00038.png */; };
+		59EFD2C31CCFE035000F7246 /* OL_STICKER_CLOUD_00039.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2331CCFE035000F7246 /* OL_STICKER_CLOUD_00039.png */; };
+		59EFD2C41CCFE035000F7246 /* OL_STICKER_CLOUD_00040.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2341CCFE035000F7246 /* OL_STICKER_CLOUD_00040.png */; };
+		59EFD2C51CCFE035000F7246 /* OL_STICKER_CLOUD_00041.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2351CCFE035000F7246 /* OL_STICKER_CLOUD_00041.png */; };
+		59EFD2C61CCFE035000F7246 /* OL_STICKER_CLOUD_00042.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2361CCFE035000F7246 /* OL_STICKER_CLOUD_00042.png */; };
+		59EFD2C71CCFE035000F7246 /* OL_STICKER_CLOUD_00043.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2371CCFE035000F7246 /* OL_STICKER_CLOUD_00043.png */; };
+		59EFD2C81CCFE035000F7246 /* OL_STICKER_CLOUD_00044.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2381CCFE035000F7246 /* OL_STICKER_CLOUD_00044.png */; };
+		59EFD2C91CCFE035000F7246 /* OL_STICKER_CLOUD_00045.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2391CCFE035000F7246 /* OL_STICKER_CLOUD_00045.png */; };
+		59EFD2CA1CCFE035000F7246 /* OL_STICKER_CLOUD_00046.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD23A1CCFE035000F7246 /* OL_STICKER_CLOUD_00046.png */; };
+		59EFD2CB1CCFE035000F7246 /* OL_STICKER_CLOUD_00047.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD23B1CCFE035000F7246 /* OL_STICKER_CLOUD_00047.png */; };
+		59EFD2CC1CCFE035000F7246 /* OL_STICKER_CLOUD_00048.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD23C1CCFE035000F7246 /* OL_STICKER_CLOUD_00048.png */; };
+		59EFD2CD1CCFE035000F7246 /* OL_STICKER_CLOUD_00049.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD23D1CCFE035000F7246 /* OL_STICKER_CLOUD_00049.png */; };
+		59EFD2CE1CCFE035000F7246 /* OL_STICKER_CLOUD_00050.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD23E1CCFE035000F7246 /* OL_STICKER_CLOUD_00050.png */; };
+		59EFD2CF1CCFE035000F7246 /* OL_STICKER_CLOUD_00051.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD23F1CCFE035000F7246 /* OL_STICKER_CLOUD_00051.png */; };
+		59EFD2D01CCFE035000F7246 /* OL_STICKER_CLOUD_00052.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2401CCFE035000F7246 /* OL_STICKER_CLOUD_00052.png */; };
+		59EFD2D11CCFE035000F7246 /* OL_STICKER_CLOUD_00053.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2411CCFE035000F7246 /* OL_STICKER_CLOUD_00053.png */; };
+		59EFD2D21CCFE035000F7246 /* OL_STICKER_CLOUD_00054.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2421CCFE035000F7246 /* OL_STICKER_CLOUD_00054.png */; };
+		59EFD2D31CCFE035000F7246 /* OL_STICKER_CLOUD_00055.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2431CCFE035000F7246 /* OL_STICKER_CLOUD_00055.png */; };
+		59EFD2D41CCFE035000F7246 /* OL_STICKER_CLOUD_00056.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2441CCFE035000F7246 /* OL_STICKER_CLOUD_00056.png */; };
+		59EFD2D51CCFE035000F7246 /* OL_STICKER_CLOUD_00057.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2451CCFE035000F7246 /* OL_STICKER_CLOUD_00057.png */; };
+		59EFD2D61CCFE035000F7246 /* OL_STICKER_CLOUD_00058.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2461CCFE035000F7246 /* OL_STICKER_CLOUD_00058.png */; };
+		59EFD2D71CCFE035000F7246 /* OL_STICKER_CLOUD_00059.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2471CCFE035000F7246 /* OL_STICKER_CLOUD_00059.png */; };
+		59EFD2D81CCFE035000F7246 /* OL_STICKER_CLOUD_00060.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2481CCFE035000F7246 /* OL_STICKER_CLOUD_00060.png */; };
+		59EFD2D91CCFE035000F7246 /* OL_STICKER_CLOUD_00061.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2491CCFE035000F7246 /* OL_STICKER_CLOUD_00061.png */; };
+		59EFD2DA1CCFE035000F7246 /* OL_STICKER_CLOUD_00062.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD24A1CCFE035000F7246 /* OL_STICKER_CLOUD_00062.png */; };
+		59EFD2DB1CCFE035000F7246 /* OL_STICKER_CLOUD_00063.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD24B1CCFE035000F7246 /* OL_STICKER_CLOUD_00063.png */; };
+		59EFD2DC1CCFE035000F7246 /* OL_STICKER_CLOUD_00064.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD24C1CCFE035000F7246 /* OL_STICKER_CLOUD_00064.png */; };
+		59EFD2DD1CCFE035000F7246 /* OL_STICKER_CLOUD_00065.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD24D1CCFE035000F7246 /* OL_STICKER_CLOUD_00065.png */; };
+		59EFD2DE1CCFE035000F7246 /* OL_STICKER_CLOUD_00066.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD24E1CCFE035000F7246 /* OL_STICKER_CLOUD_00066.png */; };
+		59EFD2DF1CCFE035000F7246 /* OL_STICKER_CLOUD_00067.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD24F1CCFE035000F7246 /* OL_STICKER_CLOUD_00067.png */; };
+		59EFD2E01CCFE035000F7246 /* OL_STICKER_CLOUD_00068.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2501CCFE035000F7246 /* OL_STICKER_CLOUD_00068.png */; };
+		59EFD2E11CCFE035000F7246 /* OL_STICKER_CLOUD_00069.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2511CCFE035000F7246 /* OL_STICKER_CLOUD_00069.png */; };
+		59EFD2E21CCFE035000F7246 /* OL_STICKER_CLOUD_00070.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2521CCFE035000F7246 /* OL_STICKER_CLOUD_00070.png */; };
+		59EFD2E31CCFE035000F7246 /* OL_STICKER_CLOUD_00071.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2531CCFE035000F7246 /* OL_STICKER_CLOUD_00071.png */; };
+		59EFD2E41CCFE035000F7246 /* OL_STICKER_CLOUD_00072.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2541CCFE035000F7246 /* OL_STICKER_CLOUD_00072.png */; };
+		59EFD2E51CCFE035000F7246 /* OL_STICKER_CLOUD_00073.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2551CCFE035000F7246 /* OL_STICKER_CLOUD_00073.png */; };
+		59EFD2E61CCFE035000F7246 /* OL_STICKER_CLOUD_00074.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2561CCFE035000F7246 /* OL_STICKER_CLOUD_00074.png */; };
+		59EFD2E71CCFE035000F7246 /* OL_STICKER_CLOUD_00075.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2571CCFE035000F7246 /* OL_STICKER_CLOUD_00075.png */; };
+		59EFD2E81CCFE035000F7246 /* OL_STICKER_CLOUD_00076.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2581CCFE035000F7246 /* OL_STICKER_CLOUD_00076.png */; };
+		59EFD2E91CCFE035000F7246 /* OL_STICKER_CLOUD_00077.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2591CCFE035000F7246 /* OL_STICKER_CLOUD_00077.png */; };
+		59EFD2EA1CCFE035000F7246 /* OL_STICKER_CLOUD_00078.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD25A1CCFE035000F7246 /* OL_STICKER_CLOUD_00078.png */; };
+		59EFD2EB1CCFE035000F7246 /* OL_STICKER_CLOUD_00079.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD25B1CCFE035000F7246 /* OL_STICKER_CLOUD_00079.png */; };
+		59EFD2EC1CCFE035000F7246 /* OL_STICKER_CLOUD_00080.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD25C1CCFE035000F7246 /* OL_STICKER_CLOUD_00080.png */; };
+		59EFD2ED1CCFE035000F7246 /* OL_STICKER_CLOUD_00081.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD25D1CCFE035000F7246 /* OL_STICKER_CLOUD_00081.png */; };
+		59EFD2EE1CCFE035000F7246 /* OL_STICKER_CLOUD_00082.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD25E1CCFE035000F7246 /* OL_STICKER_CLOUD_00082.png */; };
+		59EFD2EF1CCFE035000F7246 /* OL_STICKER_CLOUD_00083.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD25F1CCFE035000F7246 /* OL_STICKER_CLOUD_00083.png */; };
+		59EFD2F01CCFE035000F7246 /* OL_STICKER_CLOUD_00084.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2601CCFE035000F7246 /* OL_STICKER_CLOUD_00084.png */; };
+		59EFD2F11CCFE035000F7246 /* OL_STICKER_CLOUD_00085.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2611CCFE035000F7246 /* OL_STICKER_CLOUD_00085.png */; };
+		59EFD2F21CCFE035000F7246 /* OL_STICKER_CLOUD_00086.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2621CCFE035000F7246 /* OL_STICKER_CLOUD_00086.png */; };
+		59EFD2F31CCFE035000F7246 /* OL_STICKER_CLOUD_00087.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2631CCFE035000F7246 /* OL_STICKER_CLOUD_00087.png */; };
+		59EFD2F41CCFE035000F7246 /* OL_STICKER_CLOUD_00088.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2641CCFE035000F7246 /* OL_STICKER_CLOUD_00088.png */; };
+		59EFD2F51CCFE035000F7246 /* OL_STICKER_CLOUD_00089.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2651CCFE035000F7246 /* OL_STICKER_CLOUD_00089.png */; };
+		59EFD2F61CCFE035000F7246 /* OL_STICKER_CLOUD_00090.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2661CCFE035000F7246 /* OL_STICKER_CLOUD_00090.png */; };
+		59EFD2F71CCFE035000F7246 /* OL_STICKER_CLOUD_00091.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2671CCFE035000F7246 /* OL_STICKER_CLOUD_00091.png */; };
+		59EFD2F81CCFE035000F7246 /* OL_STICKER_CLOUD_00092.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2681CCFE035000F7246 /* OL_STICKER_CLOUD_00092.png */; };
+		59EFD2F91CCFE035000F7246 /* OL_STICKER_CLOUD_00093.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2691CCFE035000F7246 /* OL_STICKER_CLOUD_00093.png */; };
+		59EFD2FA1CCFE035000F7246 /* OL_STICKER_CLOUD_00094.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD26A1CCFE035000F7246 /* OL_STICKER_CLOUD_00094.png */; };
+		59EFD2FB1CCFE035000F7246 /* OL_STICKER_CLOUD_00095.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD26B1CCFE035000F7246 /* OL_STICKER_CLOUD_00095.png */; };
+		59EFD2FC1CCFE035000F7246 /* OL_STICKER_CLOUD_00096.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD26C1CCFE035000F7246 /* OL_STICKER_CLOUD_00096.png */; };
+		59EFD2FD1CCFE035000F7246 /* OL_STICKER_CLOUD_00097.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD26D1CCFE035000F7246 /* OL_STICKER_CLOUD_00097.png */; };
+		59EFD2FE1CCFE035000F7246 /* OL_STICKER_CLOUD_00098.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD26E1CCFE035000F7246 /* OL_STICKER_CLOUD_00098.png */; };
+		59EFD2FF1CCFE035000F7246 /* OL_STICKER_CLOUD_00099.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD26F1CCFE035000F7246 /* OL_STICKER_CLOUD_00099.png */; };
+		59EFD3001CCFE035000F7246 /* OL_STICKER_CLOUD_00100.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2701CCFE035000F7246 /* OL_STICKER_CLOUD_00100.png */; };
+		59EFD3011CCFE035000F7246 /* OL_STICKER_CLOUD_00101.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2711CCFE035000F7246 /* OL_STICKER_CLOUD_00101.png */; };
+		59EFD3021CCFE035000F7246 /* OL_STICKER_CLOUD_00102.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2721CCFE035000F7246 /* OL_STICKER_CLOUD_00102.png */; };
+		59EFD3031CCFE035000F7246 /* OL_STICKER_CLOUD_00103.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2731CCFE035000F7246 /* OL_STICKER_CLOUD_00103.png */; };
+		59EFD3041CCFE035000F7246 /* OL_STICKER_CLOUD_00104.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2741CCFE035000F7246 /* OL_STICKER_CLOUD_00104.png */; };
+		59EFD3051CCFE035000F7246 /* OL_STICKER_CLOUD_00105.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2751CCFE035000F7246 /* OL_STICKER_CLOUD_00105.png */; };
+		59EFD3061CCFE035000F7246 /* OL_STICKER_CLOUD_00106.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2761CCFE035000F7246 /* OL_STICKER_CLOUD_00106.png */; };
+		59EFD3071CCFE035000F7246 /* OL_STICKER_CLOUD_00107.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2771CCFE035000F7246 /* OL_STICKER_CLOUD_00107.png */; };
+		59EFD3081CCFE035000F7246 /* OL_STICKER_CLOUD_00108.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2781CCFE035000F7246 /* OL_STICKER_CLOUD_00108.png */; };
+		59EFD3091CCFE035000F7246 /* OL_STICKER_CLOUD_00109.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2791CCFE035000F7246 /* OL_STICKER_CLOUD_00109.png */; };
+		59EFD30A1CCFE035000F7246 /* OL_STICKER_CLOUD_00110.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD27A1CCFE035000F7246 /* OL_STICKER_CLOUD_00110.png */; };
+		59EFD30B1CCFE035000F7246 /* OL_STICKER_CLOUD_00111.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD27B1CCFE035000F7246 /* OL_STICKER_CLOUD_00111.png */; };
+		59EFD30C1CCFE035000F7246 /* OL_STICKER_CLOUD_00112.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD27C1CCFE035000F7246 /* OL_STICKER_CLOUD_00112.png */; };
+		59EFD30D1CCFE035000F7246 /* OL_STICKER_CLOUD_00113.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD27D1CCFE035000F7246 /* OL_STICKER_CLOUD_00113.png */; };
+		59EFD30E1CCFE035000F7246 /* OL_STICKER_CLOUD_00114.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD27E1CCFE035000F7246 /* OL_STICKER_CLOUD_00114.png */; };
+		59EFD30F1CCFE035000F7246 /* OL_STICKER_CLOUD_00115.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD27F1CCFE035000F7246 /* OL_STICKER_CLOUD_00115.png */; };
+		59EFD3101CCFE035000F7246 /* OL_STICKER_CLOUD_00116.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2801CCFE035000F7246 /* OL_STICKER_CLOUD_00116.png */; };
+		59EFD3111CCFE035000F7246 /* OL_STICKER_CLOUD_00117.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2811CCFE035000F7246 /* OL_STICKER_CLOUD_00117.png */; };
+		59EFD3121CCFE035000F7246 /* OL_STICKER_CLOUD_00118.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2821CCFE035000F7246 /* OL_STICKER_CLOUD_00118.png */; };
+		59EFD3131CCFE035000F7246 /* OL_STICKER_CLOUD_00119.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2831CCFE035000F7246 /* OL_STICKER_CLOUD_00119.png */; };
+		59EFD3141CCFE035000F7246 /* OL_STICKER_CLOUD_00120.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2841CCFE035000F7246 /* OL_STICKER_CLOUD_00120.png */; };
+		59EFD3151CCFE035000F7246 /* OL_STICKER_CLOUD_00121.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2851CCFE035000F7246 /* OL_STICKER_CLOUD_00121.png */; };
+		59EFD3161CCFE035000F7246 /* OL_STICKER_CLOUD_00122.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2861CCFE035000F7246 /* OL_STICKER_CLOUD_00122.png */; };
+		59EFD3171CCFE035000F7246 /* OL_STICKER_CLOUD_00123.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2871CCFE035000F7246 /* OL_STICKER_CLOUD_00123.png */; };
+		59EFD3181CCFE035000F7246 /* OL_STICKER_CLOUD_00124.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2881CCFE035000F7246 /* OL_STICKER_CLOUD_00124.png */; };
+		59EFD3191CCFE035000F7246 /* OL_STICKER_CLOUD_00125.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2891CCFE035000F7246 /* OL_STICKER_CLOUD_00125.png */; };
+		59EFD31A1CCFE035000F7246 /* OL_STICKER_CLOUD_00126.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD28A1CCFE035000F7246 /* OL_STICKER_CLOUD_00126.png */; };
+		59EFD31B1CCFE035000F7246 /* OL_STICKER_CLOUD_00127.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD28B1CCFE035000F7246 /* OL_STICKER_CLOUD_00127.png */; };
+		59EFD31C1CCFE035000F7246 /* OL_STICKER_CLOUD_00128.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD28C1CCFE035000F7246 /* OL_STICKER_CLOUD_00128.png */; };
+		59EFD31D1CCFE035000F7246 /* OL_STICKER_CLOUD_00129.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD28D1CCFE035000F7246 /* OL_STICKER_CLOUD_00129.png */; };
+		59EFD31E1CCFE035000F7246 /* OL_STICKER_CLOUD_00130.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD28E1CCFE035000F7246 /* OL_STICKER_CLOUD_00130.png */; };
+		59EFD31F1CCFE035000F7246 /* OL_STICKER_CLOUD_00131.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD28F1CCFE035000F7246 /* OL_STICKER_CLOUD_00131.png */; };
+		59EFD3201CCFE035000F7246 /* OL_STICKER_CLOUD_00132.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2901CCFE035000F7246 /* OL_STICKER_CLOUD_00132.png */; };
+		59EFD3211CCFE035000F7246 /* OL_STICKER_CLOUD_00133.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2911CCFE035000F7246 /* OL_STICKER_CLOUD_00133.png */; };
+		59EFD3221CCFE035000F7246 /* OL_STICKER_CLOUD_00134.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2921CCFE035000F7246 /* OL_STICKER_CLOUD_00134.png */; };
+		59EFD3231CCFE035000F7246 /* OL_STICKER_CLOUD_00135.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2931CCFE035000F7246 /* OL_STICKER_CLOUD_00135.png */; };
+		59EFD3241CCFE035000F7246 /* OL_STICKER_CLOUD_00136.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2941CCFE035000F7246 /* OL_STICKER_CLOUD_00136.png */; };
+		59EFD3251CCFE035000F7246 /* OL_STICKER_CLOUD_00137.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2951CCFE035000F7246 /* OL_STICKER_CLOUD_00137.png */; };
+		59EFD3261CCFE035000F7246 /* OL_STICKER_CLOUD_00138.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2961CCFE035000F7246 /* OL_STICKER_CLOUD_00138.png */; };
+		59EFD3271CCFE035000F7246 /* OL_STICKER_CLOUD_00139.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2971CCFE035000F7246 /* OL_STICKER_CLOUD_00139.png */; };
+		59EFD3281CCFE035000F7246 /* OL_STICKER_CLOUD_00140.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2981CCFE035000F7246 /* OL_STICKER_CLOUD_00140.png */; };
+		59EFD3291CCFE035000F7246 /* OL_STICKER_CLOUD_00141.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD2991CCFE035000F7246 /* OL_STICKER_CLOUD_00141.png */; };
+		59EFD32A1CCFE035000F7246 /* OL_STICKER_CLOUD_00142.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD29A1CCFE035000F7246 /* OL_STICKER_CLOUD_00142.png */; };
+		59EFD32B1CCFE035000F7246 /* OL_STICKER_CLOUD_00143.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFD29B1CCFE035000F7246 /* OL_STICKER_CLOUD_00143.png */; };
 		FE12CC1B1CCE685D00FD993E /* bee.png in Resources */ = {isa = PBXBuildFile; fileRef = FE12CC1A1CCE685D00FD993E /* bee.png */; };
 		FEF6A1E71CCA6A3900743F07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1E61CCA6A3900743F07 /* main.m */; };
 		FEF6A1EA1CCA6A3900743F07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */; };
@@ -49,6 +193,150 @@
 
 /* Begin PBXFileReference section */
 		0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TocaBocaVideoRecorder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59EFD20C1CCFE035000F7246 /* OL_STICKER_CLOUD_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00000.png; sourceTree = "<group>"; };
+		59EFD20D1CCFE035000F7246 /* OL_STICKER_CLOUD_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00001.png; sourceTree = "<group>"; };
+		59EFD20E1CCFE035000F7246 /* OL_STICKER_CLOUD_00002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00002.png; sourceTree = "<group>"; };
+		59EFD20F1CCFE035000F7246 /* OL_STICKER_CLOUD_00003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00003.png; sourceTree = "<group>"; };
+		59EFD2101CCFE035000F7246 /* OL_STICKER_CLOUD_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00004.png; sourceTree = "<group>"; };
+		59EFD2111CCFE035000F7246 /* OL_STICKER_CLOUD_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00005.png; sourceTree = "<group>"; };
+		59EFD2121CCFE035000F7246 /* OL_STICKER_CLOUD_00006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00006.png; sourceTree = "<group>"; };
+		59EFD2131CCFE035000F7246 /* OL_STICKER_CLOUD_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00007.png; sourceTree = "<group>"; };
+		59EFD2141CCFE035000F7246 /* OL_STICKER_CLOUD_00008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00008.png; sourceTree = "<group>"; };
+		59EFD2151CCFE035000F7246 /* OL_STICKER_CLOUD_00009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00009.png; sourceTree = "<group>"; };
+		59EFD2161CCFE035000F7246 /* OL_STICKER_CLOUD_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00010.png; sourceTree = "<group>"; };
+		59EFD2171CCFE035000F7246 /* OL_STICKER_CLOUD_00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00011.png; sourceTree = "<group>"; };
+		59EFD2181CCFE035000F7246 /* OL_STICKER_CLOUD_00012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00012.png; sourceTree = "<group>"; };
+		59EFD2191CCFE035000F7246 /* OL_STICKER_CLOUD_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00013.png; sourceTree = "<group>"; };
+		59EFD21A1CCFE035000F7246 /* OL_STICKER_CLOUD_00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00014.png; sourceTree = "<group>"; };
+		59EFD21B1CCFE035000F7246 /* OL_STICKER_CLOUD_00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00015.png; sourceTree = "<group>"; };
+		59EFD21C1CCFE035000F7246 /* OL_STICKER_CLOUD_00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00016.png; sourceTree = "<group>"; };
+		59EFD21D1CCFE035000F7246 /* OL_STICKER_CLOUD_00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00017.png; sourceTree = "<group>"; };
+		59EFD21E1CCFE035000F7246 /* OL_STICKER_CLOUD_00018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00018.png; sourceTree = "<group>"; };
+		59EFD21F1CCFE035000F7246 /* OL_STICKER_CLOUD_00019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00019.png; sourceTree = "<group>"; };
+		59EFD2201CCFE035000F7246 /* OL_STICKER_CLOUD_00020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00020.png; sourceTree = "<group>"; };
+		59EFD2211CCFE035000F7246 /* OL_STICKER_CLOUD_00021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00021.png; sourceTree = "<group>"; };
+		59EFD2221CCFE035000F7246 /* OL_STICKER_CLOUD_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00022.png; sourceTree = "<group>"; };
+		59EFD2231CCFE035000F7246 /* OL_STICKER_CLOUD_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00023.png; sourceTree = "<group>"; };
+		59EFD2241CCFE035000F7246 /* OL_STICKER_CLOUD_00024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00024.png; sourceTree = "<group>"; };
+		59EFD2251CCFE035000F7246 /* OL_STICKER_CLOUD_00025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00025.png; sourceTree = "<group>"; };
+		59EFD2261CCFE035000F7246 /* OL_STICKER_CLOUD_00026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00026.png; sourceTree = "<group>"; };
+		59EFD2271CCFE035000F7246 /* OL_STICKER_CLOUD_00027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00027.png; sourceTree = "<group>"; };
+		59EFD2281CCFE035000F7246 /* OL_STICKER_CLOUD_00028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00028.png; sourceTree = "<group>"; };
+		59EFD2291CCFE035000F7246 /* OL_STICKER_CLOUD_00029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00029.png; sourceTree = "<group>"; };
+		59EFD22A1CCFE035000F7246 /* OL_STICKER_CLOUD_00030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00030.png; sourceTree = "<group>"; };
+		59EFD22B1CCFE035000F7246 /* OL_STICKER_CLOUD_00031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00031.png; sourceTree = "<group>"; };
+		59EFD22C1CCFE035000F7246 /* OL_STICKER_CLOUD_00032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00032.png; sourceTree = "<group>"; };
+		59EFD22D1CCFE035000F7246 /* OL_STICKER_CLOUD_00033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00033.png; sourceTree = "<group>"; };
+		59EFD22E1CCFE035000F7246 /* OL_STICKER_CLOUD_00034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00034.png; sourceTree = "<group>"; };
+		59EFD22F1CCFE035000F7246 /* OL_STICKER_CLOUD_00035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00035.png; sourceTree = "<group>"; };
+		59EFD2301CCFE035000F7246 /* OL_STICKER_CLOUD_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00036.png; sourceTree = "<group>"; };
+		59EFD2311CCFE035000F7246 /* OL_STICKER_CLOUD_00037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00037.png; sourceTree = "<group>"; };
+		59EFD2321CCFE035000F7246 /* OL_STICKER_CLOUD_00038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00038.png; sourceTree = "<group>"; };
+		59EFD2331CCFE035000F7246 /* OL_STICKER_CLOUD_00039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00039.png; sourceTree = "<group>"; };
+		59EFD2341CCFE035000F7246 /* OL_STICKER_CLOUD_00040.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00040.png; sourceTree = "<group>"; };
+		59EFD2351CCFE035000F7246 /* OL_STICKER_CLOUD_00041.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00041.png; sourceTree = "<group>"; };
+		59EFD2361CCFE035000F7246 /* OL_STICKER_CLOUD_00042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00042.png; sourceTree = "<group>"; };
+		59EFD2371CCFE035000F7246 /* OL_STICKER_CLOUD_00043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00043.png; sourceTree = "<group>"; };
+		59EFD2381CCFE035000F7246 /* OL_STICKER_CLOUD_00044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00044.png; sourceTree = "<group>"; };
+		59EFD2391CCFE035000F7246 /* OL_STICKER_CLOUD_00045.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00045.png; sourceTree = "<group>"; };
+		59EFD23A1CCFE035000F7246 /* OL_STICKER_CLOUD_00046.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00046.png; sourceTree = "<group>"; };
+		59EFD23B1CCFE035000F7246 /* OL_STICKER_CLOUD_00047.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00047.png; sourceTree = "<group>"; };
+		59EFD23C1CCFE035000F7246 /* OL_STICKER_CLOUD_00048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00048.png; sourceTree = "<group>"; };
+		59EFD23D1CCFE035000F7246 /* OL_STICKER_CLOUD_00049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00049.png; sourceTree = "<group>"; };
+		59EFD23E1CCFE035000F7246 /* OL_STICKER_CLOUD_00050.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00050.png; sourceTree = "<group>"; };
+		59EFD23F1CCFE035000F7246 /* OL_STICKER_CLOUD_00051.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00051.png; sourceTree = "<group>"; };
+		59EFD2401CCFE035000F7246 /* OL_STICKER_CLOUD_00052.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00052.png; sourceTree = "<group>"; };
+		59EFD2411CCFE035000F7246 /* OL_STICKER_CLOUD_00053.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00053.png; sourceTree = "<group>"; };
+		59EFD2421CCFE035000F7246 /* OL_STICKER_CLOUD_00054.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00054.png; sourceTree = "<group>"; };
+		59EFD2431CCFE035000F7246 /* OL_STICKER_CLOUD_00055.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00055.png; sourceTree = "<group>"; };
+		59EFD2441CCFE035000F7246 /* OL_STICKER_CLOUD_00056.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00056.png; sourceTree = "<group>"; };
+		59EFD2451CCFE035000F7246 /* OL_STICKER_CLOUD_00057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00057.png; sourceTree = "<group>"; };
+		59EFD2461CCFE035000F7246 /* OL_STICKER_CLOUD_00058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00058.png; sourceTree = "<group>"; };
+		59EFD2471CCFE035000F7246 /* OL_STICKER_CLOUD_00059.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00059.png; sourceTree = "<group>"; };
+		59EFD2481CCFE035000F7246 /* OL_STICKER_CLOUD_00060.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00060.png; sourceTree = "<group>"; };
+		59EFD2491CCFE035000F7246 /* OL_STICKER_CLOUD_00061.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00061.png; sourceTree = "<group>"; };
+		59EFD24A1CCFE035000F7246 /* OL_STICKER_CLOUD_00062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00062.png; sourceTree = "<group>"; };
+		59EFD24B1CCFE035000F7246 /* OL_STICKER_CLOUD_00063.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00063.png; sourceTree = "<group>"; };
+		59EFD24C1CCFE035000F7246 /* OL_STICKER_CLOUD_00064.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00064.png; sourceTree = "<group>"; };
+		59EFD24D1CCFE035000F7246 /* OL_STICKER_CLOUD_00065.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00065.png; sourceTree = "<group>"; };
+		59EFD24E1CCFE035000F7246 /* OL_STICKER_CLOUD_00066.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00066.png; sourceTree = "<group>"; };
+		59EFD24F1CCFE035000F7246 /* OL_STICKER_CLOUD_00067.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00067.png; sourceTree = "<group>"; };
+		59EFD2501CCFE035000F7246 /* OL_STICKER_CLOUD_00068.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00068.png; sourceTree = "<group>"; };
+		59EFD2511CCFE035000F7246 /* OL_STICKER_CLOUD_00069.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00069.png; sourceTree = "<group>"; };
+		59EFD2521CCFE035000F7246 /* OL_STICKER_CLOUD_00070.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00070.png; sourceTree = "<group>"; };
+		59EFD2531CCFE035000F7246 /* OL_STICKER_CLOUD_00071.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00071.png; sourceTree = "<group>"; };
+		59EFD2541CCFE035000F7246 /* OL_STICKER_CLOUD_00072.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00072.png; sourceTree = "<group>"; };
+		59EFD2551CCFE035000F7246 /* OL_STICKER_CLOUD_00073.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00073.png; sourceTree = "<group>"; };
+		59EFD2561CCFE035000F7246 /* OL_STICKER_CLOUD_00074.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00074.png; sourceTree = "<group>"; };
+		59EFD2571CCFE035000F7246 /* OL_STICKER_CLOUD_00075.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00075.png; sourceTree = "<group>"; };
+		59EFD2581CCFE035000F7246 /* OL_STICKER_CLOUD_00076.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00076.png; sourceTree = "<group>"; };
+		59EFD2591CCFE035000F7246 /* OL_STICKER_CLOUD_00077.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00077.png; sourceTree = "<group>"; };
+		59EFD25A1CCFE035000F7246 /* OL_STICKER_CLOUD_00078.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00078.png; sourceTree = "<group>"; };
+		59EFD25B1CCFE035000F7246 /* OL_STICKER_CLOUD_00079.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00079.png; sourceTree = "<group>"; };
+		59EFD25C1CCFE035000F7246 /* OL_STICKER_CLOUD_00080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00080.png; sourceTree = "<group>"; };
+		59EFD25D1CCFE035000F7246 /* OL_STICKER_CLOUD_00081.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00081.png; sourceTree = "<group>"; };
+		59EFD25E1CCFE035000F7246 /* OL_STICKER_CLOUD_00082.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00082.png; sourceTree = "<group>"; };
+		59EFD25F1CCFE035000F7246 /* OL_STICKER_CLOUD_00083.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00083.png; sourceTree = "<group>"; };
+		59EFD2601CCFE035000F7246 /* OL_STICKER_CLOUD_00084.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00084.png; sourceTree = "<group>"; };
+		59EFD2611CCFE035000F7246 /* OL_STICKER_CLOUD_00085.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00085.png; sourceTree = "<group>"; };
+		59EFD2621CCFE035000F7246 /* OL_STICKER_CLOUD_00086.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00086.png; sourceTree = "<group>"; };
+		59EFD2631CCFE035000F7246 /* OL_STICKER_CLOUD_00087.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00087.png; sourceTree = "<group>"; };
+		59EFD2641CCFE035000F7246 /* OL_STICKER_CLOUD_00088.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00088.png; sourceTree = "<group>"; };
+		59EFD2651CCFE035000F7246 /* OL_STICKER_CLOUD_00089.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00089.png; sourceTree = "<group>"; };
+		59EFD2661CCFE035000F7246 /* OL_STICKER_CLOUD_00090.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00090.png; sourceTree = "<group>"; };
+		59EFD2671CCFE035000F7246 /* OL_STICKER_CLOUD_00091.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00091.png; sourceTree = "<group>"; };
+		59EFD2681CCFE035000F7246 /* OL_STICKER_CLOUD_00092.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00092.png; sourceTree = "<group>"; };
+		59EFD2691CCFE035000F7246 /* OL_STICKER_CLOUD_00093.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00093.png; sourceTree = "<group>"; };
+		59EFD26A1CCFE035000F7246 /* OL_STICKER_CLOUD_00094.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00094.png; sourceTree = "<group>"; };
+		59EFD26B1CCFE035000F7246 /* OL_STICKER_CLOUD_00095.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00095.png; sourceTree = "<group>"; };
+		59EFD26C1CCFE035000F7246 /* OL_STICKER_CLOUD_00096.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00096.png; sourceTree = "<group>"; };
+		59EFD26D1CCFE035000F7246 /* OL_STICKER_CLOUD_00097.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00097.png; sourceTree = "<group>"; };
+		59EFD26E1CCFE035000F7246 /* OL_STICKER_CLOUD_00098.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00098.png; sourceTree = "<group>"; };
+		59EFD26F1CCFE035000F7246 /* OL_STICKER_CLOUD_00099.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00099.png; sourceTree = "<group>"; };
+		59EFD2701CCFE035000F7246 /* OL_STICKER_CLOUD_00100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00100.png; sourceTree = "<group>"; };
+		59EFD2711CCFE035000F7246 /* OL_STICKER_CLOUD_00101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00101.png; sourceTree = "<group>"; };
+		59EFD2721CCFE035000F7246 /* OL_STICKER_CLOUD_00102.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00102.png; sourceTree = "<group>"; };
+		59EFD2731CCFE035000F7246 /* OL_STICKER_CLOUD_00103.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00103.png; sourceTree = "<group>"; };
+		59EFD2741CCFE035000F7246 /* OL_STICKER_CLOUD_00104.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00104.png; sourceTree = "<group>"; };
+		59EFD2751CCFE035000F7246 /* OL_STICKER_CLOUD_00105.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00105.png; sourceTree = "<group>"; };
+		59EFD2761CCFE035000F7246 /* OL_STICKER_CLOUD_00106.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00106.png; sourceTree = "<group>"; };
+		59EFD2771CCFE035000F7246 /* OL_STICKER_CLOUD_00107.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00107.png; sourceTree = "<group>"; };
+		59EFD2781CCFE035000F7246 /* OL_STICKER_CLOUD_00108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00108.png; sourceTree = "<group>"; };
+		59EFD2791CCFE035000F7246 /* OL_STICKER_CLOUD_00109.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00109.png; sourceTree = "<group>"; };
+		59EFD27A1CCFE035000F7246 /* OL_STICKER_CLOUD_00110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00110.png; sourceTree = "<group>"; };
+		59EFD27B1CCFE035000F7246 /* OL_STICKER_CLOUD_00111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00111.png; sourceTree = "<group>"; };
+		59EFD27C1CCFE035000F7246 /* OL_STICKER_CLOUD_00112.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00112.png; sourceTree = "<group>"; };
+		59EFD27D1CCFE035000F7246 /* OL_STICKER_CLOUD_00113.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00113.png; sourceTree = "<group>"; };
+		59EFD27E1CCFE035000F7246 /* OL_STICKER_CLOUD_00114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00114.png; sourceTree = "<group>"; };
+		59EFD27F1CCFE035000F7246 /* OL_STICKER_CLOUD_00115.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00115.png; sourceTree = "<group>"; };
+		59EFD2801CCFE035000F7246 /* OL_STICKER_CLOUD_00116.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00116.png; sourceTree = "<group>"; };
+		59EFD2811CCFE035000F7246 /* OL_STICKER_CLOUD_00117.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00117.png; sourceTree = "<group>"; };
+		59EFD2821CCFE035000F7246 /* OL_STICKER_CLOUD_00118.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00118.png; sourceTree = "<group>"; };
+		59EFD2831CCFE035000F7246 /* OL_STICKER_CLOUD_00119.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00119.png; sourceTree = "<group>"; };
+		59EFD2841CCFE035000F7246 /* OL_STICKER_CLOUD_00120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00120.png; sourceTree = "<group>"; };
+		59EFD2851CCFE035000F7246 /* OL_STICKER_CLOUD_00121.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00121.png; sourceTree = "<group>"; };
+		59EFD2861CCFE035000F7246 /* OL_STICKER_CLOUD_00122.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00122.png; sourceTree = "<group>"; };
+		59EFD2871CCFE035000F7246 /* OL_STICKER_CLOUD_00123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00123.png; sourceTree = "<group>"; };
+		59EFD2881CCFE035000F7246 /* OL_STICKER_CLOUD_00124.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00124.png; sourceTree = "<group>"; };
+		59EFD2891CCFE035000F7246 /* OL_STICKER_CLOUD_00125.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00125.png; sourceTree = "<group>"; };
+		59EFD28A1CCFE035000F7246 /* OL_STICKER_CLOUD_00126.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00126.png; sourceTree = "<group>"; };
+		59EFD28B1CCFE035000F7246 /* OL_STICKER_CLOUD_00127.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00127.png; sourceTree = "<group>"; };
+		59EFD28C1CCFE035000F7246 /* OL_STICKER_CLOUD_00128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00128.png; sourceTree = "<group>"; };
+		59EFD28D1CCFE035000F7246 /* OL_STICKER_CLOUD_00129.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00129.png; sourceTree = "<group>"; };
+		59EFD28E1CCFE035000F7246 /* OL_STICKER_CLOUD_00130.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00130.png; sourceTree = "<group>"; };
+		59EFD28F1CCFE035000F7246 /* OL_STICKER_CLOUD_00131.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00131.png; sourceTree = "<group>"; };
+		59EFD2901CCFE035000F7246 /* OL_STICKER_CLOUD_00132.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00132.png; sourceTree = "<group>"; };
+		59EFD2911CCFE035000F7246 /* OL_STICKER_CLOUD_00133.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00133.png; sourceTree = "<group>"; };
+		59EFD2921CCFE035000F7246 /* OL_STICKER_CLOUD_00134.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00134.png; sourceTree = "<group>"; };
+		59EFD2931CCFE035000F7246 /* OL_STICKER_CLOUD_00135.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00135.png; sourceTree = "<group>"; };
+		59EFD2941CCFE035000F7246 /* OL_STICKER_CLOUD_00136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00136.png; sourceTree = "<group>"; };
+		59EFD2951CCFE035000F7246 /* OL_STICKER_CLOUD_00137.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00137.png; sourceTree = "<group>"; };
+		59EFD2961CCFE035000F7246 /* OL_STICKER_CLOUD_00138.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00138.png; sourceTree = "<group>"; };
+		59EFD2971CCFE035000F7246 /* OL_STICKER_CLOUD_00139.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00139.png; sourceTree = "<group>"; };
+		59EFD2981CCFE035000F7246 /* OL_STICKER_CLOUD_00140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00140.png; sourceTree = "<group>"; };
+		59EFD2991CCFE035000F7246 /* OL_STICKER_CLOUD_00141.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00141.png; sourceTree = "<group>"; };
+		59EFD29A1CCFE035000F7246 /* OL_STICKER_CLOUD_00142.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00142.png; sourceTree = "<group>"; };
+		59EFD29B1CCFE035000F7246 /* OL_STICKER_CLOUD_00143.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OL_STICKER_CLOUD_00143.png; sourceTree = "<group>"; };
 		60DB076185C255535110BFE1 /* Pods-TocaBocaVideoRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TocaBocaVideoRecorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TocaBocaVideoRecorder/Pods-TocaBocaVideoRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		835E25FCA3405B7610808165 /* Pods-TocaBocaVideoRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TocaBocaVideoRecorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TocaBocaVideoRecorder/Pods-TocaBocaVideoRecorder.release.xcconfig"; sourceTree = "<group>"; };
 		FE12CC1A1CCE685D00FD993E /* bee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bee.png; sourceTree = "<group>"; };
@@ -123,6 +411,165 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		59EFD20B1CCFE019000F7246 /* Animation Sequences */ = {
+			isa = PBXGroup;
+			children = (
+				59EFD32C1CCFE04A000F7246 /* Cloud */,
+			);
+			name = "Animation Sequences";
+			sourceTree = "<group>";
+		};
+		59EFD32C1CCFE04A000F7246 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				59EFD20C1CCFE035000F7246 /* OL_STICKER_CLOUD_00000.png */,
+				59EFD20D1CCFE035000F7246 /* OL_STICKER_CLOUD_00001.png */,
+				59EFD20E1CCFE035000F7246 /* OL_STICKER_CLOUD_00002.png */,
+				59EFD20F1CCFE035000F7246 /* OL_STICKER_CLOUD_00003.png */,
+				59EFD2101CCFE035000F7246 /* OL_STICKER_CLOUD_00004.png */,
+				59EFD2111CCFE035000F7246 /* OL_STICKER_CLOUD_00005.png */,
+				59EFD2121CCFE035000F7246 /* OL_STICKER_CLOUD_00006.png */,
+				59EFD2131CCFE035000F7246 /* OL_STICKER_CLOUD_00007.png */,
+				59EFD2141CCFE035000F7246 /* OL_STICKER_CLOUD_00008.png */,
+				59EFD2151CCFE035000F7246 /* OL_STICKER_CLOUD_00009.png */,
+				59EFD2161CCFE035000F7246 /* OL_STICKER_CLOUD_00010.png */,
+				59EFD2171CCFE035000F7246 /* OL_STICKER_CLOUD_00011.png */,
+				59EFD2181CCFE035000F7246 /* OL_STICKER_CLOUD_00012.png */,
+				59EFD2191CCFE035000F7246 /* OL_STICKER_CLOUD_00013.png */,
+				59EFD21A1CCFE035000F7246 /* OL_STICKER_CLOUD_00014.png */,
+				59EFD21B1CCFE035000F7246 /* OL_STICKER_CLOUD_00015.png */,
+				59EFD21C1CCFE035000F7246 /* OL_STICKER_CLOUD_00016.png */,
+				59EFD21D1CCFE035000F7246 /* OL_STICKER_CLOUD_00017.png */,
+				59EFD21E1CCFE035000F7246 /* OL_STICKER_CLOUD_00018.png */,
+				59EFD21F1CCFE035000F7246 /* OL_STICKER_CLOUD_00019.png */,
+				59EFD2201CCFE035000F7246 /* OL_STICKER_CLOUD_00020.png */,
+				59EFD2211CCFE035000F7246 /* OL_STICKER_CLOUD_00021.png */,
+				59EFD2221CCFE035000F7246 /* OL_STICKER_CLOUD_00022.png */,
+				59EFD2231CCFE035000F7246 /* OL_STICKER_CLOUD_00023.png */,
+				59EFD2241CCFE035000F7246 /* OL_STICKER_CLOUD_00024.png */,
+				59EFD2251CCFE035000F7246 /* OL_STICKER_CLOUD_00025.png */,
+				59EFD2261CCFE035000F7246 /* OL_STICKER_CLOUD_00026.png */,
+				59EFD2271CCFE035000F7246 /* OL_STICKER_CLOUD_00027.png */,
+				59EFD2281CCFE035000F7246 /* OL_STICKER_CLOUD_00028.png */,
+				59EFD2291CCFE035000F7246 /* OL_STICKER_CLOUD_00029.png */,
+				59EFD22A1CCFE035000F7246 /* OL_STICKER_CLOUD_00030.png */,
+				59EFD22B1CCFE035000F7246 /* OL_STICKER_CLOUD_00031.png */,
+				59EFD22C1CCFE035000F7246 /* OL_STICKER_CLOUD_00032.png */,
+				59EFD22D1CCFE035000F7246 /* OL_STICKER_CLOUD_00033.png */,
+				59EFD22E1CCFE035000F7246 /* OL_STICKER_CLOUD_00034.png */,
+				59EFD22F1CCFE035000F7246 /* OL_STICKER_CLOUD_00035.png */,
+				59EFD2301CCFE035000F7246 /* OL_STICKER_CLOUD_00036.png */,
+				59EFD2311CCFE035000F7246 /* OL_STICKER_CLOUD_00037.png */,
+				59EFD2321CCFE035000F7246 /* OL_STICKER_CLOUD_00038.png */,
+				59EFD2331CCFE035000F7246 /* OL_STICKER_CLOUD_00039.png */,
+				59EFD2341CCFE035000F7246 /* OL_STICKER_CLOUD_00040.png */,
+				59EFD2351CCFE035000F7246 /* OL_STICKER_CLOUD_00041.png */,
+				59EFD2361CCFE035000F7246 /* OL_STICKER_CLOUD_00042.png */,
+				59EFD2371CCFE035000F7246 /* OL_STICKER_CLOUD_00043.png */,
+				59EFD2381CCFE035000F7246 /* OL_STICKER_CLOUD_00044.png */,
+				59EFD2391CCFE035000F7246 /* OL_STICKER_CLOUD_00045.png */,
+				59EFD23A1CCFE035000F7246 /* OL_STICKER_CLOUD_00046.png */,
+				59EFD23B1CCFE035000F7246 /* OL_STICKER_CLOUD_00047.png */,
+				59EFD23C1CCFE035000F7246 /* OL_STICKER_CLOUD_00048.png */,
+				59EFD23D1CCFE035000F7246 /* OL_STICKER_CLOUD_00049.png */,
+				59EFD23E1CCFE035000F7246 /* OL_STICKER_CLOUD_00050.png */,
+				59EFD23F1CCFE035000F7246 /* OL_STICKER_CLOUD_00051.png */,
+				59EFD2401CCFE035000F7246 /* OL_STICKER_CLOUD_00052.png */,
+				59EFD2411CCFE035000F7246 /* OL_STICKER_CLOUD_00053.png */,
+				59EFD2421CCFE035000F7246 /* OL_STICKER_CLOUD_00054.png */,
+				59EFD2431CCFE035000F7246 /* OL_STICKER_CLOUD_00055.png */,
+				59EFD2441CCFE035000F7246 /* OL_STICKER_CLOUD_00056.png */,
+				59EFD2451CCFE035000F7246 /* OL_STICKER_CLOUD_00057.png */,
+				59EFD2461CCFE035000F7246 /* OL_STICKER_CLOUD_00058.png */,
+				59EFD2471CCFE035000F7246 /* OL_STICKER_CLOUD_00059.png */,
+				59EFD2481CCFE035000F7246 /* OL_STICKER_CLOUD_00060.png */,
+				59EFD2491CCFE035000F7246 /* OL_STICKER_CLOUD_00061.png */,
+				59EFD24A1CCFE035000F7246 /* OL_STICKER_CLOUD_00062.png */,
+				59EFD24B1CCFE035000F7246 /* OL_STICKER_CLOUD_00063.png */,
+				59EFD24C1CCFE035000F7246 /* OL_STICKER_CLOUD_00064.png */,
+				59EFD24D1CCFE035000F7246 /* OL_STICKER_CLOUD_00065.png */,
+				59EFD24E1CCFE035000F7246 /* OL_STICKER_CLOUD_00066.png */,
+				59EFD24F1CCFE035000F7246 /* OL_STICKER_CLOUD_00067.png */,
+				59EFD2501CCFE035000F7246 /* OL_STICKER_CLOUD_00068.png */,
+				59EFD2511CCFE035000F7246 /* OL_STICKER_CLOUD_00069.png */,
+				59EFD2521CCFE035000F7246 /* OL_STICKER_CLOUD_00070.png */,
+				59EFD2531CCFE035000F7246 /* OL_STICKER_CLOUD_00071.png */,
+				59EFD2541CCFE035000F7246 /* OL_STICKER_CLOUD_00072.png */,
+				59EFD2551CCFE035000F7246 /* OL_STICKER_CLOUD_00073.png */,
+				59EFD2561CCFE035000F7246 /* OL_STICKER_CLOUD_00074.png */,
+				59EFD2571CCFE035000F7246 /* OL_STICKER_CLOUD_00075.png */,
+				59EFD2581CCFE035000F7246 /* OL_STICKER_CLOUD_00076.png */,
+				59EFD2591CCFE035000F7246 /* OL_STICKER_CLOUD_00077.png */,
+				59EFD25A1CCFE035000F7246 /* OL_STICKER_CLOUD_00078.png */,
+				59EFD25B1CCFE035000F7246 /* OL_STICKER_CLOUD_00079.png */,
+				59EFD25C1CCFE035000F7246 /* OL_STICKER_CLOUD_00080.png */,
+				59EFD25D1CCFE035000F7246 /* OL_STICKER_CLOUD_00081.png */,
+				59EFD25E1CCFE035000F7246 /* OL_STICKER_CLOUD_00082.png */,
+				59EFD25F1CCFE035000F7246 /* OL_STICKER_CLOUD_00083.png */,
+				59EFD2601CCFE035000F7246 /* OL_STICKER_CLOUD_00084.png */,
+				59EFD2611CCFE035000F7246 /* OL_STICKER_CLOUD_00085.png */,
+				59EFD2621CCFE035000F7246 /* OL_STICKER_CLOUD_00086.png */,
+				59EFD2631CCFE035000F7246 /* OL_STICKER_CLOUD_00087.png */,
+				59EFD2641CCFE035000F7246 /* OL_STICKER_CLOUD_00088.png */,
+				59EFD2651CCFE035000F7246 /* OL_STICKER_CLOUD_00089.png */,
+				59EFD2661CCFE035000F7246 /* OL_STICKER_CLOUD_00090.png */,
+				59EFD2671CCFE035000F7246 /* OL_STICKER_CLOUD_00091.png */,
+				59EFD2681CCFE035000F7246 /* OL_STICKER_CLOUD_00092.png */,
+				59EFD2691CCFE035000F7246 /* OL_STICKER_CLOUD_00093.png */,
+				59EFD26A1CCFE035000F7246 /* OL_STICKER_CLOUD_00094.png */,
+				59EFD26B1CCFE035000F7246 /* OL_STICKER_CLOUD_00095.png */,
+				59EFD26C1CCFE035000F7246 /* OL_STICKER_CLOUD_00096.png */,
+				59EFD26D1CCFE035000F7246 /* OL_STICKER_CLOUD_00097.png */,
+				59EFD26E1CCFE035000F7246 /* OL_STICKER_CLOUD_00098.png */,
+				59EFD26F1CCFE035000F7246 /* OL_STICKER_CLOUD_00099.png */,
+				59EFD2701CCFE035000F7246 /* OL_STICKER_CLOUD_00100.png */,
+				59EFD2711CCFE035000F7246 /* OL_STICKER_CLOUD_00101.png */,
+				59EFD2721CCFE035000F7246 /* OL_STICKER_CLOUD_00102.png */,
+				59EFD2731CCFE035000F7246 /* OL_STICKER_CLOUD_00103.png */,
+				59EFD2741CCFE035000F7246 /* OL_STICKER_CLOUD_00104.png */,
+				59EFD2751CCFE035000F7246 /* OL_STICKER_CLOUD_00105.png */,
+				59EFD2761CCFE035000F7246 /* OL_STICKER_CLOUD_00106.png */,
+				59EFD2771CCFE035000F7246 /* OL_STICKER_CLOUD_00107.png */,
+				59EFD2781CCFE035000F7246 /* OL_STICKER_CLOUD_00108.png */,
+				59EFD2791CCFE035000F7246 /* OL_STICKER_CLOUD_00109.png */,
+				59EFD27A1CCFE035000F7246 /* OL_STICKER_CLOUD_00110.png */,
+				59EFD27B1CCFE035000F7246 /* OL_STICKER_CLOUD_00111.png */,
+				59EFD27C1CCFE035000F7246 /* OL_STICKER_CLOUD_00112.png */,
+				59EFD27D1CCFE035000F7246 /* OL_STICKER_CLOUD_00113.png */,
+				59EFD27E1CCFE035000F7246 /* OL_STICKER_CLOUD_00114.png */,
+				59EFD27F1CCFE035000F7246 /* OL_STICKER_CLOUD_00115.png */,
+				59EFD2801CCFE035000F7246 /* OL_STICKER_CLOUD_00116.png */,
+				59EFD2811CCFE035000F7246 /* OL_STICKER_CLOUD_00117.png */,
+				59EFD2821CCFE035000F7246 /* OL_STICKER_CLOUD_00118.png */,
+				59EFD2831CCFE035000F7246 /* OL_STICKER_CLOUD_00119.png */,
+				59EFD2841CCFE035000F7246 /* OL_STICKER_CLOUD_00120.png */,
+				59EFD2851CCFE035000F7246 /* OL_STICKER_CLOUD_00121.png */,
+				59EFD2861CCFE035000F7246 /* OL_STICKER_CLOUD_00122.png */,
+				59EFD2871CCFE035000F7246 /* OL_STICKER_CLOUD_00123.png */,
+				59EFD2881CCFE035000F7246 /* OL_STICKER_CLOUD_00124.png */,
+				59EFD2891CCFE035000F7246 /* OL_STICKER_CLOUD_00125.png */,
+				59EFD28A1CCFE035000F7246 /* OL_STICKER_CLOUD_00126.png */,
+				59EFD28B1CCFE035000F7246 /* OL_STICKER_CLOUD_00127.png */,
+				59EFD28C1CCFE035000F7246 /* OL_STICKER_CLOUD_00128.png */,
+				59EFD28D1CCFE035000F7246 /* OL_STICKER_CLOUD_00129.png */,
+				59EFD28E1CCFE035000F7246 /* OL_STICKER_CLOUD_00130.png */,
+				59EFD28F1CCFE035000F7246 /* OL_STICKER_CLOUD_00131.png */,
+				59EFD2901CCFE035000F7246 /* OL_STICKER_CLOUD_00132.png */,
+				59EFD2911CCFE035000F7246 /* OL_STICKER_CLOUD_00133.png */,
+				59EFD2921CCFE035000F7246 /* OL_STICKER_CLOUD_00134.png */,
+				59EFD2931CCFE035000F7246 /* OL_STICKER_CLOUD_00135.png */,
+				59EFD2941CCFE035000F7246 /* OL_STICKER_CLOUD_00136.png */,
+				59EFD2951CCFE035000F7246 /* OL_STICKER_CLOUD_00137.png */,
+				59EFD2961CCFE035000F7246 /* OL_STICKER_CLOUD_00138.png */,
+				59EFD2971CCFE035000F7246 /* OL_STICKER_CLOUD_00139.png */,
+				59EFD2981CCFE035000F7246 /* OL_STICKER_CLOUD_00140.png */,
+				59EFD2991CCFE035000F7246 /* OL_STICKER_CLOUD_00141.png */,
+				59EFD29A1CCFE035000F7246 /* OL_STICKER_CLOUD_00142.png */,
+				59EFD29B1CCFE035000F7246 /* OL_STICKER_CLOUD_00143.png */,
+			);
+			name = Cloud;
+			sourceTree = "<group>";
+		};
 		C72B8DEE9B8227E15FE13F67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +609,7 @@
 		FEF6A1E41CCA6A3900743F07 /* TocaBocaVideoRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				59EFD20B1CCFE019000F7246 /* Animation Sequences */,
 				FEF6A1E81CCA6A3900743F07 /* AppDelegate.h */,
 				FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */,
 				FEF6A1EB1CCA6A3900743F07 /* ViewController.h */,
@@ -278,7 +726,7 @@
 				TargetAttributes = {
 					FEF6A1E11CCA6A3900743F07 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = XVM6S28FTY;
+						DevelopmentTeam = 342X3P8CQX;
 					};
 					FEF6A1FA1CCA6A3900743F07 = {
 						CreatedOnToolsVersion = 7.3;
@@ -315,14 +763,158 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59EFD2F81CCFE035000F7246 /* OL_STICKER_CLOUD_00092.png in Resources */,
+				59EFD3141CCFE035000F7246 /* OL_STICKER_CLOUD_00120.png in Resources */,
+				59EFD2C91CCFE035000F7246 /* OL_STICKER_CLOUD_00045.png in Resources */,
+				59EFD3291CCFE035000F7246 /* OL_STICKER_CLOUD_00141.png in Resources */,
+				59EFD2C71CCFE035000F7246 /* OL_STICKER_CLOUD_00043.png in Resources */,
+				59EFD2E11CCFE035000F7246 /* OL_STICKER_CLOUD_00069.png in Resources */,
+				59EFD2A11CCFE035000F7246 /* OL_STICKER_CLOUD_00005.png in Resources */,
+				59EFD29D1CCFE035000F7246 /* OL_STICKER_CLOUD_00001.png in Resources */,
 				FEF6A1F51CCA6A3900743F07 /* LaunchScreen.storyboard in Resources */,
+				59EFD2A41CCFE035000F7246 /* OL_STICKER_CLOUD_00008.png in Resources */,
+				59EFD3191CCFE035000F7246 /* OL_STICKER_CLOUD_00125.png in Resources */,
+				59EFD3001CCFE035000F7246 /* OL_STICKER_CLOUD_00100.png in Resources */,
+				59EFD3011CCFE035000F7246 /* OL_STICKER_CLOUD_00101.png in Resources */,
+				59EFD2BC1CCFE035000F7246 /* OL_STICKER_CLOUD_00032.png in Resources */,
+				59EFD3081CCFE035000F7246 /* OL_STICKER_CLOUD_00108.png in Resources */,
+				59EFD3221CCFE035000F7246 /* OL_STICKER_CLOUD_00134.png in Resources */,
+				59EFD2C11CCFE035000F7246 /* OL_STICKER_CLOUD_00037.png in Resources */,
+				59EFD2E51CCFE035000F7246 /* OL_STICKER_CLOUD_00073.png in Resources */,
+				59EFD3211CCFE035000F7246 /* OL_STICKER_CLOUD_00133.png in Resources */,
+				59EFD3271CCFE035000F7246 /* OL_STICKER_CLOUD_00139.png in Resources */,
+				59EFD31A1CCFE035000F7246 /* OL_STICKER_CLOUD_00126.png in Resources */,
+				59EFD2C81CCFE035000F7246 /* OL_STICKER_CLOUD_00044.png in Resources */,
+				59EFD2C41CCFE035000F7246 /* OL_STICKER_CLOUD_00040.png in Resources */,
 				FEF6A1F21CCA6A3900743F07 /* Assets.xcassets in Resources */,
+				59EFD2D31CCFE035000F7246 /* OL_STICKER_CLOUD_00055.png in Resources */,
+				59EFD3111CCFE035000F7246 /* OL_STICKER_CLOUD_00117.png in Resources */,
+				59EFD2FB1CCFE035000F7246 /* OL_STICKER_CLOUD_00095.png in Resources */,
+				59EFD3281CCFE035000F7246 /* OL_STICKER_CLOUD_00140.png in Resources */,
 				FEF6A1F01CCA6A3900743F07 /* Main.storyboard in Resources */,
+				59EFD2B31CCFE035000F7246 /* OL_STICKER_CLOUD_00023.png in Resources */,
+				59EFD2AE1CCFE035000F7246 /* OL_STICKER_CLOUD_00018.png in Resources */,
+				59EFD3201CCFE035000F7246 /* OL_STICKER_CLOUD_00132.png in Resources */,
+				59EFD2FF1CCFE035000F7246 /* OL_STICKER_CLOUD_00099.png in Resources */,
+				59EFD2F21CCFE035000F7246 /* OL_STICKER_CLOUD_00086.png in Resources */,
+				59EFD2E81CCFE035000F7246 /* OL_STICKER_CLOUD_00076.png in Resources */,
+				59EFD2BF1CCFE035000F7246 /* OL_STICKER_CLOUD_00035.png in Resources */,
+				59EFD2D91CCFE035000F7246 /* OL_STICKER_CLOUD_00061.png in Resources */,
+				59EFD31C1CCFE035000F7246 /* OL_STICKER_CLOUD_00128.png in Resources */,
+				59EFD2A21CCFE035000F7246 /* OL_STICKER_CLOUD_00006.png in Resources */,
+				59EFD2DF1CCFE035000F7246 /* OL_STICKER_CLOUD_00067.png in Resources */,
+				59EFD30C1CCFE035000F7246 /* OL_STICKER_CLOUD_00112.png in Resources */,
+				59EFD2F71CCFE035000F7246 /* OL_STICKER_CLOUD_00091.png in Resources */,
+				59EFD2E71CCFE035000F7246 /* OL_STICKER_CLOUD_00075.png in Resources */,
+				59EFD2E61CCFE035000F7246 /* OL_STICKER_CLOUD_00074.png in Resources */,
+				59EFD2DA1CCFE035000F7246 /* OL_STICKER_CLOUD_00062.png in Resources */,
+				59EFD3241CCFE035000F7246 /* OL_STICKER_CLOUD_00136.png in Resources */,
+				59EFD3121CCFE035000F7246 /* OL_STICKER_CLOUD_00118.png in Resources */,
+				59EFD2E41CCFE035000F7246 /* OL_STICKER_CLOUD_00072.png in Resources */,
+				59EFD29E1CCFE035000F7246 /* OL_STICKER_CLOUD_00002.png in Resources */,
+				59EFD31F1CCFE035000F7246 /* OL_STICKER_CLOUD_00131.png in Resources */,
+				59EFD2A51CCFE035000F7246 /* OL_STICKER_CLOUD_00009.png in Resources */,
+				59EFD2EF1CCFE035000F7246 /* OL_STICKER_CLOUD_00083.png in Resources */,
+				59EFD31B1CCFE035000F7246 /* OL_STICKER_CLOUD_00127.png in Resources */,
+				59EFD2ED1CCFE035000F7246 /* OL_STICKER_CLOUD_00081.png in Resources */,
+				59EFD2E21CCFE035000F7246 /* OL_STICKER_CLOUD_00070.png in Resources */,
 				FEF6A2391CCAB69200743F07 /* lookup_soft_elegance_2.png in Resources */,
+				59EFD2DD1CCFE035000F7246 /* OL_STICKER_CLOUD_00065.png in Resources */,
+				59EFD32B1CCFE035000F7246 /* OL_STICKER_CLOUD_00143.png in Resources */,
+				59EFD2A31CCFE035000F7246 /* OL_STICKER_CLOUD_00007.png in Resources */,
+				59EFD2F91CCFE035000F7246 /* OL_STICKER_CLOUD_00093.png in Resources */,
+				59EFD2CB1CCFE035000F7246 /* OL_STICKER_CLOUD_00047.png in Resources */,
+				59EFD2CC1CCFE035000F7246 /* OL_STICKER_CLOUD_00048.png in Resources */,
+				59EFD3061CCFE035000F7246 /* OL_STICKER_CLOUD_00106.png in Resources */,
+				59EFD2BB1CCFE035000F7246 /* OL_STICKER_CLOUD_00031.png in Resources */,
+				59EFD2B01CCFE035000F7246 /* OL_STICKER_CLOUD_00020.png in Resources */,
+				59EFD2FC1CCFE035000F7246 /* OL_STICKER_CLOUD_00096.png in Resources */,
+				59EFD2CD1CCFE035000F7246 /* OL_STICKER_CLOUD_00049.png in Resources */,
+				59EFD2D21CCFE035000F7246 /* OL_STICKER_CLOUD_00054.png in Resources */,
+				59EFD2AC1CCFE035000F7246 /* OL_STICKER_CLOUD_00016.png in Resources */,
+				59EFD2C21CCFE035000F7246 /* OL_STICKER_CLOUD_00038.png in Resources */,
+				59EFD2A71CCFE035000F7246 /* OL_STICKER_CLOUD_00011.png in Resources */,
+				59EFD3101CCFE035000F7246 /* OL_STICKER_CLOUD_00116.png in Resources */,
+				59EFD3071CCFE035000F7246 /* OL_STICKER_CLOUD_00107.png in Resources */,
+				59EFD2D01CCFE035000F7246 /* OL_STICKER_CLOUD_00052.png in Resources */,
+				59EFD2A81CCFE035000F7246 /* OL_STICKER_CLOUD_00012.png in Resources */,
+				59EFD2E91CCFE035000F7246 /* OL_STICKER_CLOUD_00077.png in Resources */,
+				59EFD2B61CCFE035000F7246 /* OL_STICKER_CLOUD_00026.png in Resources */,
+				59EFD2FA1CCFE035000F7246 /* OL_STICKER_CLOUD_00094.png in Resources */,
+				59EFD30B1CCFE035000F7246 /* OL_STICKER_CLOUD_00111.png in Resources */,
+				59EFD2F31CCFE035000F7246 /* OL_STICKER_CLOUD_00087.png in Resources */,
+				59EFD2A91CCFE035000F7246 /* OL_STICKER_CLOUD_00013.png in Resources */,
+				59EFD30D1CCFE035000F7246 /* OL_STICKER_CLOUD_00113.png in Resources */,
+				59EFD2BE1CCFE035000F7246 /* OL_STICKER_CLOUD_00034.png in Resources */,
+				59EFD2EA1CCFE035000F7246 /* OL_STICKER_CLOUD_00078.png in Resources */,
+				59EFD2CA1CCFE035000F7246 /* OL_STICKER_CLOUD_00046.png in Resources */,
 				FEF6A2381CCAB69200743F07 /* lookup_soft_elegance_1.png in Resources */,
+				59EFD2AB1CCFE035000F7246 /* OL_STICKER_CLOUD_00015.png in Resources */,
+				59EFD2DE1CCFE035000F7246 /* OL_STICKER_CLOUD_00066.png in Resources */,
+				59EFD2F11CCFE035000F7246 /* OL_STICKER_CLOUD_00085.png in Resources */,
+				59EFD2FD1CCFE035000F7246 /* OL_STICKER_CLOUD_00097.png in Resources */,
+				59EFD3131CCFE035000F7246 /* OL_STICKER_CLOUD_00119.png in Resources */,
 				FEF6A2361CCAB69200743F07 /* lookup_amatorka.png in Resources */,
+				59EFD3181CCFE035000F7246 /* OL_STICKER_CLOUD_00124.png in Resources */,
+				59EFD2B71CCFE035000F7246 /* OL_STICKER_CLOUD_00027.png in Resources */,
+				59EFD3031CCFE035000F7246 /* OL_STICKER_CLOUD_00103.png in Resources */,
+				59EFD31E1CCFE035000F7246 /* OL_STICKER_CLOUD_00130.png in Resources */,
+				59EFD30F1CCFE035000F7246 /* OL_STICKER_CLOUD_00115.png in Resources */,
+				59EFD2D41CCFE035000F7246 /* OL_STICKER_CLOUD_00056.png in Resources */,
+				59EFD3251CCFE035000F7246 /* OL_STICKER_CLOUD_00137.png in Resources */,
+				59EFD2C31CCFE035000F7246 /* OL_STICKER_CLOUD_00039.png in Resources */,
+				59EFD2AF1CCFE035000F7246 /* OL_STICKER_CLOUD_00019.png in Resources */,
+				59EFD2B91CCFE035000F7246 /* OL_STICKER_CLOUD_00029.png in Resources */,
+				59EFD3261CCFE035000F7246 /* OL_STICKER_CLOUD_00138.png in Resources */,
+				59EFD2B41CCFE035000F7246 /* OL_STICKER_CLOUD_00024.png in Resources */,
+				59EFD2CE1CCFE035000F7246 /* OL_STICKER_CLOUD_00050.png in Resources */,
+				59EFD2C51CCFE035000F7246 /* OL_STICKER_CLOUD_00041.png in Resources */,
+				59EFD2D71CCFE035000F7246 /* OL_STICKER_CLOUD_00059.png in Resources */,
+				59EFD2DB1CCFE035000F7246 /* OL_STICKER_CLOUD_00063.png in Resources */,
+				59EFD3151CCFE035000F7246 /* OL_STICKER_CLOUD_00121.png in Resources */,
+				59EFD31D1CCFE035000F7246 /* OL_STICKER_CLOUD_00129.png in Resources */,
+				59EFD29F1CCFE035000F7246 /* OL_STICKER_CLOUD_00003.png in Resources */,
+				59EFD2E31CCFE035000F7246 /* OL_STICKER_CLOUD_00071.png in Resources */,
+				59EFD2EE1CCFE035000F7246 /* OL_STICKER_CLOUD_00082.png in Resources */,
+				59EFD2BD1CCFE035000F7246 /* OL_STICKER_CLOUD_00033.png in Resources */,
+				59EFD2D81CCFE035000F7246 /* OL_STICKER_CLOUD_00060.png in Resources */,
+				59EFD2D51CCFE035000F7246 /* OL_STICKER_CLOUD_00057.png in Resources */,
+				59EFD2E01CCFE035000F7246 /* OL_STICKER_CLOUD_00068.png in Resources */,
+				59EFD2F01CCFE035000F7246 /* OL_STICKER_CLOUD_00084.png in Resources */,
+				59EFD2F41CCFE035000F7246 /* OL_STICKER_CLOUD_00088.png in Resources */,
+				59EFD2B51CCFE035000F7246 /* OL_STICKER_CLOUD_00025.png in Resources */,
+				59EFD2EC1CCFE035000F7246 /* OL_STICKER_CLOUD_00080.png in Resources */,
+				59EFD2B11CCFE035000F7246 /* OL_STICKER_CLOUD_00021.png in Resources */,
+				59EFD2A01CCFE035000F7246 /* OL_STICKER_CLOUD_00004.png in Resources */,
 				FE12CC1B1CCE685D00FD993E /* bee.png in Resources */,
+				59EFD2FE1CCFE035000F7246 /* OL_STICKER_CLOUD_00098.png in Resources */,
+				59EFD32A1CCFE035000F7246 /* OL_STICKER_CLOUD_00142.png in Resources */,
+				59EFD2EB1CCFE035000F7246 /* OL_STICKER_CLOUD_00079.png in Resources */,
+				59EFD2B81CCFE035000F7246 /* OL_STICKER_CLOUD_00028.png in Resources */,
+				59EFD2A61CCFE035000F7246 /* OL_STICKER_CLOUD_00010.png in Resources */,
+				59EFD2C01CCFE035000F7246 /* OL_STICKER_CLOUD_00036.png in Resources */,
+				59EFD3231CCFE035000F7246 /* OL_STICKER_CLOUD_00135.png in Resources */,
+				59EFD3091CCFE035000F7246 /* OL_STICKER_CLOUD_00109.png in Resources */,
+				59EFD2B21CCFE035000F7246 /* OL_STICKER_CLOUD_00022.png in Resources */,
+				59EFD3161CCFE035000F7246 /* OL_STICKER_CLOUD_00122.png in Resources */,
+				59EFD3041CCFE035000F7246 /* OL_STICKER_CLOUD_00104.png in Resources */,
+				59EFD3171CCFE035000F7246 /* OL_STICKER_CLOUD_00123.png in Resources */,
+				59EFD3021CCFE035000F7246 /* OL_STICKER_CLOUD_00102.png in Resources */,
+				59EFD3051CCFE035000F7246 /* OL_STICKER_CLOUD_00105.png in Resources */,
+				59EFD2C61CCFE035000F7246 /* OL_STICKER_CLOUD_00042.png in Resources */,
 				FEF6A2371CCAB69200743F07 /* lookup_miss_etikate.png in Resources */,
+				59EFD2CF1CCFE035000F7246 /* OL_STICKER_CLOUD_00051.png in Resources */,
+				59EFD30A1CCFE035000F7246 /* OL_STICKER_CLOUD_00110.png in Resources */,
+				59EFD2D11CCFE035000F7246 /* OL_STICKER_CLOUD_00053.png in Resources */,
+				59EFD30E1CCFE035000F7246 /* OL_STICKER_CLOUD_00114.png in Resources */,
+				59EFD2F61CCFE035000F7246 /* OL_STICKER_CLOUD_00090.png in Resources */,
+				59EFD2AD1CCFE035000F7246 /* OL_STICKER_CLOUD_00017.png in Resources */,
+				59EFD2DC1CCFE035000F7246 /* OL_STICKER_CLOUD_00064.png in Resources */,
+				59EFD2AA1CCFE035000F7246 /* OL_STICKER_CLOUD_00014.png in Resources */,
+				59EFD2F51CCFE035000F7246 /* OL_STICKER_CLOUD_00089.png in Resources */,
+				59EFD29C1CCFE035000F7246 /* OL_STICKER_CLOUD_00000.png in Resources */,
+				59EFD2BA1CCFE035000F7246 /* OL_STICKER_CLOUD_00030.png in Resources */,
+				59EFD2D61CCFE035000F7246 /* OL_STICKER_CLOUD_00058.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,11 +1135,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TocaBocaVideoRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -557,11 +1151,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TocaBocaVideoRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gramercy.TocaBocaVideoRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

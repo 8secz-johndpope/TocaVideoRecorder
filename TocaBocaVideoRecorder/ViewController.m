@@ -31,6 +31,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     _isRecording = false;
     
+    faceCGRect = CGRectMake(0, 0, 100, 100);
+    
     self.filterCollectionView.allowsSelection = YES;
     self.filterCollectionView.tag = 1;
     self.savedVideosCollectionView.allowsSelection = YES;
@@ -38,7 +40,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
    
     _savedVideos = [self savedVideos];
     
-    _filters = @[@"Sepia", @"BW", @"Sketch", @"Invert", @"Cartoon", @"Miss Etikate", @"Amatorka", @"Bee (face)"];
+    _filters = @[@"Sepia", @"BW", @"Sketch", @"Invert", @"Cartoon", @"Miss Etikate", @"Amatorka", @"Bee (face)", @"Face Detection"];
     
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
     videoCamera.horizontallyMirrorFrontFacingCamera = NO;
@@ -167,29 +169,34 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             blendFilter.mix = 1.0;
             
             [videoCamera addTarget:_filter];
+
             
-            NSDate *sTime = [NSDate date];
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 90)];
+            imageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
             
-            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 240.0f, 320.0f)];
-            timeLabel.font = [UIFont systemFontOfSize:17.0f];
-            timeLabel.text = @"Time: 0.0 s";
-            timeLabel.textAlignment = NSTextAlignmentCenter;
-            timeLabel.backgroundColor = [UIColor clearColor];
-            timeLabel.textColor = [UIColor whiteColor];
-            
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:timeLabel];
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:imageView];
             
             [_filter addTarget:blendFilter];
             [uiElementInput addTarget:blendFilter];
             
             __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
+            __block int indexItem = 0;
+           
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
-                timeLabel.text = [NSString stringWithFormat:@"Time: %.0f s", -[sTime timeIntervalSinceNow]];
+                if (indexItem > 143){
+                    indexItem = 0;
+                } else {
+                    indexItem++;
+                }
+                UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
+                imageView.image = image;
+                image = nil;
                 [weakUIElementInput update];
             }];
             
             [blendFilter addTarget:_movieWriter];
             [blendFilter addTarget:_filteredVideoView];
+            [videoCamera setDelegate:self];
             
         }else{
             [videoCamera addTarget:_filter];
@@ -302,6 +309,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             _isUserInterfaceElementVideo = YES;
             //bee face
             [videoCamera rotateCamera];
+            
             _filter = [[GPUImageSaturationFilter alloc] init];
             [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
             GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
@@ -309,28 +317,49 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             [videoCamera addTarget:_filter];
             
-            NSDate *startTime = [NSDate date];
+//            NSDate *startTime = [NSDate date];
+
+//            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 340.0f, 240.0f)];
+//            timeLabel.font = [UIFont systemFontOfSize:17.0f];
+//            timeLabel.text = @"Time: 0.0 s";
+//            timeLabel.textAlignment = NSTextAlignmentCenter;
+//            timeLabel.backgroundColor = [UIColor clearColor];
+//            timeLabel.textColor = [UIColor whiteColor];
+//            
             
-            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 340.0f, 240.0f)];
-            timeLabel.font = [UIFont systemFontOfSize:17.0f];
-            timeLabel.text = @"Time: 0.0 s";
-            timeLabel.textAlignment = NSTextAlignmentCenter;
-            timeLabel.backgroundColor = [UIColor clearColor];
-            timeLabel.textColor = [UIColor whiteColor];
+
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
+            _animatedImageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
             
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:timeLabel];
+
+             uiElementInput = [[GPUImageUIElement alloc] initWithView:_animatedImageView];
+           
             
             [_filter addTarget:blendFilter];
             [uiElementInput addTarget:blendFilter];
             
+          
             [blendFilter addTarget:_filteredVideoView];
             
             __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
+            __unsafe_unretained UIImageView *weakanimatedView = _animatedImageView;
+            __block int indexItem = 0;
+            __block CGRect weakFaceRect = _faceView.frame;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
-                timeLabel.text = [NSString stringWithFormat:@"Time: %f s", -[startTime timeIntervalSinceNow]];
+                if (indexItem > 143){
+                    indexItem = 0;
+                } else {
+                    indexItem++;
+                }
+                NSLog(@"weak face %1f %1f %1f %1f", weakFaceRect.origin.x,  weakFaceRect.origin.y, weakFaceRect.size.width, weakFaceRect.size.height );
                 
+                UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
+                weakanimatedView.image = image;
+//                weakanimatedView.frame = weakFaceRect;
+                image = nil;
                 [weakUIElementInput update];
             }];
+            
             
             _isFaceSwitched = YES;
             [self facesSwitched];
@@ -480,8 +509,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"Did receive array");
-        
+       
+    
         CGRect previewBox = _filteredVideoView.bounds;
+        
+        NSLog(@"preview %1.f %1.f %1.f %1.f", previewBox.origin.x, previewBox.origin.y, previewBox.size.height, previewBox.size.width);
         
         if (featureArray == nil && _faceView) {
             [_faceView removeFromSuperview];
@@ -499,16 +531,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             //Update face bounds for iOS Coordinate System
             CGRect faceRect = [faceFeature bounds];
             
-            // flip preview width and height
-            CGFloat temp = faceRect.size.width;
-            faceRect.size.width = faceRect.size.height;
-            faceRect.size.height = temp;
-            temp = faceRect.origin.x;
-            faceRect.origin.x = faceRect.origin.y;
-            faceRect.origin.y = temp;
-            // scale coordinates so they fit in the preview box, which may be scaled
-            CGFloat widthScaleBy = previewBox.size.width / clap.size.height;
-            CGFloat heightScaleBy = previewBox.size.height / clap.size.width;
+            CGFloat widthScaleBy = previewBox.size.width / clap.size.width;
+            CGFloat heightScaleBy = previewBox.size.height / clap.size.height;
             faceRect.size.width *= widthScaleBy;
             faceRect.size.height *= heightScaleBy;
             faceRect.origin.x *= widthScaleBy;
@@ -516,46 +540,107 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
             
-            //faceRect = CGRectOffset(faceRect, previewBox.origin.x + previewBox.size.width - faceRect.size.width - (faceRect.origin.x * 2), previewBox.origin.y);
-            
             if (_faceView) {
                 [_faceView removeFromSuperview];
                 _faceView =  nil;
             }
             
             // create a UIView using the bounds of the face
-            //_faceView = [[UIView alloc] initWithFrame:faceRect];
-            _faceView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bee.png"]];
-            _faceView.frame = faceRect;
+            _faceView = [[UIView alloc] initWithFrame:faceRect];
             
-            // add a border around the newly created UIView
-            //_faceView.layer.borderWidth = 1;
-            //_faceView.layer.borderColor = [[UIColor redColor] CGColor];
+            faceCGRect = faceRect;
+            NSLog(@"face cg rect %1f %1f %1f %1f", _faceView.frame.origin.x,  _faceView.frame.origin.y, _faceView.frame.size.width, _faceView.frame.size.height );
+           
+            _faceView.layer.borderWidth = 1;
+            _faceView.layer.borderColor = [[UIColor redColor] CGColor];
             
             // add the new view to create a box around the face
+            
             [_filteredVideoView addSubview:_faceView];
             
-            switch (curDeviceOrientation) {
-                case UIDeviceOrientationPortrait:
-                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
-                    break;
-                case UIDeviceOrientationPortraitUpsideDown:
-                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(180.))];
-                    break;
-                case UIDeviceOrientationLandscapeLeft:
-                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(90.))];
-                    break;
-                case UIDeviceOrientationLandscapeRight:
-                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];
-                    break;
-                case UIDeviceOrientationFaceUp:
-                case UIDeviceOrientationFaceDown:
-                default:
-                    break; // leave the layer in its last known orientation
-            }
+            
+            
         }
-        [CATransaction commit];
     });
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSLog(@"Did receive array");
+//        
+//        CGRect previewBox = _filteredVideoView.bounds;
+//        
+//        if (featureArray == nil && _faceView) {
+//            [_faceView removeFromSuperview];
+//            _faceView = nil;
+//        }
+//        
+//        
+//        for ( CIFaceFeature *faceFeature in featureArray) {
+//            
+//            // find the correct position for the square layer within the previewLayer
+//            // the feature box originates in the bottom left of the video frame.
+//            // (Bottom right if mirroring is turned on)
+//            NSLog(@"%@", NSStringFromCGRect([faceFeature bounds]));
+//            
+//            //Update face bounds for iOS Coordinate System
+//            CGRect faceRect = [faceFeature bounds];
+//            
+//            // flip preview width and height
+//            CGFloat temp = faceRect.size.width;
+//            faceRect.size.width = faceRect.size.height;
+//            faceRect.size.height = temp;
+//            temp = faceRect.origin.x;
+//            faceRect.origin.x = faceRect.origin.y;
+//            faceRect.origin.y = temp;
+//            // scale coordinates so they fit in the preview box, which may be scaled
+//            CGFloat widthScaleBy = previewBox.size.width / clap.size.height;
+//            CGFloat heightScaleBy = previewBox.size.height / clap.size.width;
+//            faceRect.size.width *= widthScaleBy;
+//            faceRect.size.height *= heightScaleBy;
+//            faceRect.origin.x *= widthScaleBy;
+//            faceRect.origin.y *= heightScaleBy;
+//            
+//            faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
+//            
+//            //faceRect = CGRectOffset(faceRect, previewBox.origin.x + previewBox.size.width - faceRect.size.width - (faceRect.origin.x * 2), previewBox.origin.y);
+//            
+//            if (_faceView) {
+//                [_faceView removeFromSuperview];
+//                _faceView =  nil;
+//            }
+//            
+//            // create a UIView using the bounds of the face
+//            //_faceView = [[UIView alloc] initWithFrame:faceRect];
+//            _faceView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bee.png"]];
+//            _faceView.frame = faceRect;
+//            
+//            // add a border around the newly created UIView
+//            _faceView.layer.borderWidth = 1;
+//            _faceView.layer.borderColor = [[UIColor redColor] CGColor];
+//            
+//            // add the new view to create a box around the face
+//            [_filteredVideoView addSubview:_faceView];
+//            
+//            switch (curDeviceOrientation) {
+//                case UIDeviceOrientationPortrait:
+//                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
+//                    break;
+//                case UIDeviceOrientationPortraitUpsideDown:
+//                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(180.))];
+//                    break;
+//                case UIDeviceOrientationLandscapeLeft:
+//                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(90.))];
+//                    break;
+//                case UIDeviceOrientationLandscapeRight:
+//                    [_faceView.layer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];
+//                    break;
+//                case UIDeviceOrientationFaceUp:
+//                case UIDeviceOrientationFaceDown:
+//                default:
+//                    break; // leave the layer in its last known orientation
+//            }
+//        }
+//        [CATransaction commit];
+//    });
     
 }
 
