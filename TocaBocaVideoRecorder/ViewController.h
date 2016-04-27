@@ -17,6 +17,7 @@
     GPUImageVideoCamera *videoCamera;
     BOOL faceThinking;
     GPUImageUIElement *uiElementInput;
+    CGRect faceCGRect;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
@@ -27,10 +28,12 @@
 @property (strong, nonatomic) GPUImageOutput<GPUImageInput> *filter;
 @property (strong, nonatomic) GPUImageMovieWriter *movieWriter;
 @property (strong, nonatomic) CIDetector*faceDetector;
-@property (strong, nonatomic) UIImageView *faceView;
+@property (strong, nonatomic) UIView *faceView;
+@property (strong, nonatomic) UIImageView *animatedImageView;
 @property BOOL isRecording;
 @property BOOL isFaceSwitched;
 @property BOOL isUserInterfaceElementVideo;
+
 
 
 - (IBAction)recordStartStop:(id)sender;
