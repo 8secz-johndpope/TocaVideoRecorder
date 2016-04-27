@@ -79,10 +79,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1c-Jv-wuw" customClass="GPUImageView">
-                                <rect key="frame" x="62" y="55" width="477" height="358"/>
+                                <rect key="frame" x="13" y="55" width="576" height="324"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gux-n3-OvA" userLabel="Filters Collection View">
-                                        <rect key="frame" x="0.0" y="283" width="477" height="75"/>
+                                        <rect key="frame" x="0.0" y="249" width="576" height="75"/>
                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="E2h-0e-HYp"/>
@@ -95,7 +95,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionCell" id="LMO-AV-P3L" customClass="CustomCollectionCell">
-                                                <rect key="frame" x="0.0" y="12.5" width="75" height="50"/>
+                                                <rect key="frame" x="0.0" y="9" width="75" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
@@ -129,10 +129,18 @@
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="gux-n3-OvA" secondAttribute="bottom" id="RQZ-uk-FW8"/>
-                                    <constraint firstAttribute="trailing" secondItem="gux-n3-OvA" secondAttribute="trailing" id="plz-UX-MBq"/>
+                                    <constraint firstItem="gux-n3-OvA" firstAttribute="centerX" secondItem="Z1c-Jv-wuw" secondAttribute="centerX" id="kgW-XQ-mqM"/>
+                                    <constraint firstAttribute="trailing" secondItem="gux-n3-OvA" secondAttribute="trailing" constant="-61" id="plz-UX-MBq"/>
                                     <constraint firstItem="gux-n3-OvA" firstAttribute="leading" secondItem="Z1c-Jv-wuw" secondAttribute="leading" id="qsa-H9-da9"/>
-                                    <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="4:3" id="rxI-Eh-p3L"/>
+                                    <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="16:9" id="rxI-Eh-p3L"/>
+                                    <constraint firstItem="gux-n3-OvA" firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="width" id="wSL-7d-Krh"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="plz-UX-MBq"/>
+                                        <exclude reference="qsa-H9-da9"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -142,7 +150,7 @@
                             <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerX" secondItem="mZN-zp-x0Q" secondAttribute="centerX" id="YG5-5W-QF7"/>
                             <constraint firstAttribute="trailing" secondItem="Cpu-8t-q0m" secondAttribute="trailing" id="dqh-kc-w7k"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="toe-b5-C8x"/>
-                            <constraint firstItem="mZN-zp-x0Q" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="bottom" constant="5" id="uJL-fQ-gM5"/>
+                            <constraint firstItem="mZN-zp-x0Q" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="bottom" constant="39" id="uJL-fQ-gM5"/>
                             <constraint firstItem="Cpu-8t-q0m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vI9-3S-4WE"/>
                             <constraint firstItem="Z1c-Jv-wuw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="zWb-3P-zZz"/>
                         </constraints>
