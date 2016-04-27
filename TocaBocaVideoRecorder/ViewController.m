@@ -49,7 +49,10 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
    
     _savedVideos = [self savedVideos];
     
-    _filters = @[@"Sepia", @"BW", @"Sketch", @"Invert", @"Cartoon", @"Miss Etikate", @"Amatorka", @"Cloud", @"Mouth"];
+    _filters = @[@"Bugs", @"Mouth", @"Cloud"];
+    
+    // removing original filters
+    //@"Sepia", @"BW", @"Sketch", @"Invert", @"Cartoon", @"Miss Etikate", @"Amatorka",
     
     // They want video output to be 16:9
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
@@ -170,18 +173,19 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
             videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
         }
-//        videoCamera.horizontallyMirrorFrontFacingCamera = NO;
-//        videoCamera.horizontallyMirrorRearFacingCamera = NO;
-        
+
         //stored in Documents which can  be accessed by iTunes (this can change)
         
-        NSString *movieType = @"Cloud";
-        if(selectedIndex == 7){
-            movieType = @"Cloud";
+        NSString *movieType = @"Bugs";
+        if(selectedIndex == 0){
+            movieType = @"Bugs";
             [videoCamera setDelegate:self];
-            
-        } else if (selectedIndex == 8){
+        } else if (selectedIndex == 1){
             movieType = @"Mouth";
+            [videoCamera setDelegate:nil];
+        } else if (selectedIndex == 2){
+            movieType = @"Cloud";
+            [videoCamera setDelegate:nil];
         }
         
         NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Toca-%@-%@.m4v", movieType, [self videoFileName:6]]];
@@ -209,12 +213,15 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             _animatedImageView = [[UIImageView alloc] initWithFrame:_animatedImageView.frame];
             
-            if(selectedIndex == 7) {
-                _animatedImageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
+            if(selectedIndex == 0) {
+                _animatedImageView.image = [UIImage imageNamed:@"OL_FACE_TRACKING_BUGS_00000.png"];
                 [videoCamera setDelegate:self];
-        
-            } else if(selectedIndex == 8) {
+            } else if(selectedIndex == 1) {
                 _animatedImageView.image = [UIImage imageNamed:@"OL_AS_MOUTH_00000.png"];
+                [videoCamera setDelegate:nil];
+            } else if (selectedIndex == 2){
+                _animatedImageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
+                [videoCamera setDelegate:nil];
             }
             
             [contentView addSubview:_animatedImageView];
@@ -231,16 +238,17 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __unsafe_unretained UIImageView *weakImageView = _animatedImageView;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                 
-                if(selectedIndex == 7) {
-                    if (indexItem > 142){
+                if(selectedIndex == 0) {
+                    if (indexItem > 95){
                         indexItem = 0;
                     } else {
                         indexItem++;
                     }
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
+                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_FACE_TRACKING_BUGS_%05d.png", indexItem]];
                     weakImageView.image = image;
                     image = nil;
-                } else if(selectedIndex == 8) {
+                    
+                } else if(selectedIndex == 1) {
                     if (indexItem > 119){
                         indexItem = 0;
                     } else {
@@ -249,9 +257,18 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_AS_MOUTH_%05d.png", indexItem]];
                     weakImageView.image = image;
                     image = nil;
+                    
+                } else if(selectedIndex == 2) {
+                    if (indexItem > 143){
+                        indexItem = 0;
+                    } else {
+                        indexItem++;
+                    }
+                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
+                    weakImageView.image = image;
+                    image = nil;
                 }
 
-    
                 [weakUIElementInput update];
             }];
             
@@ -325,7 +342,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     _isUserInterfaceElementVideo = NO;
-   
+    [_previewView removeFromSuperview];
+    _previewView = nil;
+    [videoCamera setDelegate:nil];
+    _animatedImageView = nil;
+    
     
     //filterCollectionView is tag 1
     if (collectionView.tag == 1){
@@ -335,138 +356,167 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         
         selectedIndex = indexPath.item;
         
-        if (indexPath.item == 0){
-            //sepia
-            _filter = [[GPUImageSepiaFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-        }else if(indexPath.item == 1){
-            //black and white
-            _filter = [[GPUImageGrayscaleFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-        }else if(indexPath.item == 2){
-            //sketch
-            _filter = [[GPUImageSketchFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-        }else if(indexPath.item == 3){
-            //invert
-            _filter = [[GPUImageColorInvertFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-        }else if(indexPath.item == 4){
-            //cartoon
-            _filter= [[GPUImageSmoothToonFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-        }else if(indexPath.item == 5){
-            //MissEtikate
-            _filter = [[GPUImageMissEtikateFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-
-        }else if(indexPath.item == 6){
-            //Amatorka
-            _filter = [[GPUImageAmatorkaFilter alloc] init];
-            [videoCamera addTarget:_filter];
-            [_filter addTarget:_filteredVideoView];
-        }else if (indexPath.item == 7 || indexPath.item == 8 || indexPath.item == 9){
-            _isUserInterfaceElementVideo = YES;
+//        if (indexPath.item == 0){
+//            //sepia
+//            _filter = [[GPUImageSepiaFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+//        }else if(indexPath.item == 1){
+//            //black and white
+//            _filter = [[GPUImageGrayscaleFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+//        }else if(indexPath.item == 2){
+//            //sketch
+//            _filter = [[GPUImageSketchFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+//        }else if(indexPath.item == 3){
+//            //invert
+//            _filter = [[GPUImageColorInvertFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+//        }else if(indexPath.item == 4){
+//            //cartoon
+//            _filter= [[GPUImageSmoothToonFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+//        }else if(indexPath.item == 5){
+//            //MissEtikate
+//            _filter = [[GPUImageMissEtikateFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+//
+//        }else if(indexPath.item == 6){
+//            //Amatorka
+//            _filter = [[GPUImageAmatorkaFilter alloc] init];
+//            [videoCamera addTarget:_filter];
+//            [_filter addTarget:_filteredVideoView];
+        
+        
+        _isUserInterfaceElementVideo = YES;
+        _filter = [[GPUImageSaturationFilter alloc] init];
+        [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
+        GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+        blendFilter.mix = 1.0;
+        
+        [videoCamera addTarget:_filter];
+        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, (_filteredVideoView.frame.size.height -75))];
+        
+        contentView.backgroundColor = [UIColor clearColor];
+        
+        
+        //if (indexPath.item == 7 || indexPath.item == 8 || indexPath.item == 9){
+            //_isUserInterfaceElementVideo = YES;
             //bee face
-            //[videoCamera rotateCamera];
-            
-            _filter = [[GPUImageSaturationFilter alloc] init];
-            [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
-            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-            blendFilter.mix = 1.0;
-            
-            [videoCamera addTarget:_filter];
+        
+        if( indexPath.item == 0 ){
+            // sticker
+            [videoCamera setDelegate:self];
+            // for face tracking
            
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
+            _animatedImageView.image = [UIImage imageNamed:@"OL_FACE_TRACKING_BUGS_00000.png"];
             
-            UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, (_filteredVideoView.frame.size.height -75))];
-            
-            contentView.backgroundColor = [UIColor clearColor];
-            if( indexPath.item == 7 ){
-                // sticker
-                [videoCamera setDelegate:self];
-                
-                _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, (_filteredVideoView.frame.size.height -75))];
-                
-                _previewView.backgroundColor = [UIColor clearColor];
-                
-                _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
-                _animatedImageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
-//                UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
-                
-//                _animatedImageView.userInteractionEnabled = YES;
-//                _animatedImageView.gestureRecognizers = @[dragRecognizer];
-//                
-                
-                [contentView addSubview:_animatedImageView]; //_previewView instead of contentView
+            [contentView addSubview:_animatedImageView]; //_previewView instead of contentView
 //                [self.view addSubview:_previewView];
-                
-               
-                
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                contentView = nil;
-                
-            } else if (indexPath.item == 8) {
-                // frame
-                
-                _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
-                _animatedImageView.image = [UIImage imageNamed:@"OL_AS_MOUTH_00000.png"];
-               
-                [contentView addSubview:_animatedImageView];
-                
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                contentView = nil;
+            
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            contentView = nil;
+            
+        } else if (indexPath.item == 1) {
+            
+            // frame
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
+            _animatedImageView.image = [UIImage imageNamed:@"OL_AS_MOUTH_00000.png"];
+           
+            [contentView addSubview:_animatedImageView];
+            
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            contentView = nil;
+        
+        } else if (indexPath.item == 2) {
+            
+            // sticker
+            _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, (_filteredVideoView.frame.size.height -75))];
+            
+            _previewView.backgroundColor = [UIColor clearColor];
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
+            _animatedImageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
+            
+            NSMutableArray *images = [[NSMutableArray alloc] init];
+            for (int i; i < 143; i++) {
+                 UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", i]];
+                [images addObject:image];
+                image = nil;
             }
+            _animatedImageView.animationImages = images;
+            [_animatedImageView startAnimating];
+
+
+            UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
+
+            _animatedImageView.userInteractionEnabled = YES;
+            _animatedImageView.gestureRecognizers = @[dragRecognizer];
+            
+            [_previewView addSubview:_animatedImageView];
+            [self.view addSubview:_previewView];
+            
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            contentView = nil;
+        }
            
             
-            [_filter addTarget:blendFilter];
-            [uiElementInput addTarget:blendFilter];
+        [_filter addTarget:blendFilter];
+        [uiElementInput addTarget:blendFilter];
+        
+      
+        [blendFilter addTarget:_filteredVideoView];
+        
+        __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
+        __unsafe_unretained UIImageView *weakanimatedView = _animatedImageView;
+        __block int indexItem = 0;
+        [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
             
           
-            [blendFilter addTarget:_filteredVideoView];
-            
-            __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
-            __unsafe_unretained UIImageView *weakanimatedView = _animatedImageView;
-            __block int indexItem = 0;
-           // __block CGRect weakFaceRect = _faceView.frame;
-            [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
-                
-                //NSLog(@"weak face %1f %1f %1f %1f", weakFaceRect.origin.x,  weakFaceRect.origin.y, weakFaceRect.size.width, weakFaceRect.size.height );
-                
-                if(indexPath.item == 7){
-                    if (indexItem > 142){
-                        indexItem = 0;
-                    } else {
-                        indexItem++;
-                    }
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
-                    weakanimatedView.image = image;
-                    image = nil;
-                } else if(indexPath.item == 8){
-                    if (indexItem > 118){
-                        indexItem = 0;
-                    } else {
-                        indexItem++;
-                    }
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_AS_MOUTH_%05d.png", indexItem]];
-                    weakanimatedView.image = image;
-                    //                weakanimatedView.frame = weakFaceRect;
-                    image = nil;
+            if(indexPath.item == 0){
+                if (indexItem > 95){
+                    indexItem = 0;
+                } else {
+                    indexItem++;
                 }
-                [weakUIElementInput update];
-            }];
+                UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_FACE_TRACKING_BUGS_%05d.png", indexItem]];
+                weakanimatedView.image = image;
+                image = nil;
+            } else if(indexPath.item == 1){
+                if (indexItem > 118){
+                    indexItem = 0;
+                } else {
+                    indexItem++;
+                }
+                UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_AS_MOUTH_%05d.png", indexItem]];
+                weakanimatedView.image = image;
+                image = nil;
+            } else if(indexPath.item == 2){
+                if (indexItem > 143){
+                    indexItem = 0;
+                } else {
+                    indexItem++;
+                }
+                UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
+                weakanimatedView.image = image;
+                image = nil;
+            }
+            [weakUIElementInput update];
+        }];
             
             
-            _isFaceSwitched = YES;
-            [self facesSwitched];
-        }
+        _isFaceSwitched = YES;
+        [self facesSwitched];
+    //}
         [videoCamera stopCameraCapture];
         [videoCamera startCameraCapture];
+    
     }else{
         //savedVideosCollectionView is tag 2
         NSString *videoPath = _savedVideos[indexPath.item];
@@ -639,8 +689,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             faceRect.origin.x *= widthScaleBy;
             faceRect.origin.y *= heightScaleBy;
             
-            faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
+            faceRect = CGRectOffset(faceRect, previewBox.origin.x, (previewBox.origin.y - 50));
             
+          
             if (_faceView) {
                 [_faceView removeFromSuperview];
                 _faceView =  nil;
