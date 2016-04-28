@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GPUImage.h"
+#import "TocaFilter.h"
 @import AVFoundation;
 @import AVKit;
 
@@ -27,6 +28,8 @@ typedef enum{
     GPUImagePicture *gpuImagePicture;
     CGRect faceCGRect;
     int selectedIndex;
+    
+    TocaFilter *selectedFilter;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
