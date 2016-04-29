@@ -350,6 +350,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
 }
 
+- (void)resetVideoCamera {
+    // index 0 is reset
+    NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:1];
+    [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
+}
+
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -389,12 +396,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     return cell;
 }
-
--(void)resetVideoCamera {
-    NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:1];
-    [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
-}
-
 
 #pragma mark <UICollectionViewDelegate>
 
