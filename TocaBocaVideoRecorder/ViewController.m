@@ -306,7 +306,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __block TocaFilter *weakFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                
-                if([weakFilter filterType] != FilterTypeSticker) {
+//                if([weakFilter filterType] != FilterTypeSticker) {
+                if([weakFilter animationFramesAmount] > 0) {
                     if (indexItem > [weakFilter animationFramesAmount]) {
                         indexItem = 0;
                     } else {
@@ -315,6 +316,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakFilter animationImagePrefix], indexItem]];
                     weakImageView.image = image;
                     image = nil;
+//                }
                 }
                 [weakUIElementInput update];
             }];
@@ -452,11 +454,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     videoCamera.delegate = nil;
                     _isUserInterfaceElementVideo = NO;
                     
-                    _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, (_filteredVideoView.frame.size.height -75))];
+                    _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
                     
                     _previewView.backgroundColor = [UIColor clearColor];
-                    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
+                    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 40, 200, 150)];
                     _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+                    [contentView addSubview:_animatedImageView];
                     
                     uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
                     break;
@@ -483,6 +486,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
                     
                     [contentView addSubview:_animatedImageView];
+                    
                     uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
                     break;
                     
@@ -495,24 +499,24 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             }
             
             
-            if([selectedFilter filterType] == FilterTypeSticker) {
-                
-                NSMutableArray *images = [[NSMutableArray alloc] init];
-                for (int i = 0; i < ([selectedFilter animationFramesAmount]+1); i++) {
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png",[selectedFilter animationImagePrefix], i]];
-                    [images addObject:image];
-                    image = nil;
-                }
-                _animatedImageView.animationImages = images;
-                
-                UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
-                _animatedImageView.userInteractionEnabled = YES;
-                _animatedImageView.gestureRecognizers = @[dragRecognizer];
-                [_previewView addSubview:_animatedImageView];
-                [self.view addSubview:_previewView];
-                
-                [_animatedImageView startAnimating];
-            }
+//            if([selectedFilter filterType] == FilterTypeSticker) {
+            
+//                NSMutableArray *images = [[NSMutableArray alloc] init];
+//                for (int i = 0; i < ([selectedFilter animationFramesAmount]+1); i++) {
+//                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png",[selectedFilter animationImagePrefix], i]];
+//                    [images addObject:image];
+//                    image = nil;
+//                }
+//                _animatedImageView.animationImages = images;
+//                
+//                UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
+//                _animatedImageView.userInteractionEnabled = YES;
+//                _animatedImageView.gestureRecognizers = @[dragRecognizer];
+//                [_previewView addSubview:_animatedImageView];
+//                [self.view addSubview:_previewView];
+//                
+//                [_animatedImageView startAnimating];
+//            }
             
             
             contentView = nil;
@@ -527,7 +531,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __block TocaFilter *weakFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                 
-                if([weakFilter filterType] != FilterTypeSticker) {
+//                if([weakFilter filterType] != FilterTypeSticker) {
+                 if([weakFilter animationFramesAmount] > 0) {
                     if (indexItem > [weakFilter animationFramesAmount]) {
                         indexItem = 0;
                     } else {
@@ -536,7 +541,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakFilter animationImagePrefix], indexItem]];
                     weakanimatedView.image = image;
                     image = nil;
-                }
+//                }
+                 }
        
                 [weakUIElementInput update];
                 
