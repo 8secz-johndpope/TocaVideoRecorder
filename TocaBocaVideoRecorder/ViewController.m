@@ -96,7 +96,22 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 - (void)updateFaceTrackingFrame:(NSNotification *)notification {
-//    NSLog(@" update face tracking frame here! %1.f %1.f %1.f %1.f", faceCGRect.origin.x, faceCGRect.origin.y, faceCGRect.size.height, faceCGRect.size.width);
+    // get the correct ratio for the image based on face tracking
+    
+    //NSLog(@"old height: %1.3f old width: %1.3f", faceCGRect.size.height, faceCGRect.size.width);
+    
+//    int width = [selectedFilter animationWidth];
+//    int height = [selectedFilter animationHeight];
+    
+   // NSLog(@"w: %d h: %d", width, height);
+    
+//    float newRatio = faceCGRect.size.height / height;
+    
+   // NSLog(@"ratio: %1.3f ", newRatio);
+//    float newWidth = width * newRatio;
+   // NSLog(@"height: %1.3f width: %1.3f", faceCGRect.size.height, newWidth);
+//
+//    _animatedImageView.frame = CGRectMake(faceCGRect.origin.x, faceCGRect.origin.y, newWidth, faceCGRect.size.height);
     _animatedImageView.frame = faceCGRect;
 }
 
@@ -163,10 +178,64 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             _savedVideos = nil;
             _savedVideos = [self savedVideos];
             
+            
+            [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^
+             {
+                 NSURL *videoURL = [NSURL URLWithString:fileSavedPath];
+                 NSLog(@"photo library %@", videoURL);
+                 
+                 PHAssetCreationRequest *createRequest = [PHAssetCreationRequest creationRequestForAssetFromVideoAtFileURL:videoURL];
+                 createRequest.creationDate = [NSDate date];
+             } completionHandler:^(BOOL success, NSError *error)
+             {
+                 NSString *title;
+                 NSString *message;
+                 if (success)
+                 {
+                     NSLog(@"photo library successfully saved");
+                     title = @"Video Saved";
+                     message = @"Check your Camera Roll for your saved video";
+                 }
+                 else
+                 {
+                     title = @"Error";
+                     message = @"There was an error saving your video";
+                     
+                     NSLog(@"photo library error saving to photos: %@", error);
+                 }
+                 
+                 
+                 UIAlertController *alertController = [UIAlertController
+                                                       alertControllerWithTitle:title
+                                                       message:message
+                                                       preferredStyle:UIAlertControllerStyleAlert];
+                 
+                 UIAlertAction *okAction = [UIAlertAction
+                                            actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                            style:UIAlertActionStyleCancel
+                                            handler:^(UIAlertAction *action)
+                                            {
+                                                NSLog(@"OK action");
+                                            }];
+                 
+                [alertController addAction:okAction];
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [self presentViewController:alertController animated:YES completion:nil];
+                     [self resetVideoCamera];
+                 });
+                 
+                 fileSavedPath = nil;
+                 
+             }];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_activityView stopAnimating];
                 [_activityView removeFromSuperview];
                 [weakSelf.savedVideosCollectionView reloadData];
+                
+                //save to photo roll
+                
                 NSLog(@"completed");
             });
         }];
@@ -189,20 +258,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }
 
         //stored in Documents which can  be accessed by iTunes (this can change)
-        
-        NSString *movieType = @"Bugs";
-        if(selectedIndex == 0){
-            movieType = @"Bugs";
-            [videoCamera setDelegate:self];
-        } else if (selectedIndex == 1){
-            movieType = @"Mouth";
-            [videoCamera setDelegate:nil];
-        } else if (selectedIndex == 2){
-            movieType = @"Cloud";
-            [videoCamera setDelegate:nil];
-        }
-        
-        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Toca-%@-%@.m4v", movieType, [self videoFileName:6]]];
+        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Toca-%@.m4v", [self videoFileName:6]]];
+        fileSavedPath = pathToMovie;
         unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
         NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
         _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(1280.0, 720.0)];
@@ -211,7 +268,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         //    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(720.0, 1280.0)];
         //    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(1080.0, 1920.0)];
         
-        if (_isUserInterfaceElementVideo) {
+       // if (_isUserInterfaceElementVideo) {
             _filter = [[GPUImageSaturationFilter alloc] init];
             [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
             GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
@@ -220,27 +277,24 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             [videoCamera addTarget:_filter];
 
  
-            UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, (_filteredVideoView.frame.size.height - 75))];
+            UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
             contentView.backgroundColor = [UIColor clearColor];
             
             
             _animatedImageView = [[UIImageView alloc] initWithFrame:_animatedImageView.frame];
             
-            if(selectedIndex == 0) {
-                _animatedImageView.image = [UIImage imageNamed:@"OL_FACE_TRACKING_BUGS_00000.png"];
+//            if( [selectedFilter filterType] == FilterTypeFaceTracking) {
                 [videoCamera setDelegate:self];
-            } else if(selectedIndex == 1) {
-                _animatedImageView.image = [UIImage imageNamed:@"OL_AS_MOUTH_00000.png"];
-                [videoCamera setDelegate:nil];
-            } else if (selectedIndex == 2){
-                _animatedImageView.image = [UIImage imageNamed:@"OL_STICKER_CLOUD_00000.png"];
-                [videoCamera setDelegate:nil];
-            }
+//            } else {
+//                [videoCamera setDelegate:nil];
+//            }
+            
+            _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
             
             [contentView addSubview:_animatedImageView];
             
             uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-            contentView = nil;
+            //contentView = nil;
         
             
             [_filter addTarget:blendFilter];
@@ -249,39 +303,19 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
             __block int indexItem = 0;
             __unsafe_unretained UIImageView *weakImageView = _animatedImageView;
+            __block TocaFilter *weakFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
-                
-                if(selectedIndex == 0) {
-                    if (indexItem > 95){
+               
+                if([weakFilter filterType] != FilterTypeSticker) {
+                    if (indexItem > [weakFilter animationFramesAmount]) {
                         indexItem = 0;
                     } else {
                         indexItem++;
                     }
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_FACE_TRACKING_BUGS_%05d.png", indexItem]];
-                    weakImageView.image = image;
-                    image = nil;
-                    
-                } else if(selectedIndex == 1) {
-                    if (indexItem > 119){
-                        indexItem = 0;
-                    } else {
-                        indexItem++;
-                    }
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_AS_MOUTH_%05d.png", indexItem]];
-                    weakImageView.image = image;
-                    image = nil;
-                    
-                } else if(selectedIndex == 2) {
-                    if (indexItem > 143){
-                        indexItem = 0;
-                    } else {
-                        indexItem++;
-                    }
-                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"OL_STICKER_CLOUD_%05d.png", indexItem]];
+                    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakFilter animationImagePrefix], indexItem]];
                     weakImageView.image = image;
                     image = nil;
                 }
-
                 [weakUIElementInput update];
             }];
             
@@ -289,14 +323,14 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             [blendFilter addTarget:_filteredVideoView];
             
             
-        }else{
-            [videoCamera addTarget:_filter];
-            
-            [_filter addTarget:_movieWriter];
-            [_filter addTarget:_filteredVideoView];
-            
-            //_filteredVideoView.fillMode = kGPUImageFillModeStretch;
-        }
+//        }else{
+//            [videoCamera addTarget:_filter];
+//            
+//            [_filter addTarget:_movieWriter];
+//            [_filter addTarget:_filteredVideoView];
+//            
+//            //_filteredVideoView.fillMode = kGPUImageFillModeStretch;
+//        }
         
         [videoCamera stopCameraCapture];
         [videoCamera startCameraCapture];
@@ -355,6 +389,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     return cell;
 }
+
+-(void)resetVideoCamera {
+    NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:1];
+    [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
+}
+
 
 #pragma mark <UICollectionViewDelegate>
 
@@ -649,7 +689,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 - (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
                  andOrientation:(UIDeviceOrientation)curDeviceOrientation
 {
-    if(_isUserInterfaceElementVideo){
+   
         dispatch_async(dispatch_get_main_queue(), ^{
             //NSLog(@"Did receive array");
            
@@ -676,12 +716,14 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 
                 CGFloat widthScaleBy = previewBox.size.width / clap.size.width;
                 CGFloat heightScaleBy = previewBox.size.height / clap.size.height;
+                //NSLog(@"ratiowidth: %1.f  ratioheight:  %1.f", widthScaleBy, heightScaleBy);
                 faceRect.size.width *= widthScaleBy;
                 faceRect.size.height *= heightScaleBy;
                 faceRect.origin.x *= widthScaleBy;
                 faceRect.origin.y *= heightScaleBy;
                 
-                faceRect = CGRectOffset(faceRect, previewBox.origin.x, (previewBox.origin.y));
+                faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
+                
                 
               
                 if (_faceView) {
@@ -689,25 +731,26 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     _faceView =  nil;
                 }
                 
-                faceRect = CGRectMake(faceRect.origin.x, (-faceRect.origin.y)+200, faceRect.size.width, faceRect.size.height);
+                faceRect = CGRectMake(faceRect.origin.x, (-faceRect.origin.y)+180, faceRect.size.width, faceRect.size.height+30);
                 
                 // create a UIView using the bounds of the face
                 _faceView = [[UIView alloc] initWithFrame:faceRect];
                 
                 faceCGRect = faceRect;
-                //NSLog(@"face cg rect %1f %1f %1f %1f", _faceView.frame.origin.x,  _faceView.frame.origin.y, _faceView.frame.size.width, _faceView.frame.size.height );
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateFaceTrackingFrame" object:self];
+                if(_isUserInterfaceElementVideo) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateFaceTrackingFrame" object:self];
+                }
                
-    //            _faceView.layer.borderWidth = 1;
-    //            _faceView.layer.borderColor = [[UIColor redColor] CGColor];
+                _faceView.layer.borderWidth = 1;
+                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
                 
                 // add the new view to create a box around the face
                 
                 [_filteredVideoView addSubview:_faceView];
             }
         });
-    }
+    
 }
 
 

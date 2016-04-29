@@ -6,9 +6,9 @@
 		<key>type</key>
 		<string>reset</string>
 		<key>icon-image</key>
-		<string>NoEffects.png</string>
+		<string>none.png</string>
 		<key>icon-image-pressed</key>
-		<string>NoEffects_pressed.png</string>
+		<string>noneBlue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>0</integer>
 		<key>animation-image-prefix</key>
@@ -20,19 +20,23 @@
 		<key>icon-image</key>
 		<string>Octopus.png</string>
 		<key>icon-image-pressed</key>
-		<string>Octopus_pressed.png</string>
+		<string>OctopusBlue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>95</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_FACE_TRACK_OCTO_</string>
+		<key>animation-height</key>
+		<integer>500</integer>
+		<key>animation-width</key>
+		<integer>450</integer>
 	</dict>
 	<dict>
 		<key>type</key>
 		<string>sticker</string>
 		<key>icon-image</key>
-		<string>Window.png</string>
+		<string>window.png</string>
 		<key>icon-image-pressed</key>
-		<string>Window_pressed.png</string>
+		<string>windowblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>0</integer>
 		<key>animation-image-prefix</key>
@@ -44,11 +48,15 @@
 		<key>icon-image</key>
 		<string>Bugs.png</string>
 		<key>icon-image-pressed</key>
-		<string>Bugs_pressed.png</string>
+		<string>BugsBlue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>95</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_FACE_TRACKING_BUGS_</string>
+		<key>animation-height</key>
+		<integer>450</integer>
+		<key>animation-width</key>
+		<integer>400</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -56,7 +64,7 @@
 		<key>icon-image</key>
 		<string>Cloud.png</string>
 		<key>icon-image-pressed</key>
-		<string>Cloud_pressed.png</string>
+		<string>CloudBlue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>143</integer>
 		<key>animation-image-prefix</key>
@@ -66,9 +74,9 @@
 		<key>type</key>
 		<string>animated-scene</string>
 		<key>icon-image</key>
-		<string>Icecream.png</string>
+		<string>icecream.png</string>
 		<key>icon-image-pressed</key>
-		<string>Icecream_pressed.png</string>
+		<string>icecreamblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>95</integer>
 		<key>animation-image-prefix</key>
@@ -78,9 +86,9 @@
 		<key>type</key>
 		<string>animated-scene</string>
 		<key>icon-image</key>
-		<string>Mouth.png</string>
+		<string>mouth.png</string>
 		<key>icon-image-pressed</key>
-		<string>Mouth_pressed.png</string>
+		<string>mouthblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>119</integer>
 		<key>animation-image-prefix</key>
@@ -90,9 +98,9 @@
 		<key>type</key>
 		<string>animated-scene</string>
 		<key>icon-image</key>
-		<string>Hands.png</string>
+		<string>Hand.png</string>
 		<key>icon-image-pressed</key>
-		<string>Hands_pressed.png</string>
+		<string>Handblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>95</integer>
 		<key>animation-image-prefix</key>
@@ -102,9 +110,9 @@
 		<key>type</key>
 		<string>sticker</string>
 		<key>icon-image</key>
-		<string>Finger.png</string>
+		<string>finger.png</string>
 		<key>icon-image-pressed</key>
-		<string>Finger_pressed.png</string>
+		<string>FingerBlue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>47</integer>
 		<key>animation-image-prefix</key>
@@ -114,9 +122,9 @@
 		<key>type</key>
 		<string>sticker</string>
 		<key>icon-image</key>
-		<string>Dog.png</string>
+		<string>dog.png</string>
 		<key>icon-image-pressed</key>
-		<string>Dog_pressed.png</string>
+		<string>dogblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>155</integer>
 		<key>animation-image-prefix</key>
@@ -126,33 +134,41 @@
 		<key>type</key>
 		<string>face-tracking</string>
 		<key>icon-image</key>
-		<string>Thought.png</string>
+		<string>thought.png</string>
 		<key>icon-image-pressed</key>
-		<string>Thought_pressed.png</string>
+		<string>thoughtblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>167</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_FACE_TRACK_SHEEP_</string>
+		<key>animation-height</key>
+		<integer>400</integer>
+		<key>animation-width</key>
+		<integer>400</integer>
 	</dict>
 	<dict>
 		<key>type</key>
 		<string>face-tracking</string>
 		<key>icon-image</key>
-		<string>House.png</string>
+		<string>house.png</string>
 		<key>icon-image-pressed</key>
-		<string>House_pressed.png</string>
+		<string>houseblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>95</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_FACE_TRACK_NOVA_</string>
+		<key>animation-height</key>
+		<integer>450</integer>
+		<key>animation-width</key>
+		<integer>450</integer>
 	</dict>
 	<dict>
 		<key>type</key>
 		<string>animated-scene</string>
 		<key>icon-image</key>
-		<string>Elephant.png</string>
+		<string>elephant.png</string>
 		<key>icon-image-pressed</key>
-		<string>Elephant_pressed.png</string>
+		<string>elephantblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>83</integer>
 		<key>animation-image-prefix</key>
@@ -162,9 +178,9 @@
 		<key>type</key>
 		<string>sticker</string>
 		<key>icon-image</key>
-		<string>Bee.png</string>
+		<string>bee.png</string>
 		<key>icon-image-pressed</key>
-		<string>Bee_pressed.png</string>
+		<string>beeblue.png</string>
 		<key>animation-frames-amount</key>
 		<integer>47</integer>
 		<key>animation-image-prefix</key>

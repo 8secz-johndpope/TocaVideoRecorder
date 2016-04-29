@@ -50,6 +50,22 @@
     return [self.filterItem[@"animation-frames-amount"] intValue];
 }
 
+- (int)animationHeight {
+    if(!self.filterItem[@"animation-height"]) {
+        return 0;
+    } else {
+        return [self.filterItem[@"animation-width"] intValue];
+    }
+}
+
+- (int)animationWidth {
+    if(!self.filterItem[@"animation-width"]) {
+        return 0;
+    } else {
+        return [self.filterItem[@"animation-width"] intValue];
+    }
+}
+
 - (NSString *)animationImagePrefix {
     return self.filterItem[@"animation-image-prefix"];
 }

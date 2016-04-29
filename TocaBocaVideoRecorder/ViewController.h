@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 #import "GPUImage.h"
 #import "TocaFilter.h"
 @import AVFoundation;
@@ -21,7 +22,7 @@ typedef enum{
 
 @interface ViewController : UIViewController <GPUImageVideoCameraDelegate>
 {
-
+    NSString *fileSavedPath;
     GPUImageVideoCamera *videoCamera;
     BOOL faceThinking;
     GPUImageUIElement *uiElementInput;
