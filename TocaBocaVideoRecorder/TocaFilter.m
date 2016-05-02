@@ -50,19 +50,19 @@
     return [self.filterItem[@"animation-frames-amount"] intValue];
 }
 
-- (int)animationHeight {
+- (float)animationHeight {
     if(!self.filterItem[@"animation-height"]) {
         return 0;
     } else {
-        return [self.filterItem[@"animation-width"] intValue];
+        return [self.filterItem[@"animation-height"] floatValue];
     }
 }
 
-- (int)animationWidth {
+- (float)animationWidth {
     if(!self.filterItem[@"animation-width"]) {
         return 0;
     } else {
-        return [self.filterItem[@"animation-width"] intValue];
+        return [self.filterItem[@"animation-width"] floatValue];
     }
 }
 

@@ -451,6 +451,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 case FilterTypeReset:
                     NSLog(@"reset select");
                     
+                    float height = 0;
+                    float width = 0;
+                    float framex = 0;
+                    float framey = 0;
+                    
                     videoCamera.delegate = nil;
                     _isUserInterfaceElementVideo = NO;
                     
@@ -462,11 +467,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     videoCamera.delegate = nil;
                     _isUserInterfaceElementVideo = NO;
                     
-                    float height = [selectedFilter animationHeight];
-                    float width = [selectedFilter animationWidth];
+                    height = [selectedFilter animationHeight];
+                    width = [selectedFilter animationWidth];
                     
-                    float framex = ((contentView.frame.size.width - width) / 2);
-                    float framey = ((contentView.frame.size.height - height) / 2);
+                    NSLog(@"height: %1f width %1f ", height, width);
+                    
+                    framex = ((contentView.frame.size.width - width) / 2);
+                    framey = ((contentView.frame.size.height - height) / 2);
                     
                     _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
                     
@@ -497,7 +504,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     _isUserInterfaceElementVideo = YES;
                     videoCamera.delegate = self;
                     
-                    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
+                    height = [selectedFilter animationHeight];
+                    width = [selectedFilter animationWidth];
+                    
+                    framex = ((contentView.frame.size.width - width) / 2);
+                    framey = ((contentView.frame.size.height - height) / 2);
+                    
+                    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
                     _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
                     
                     [contentView addSubview:_animatedImageView];
@@ -552,7 +565,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __block TocaFilter *weakFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                 
-
                  if([weakFilter animationFramesAmount] > 0) {
                     if (indexItem > [weakFilter animationFramesAmount]) {
                         indexItem = 0;

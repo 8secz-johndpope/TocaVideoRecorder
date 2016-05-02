@@ -31,7 +31,7 @@ typedef enum{
 - (int)animationFramesAmount;
 - (NSString *)animationImagePrefix;
 
-- (int)animationHeight;
-- (int)animationWidth;
+- (float)animationHeight;
+- (float)animationWidth;
 
 @end

@@ -42,9 +42,9 @@
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_WINDOW_</string>
 		<key>animation-height</key>
-		<integer>640</integer>
+		<integer>320</integer>
 		<key>animation-width</key>
-		<integer>590</integer>
+		<integer>295</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -126,9 +126,9 @@
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_HAND_</string>
 		<key>animation-height</key>
-		<integer>640</integer>
-		<key>animation-width</key>
 		<integer>250</integer>
+		<key>animation-width</key>
+		<integer>640</integer>
 	</dict>
 	<dict>
 		<key>type</key>
