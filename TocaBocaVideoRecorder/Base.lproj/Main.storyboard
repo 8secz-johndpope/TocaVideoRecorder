@@ -150,6 +150,18 @@
                                     <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="16:9" id="rxI-Eh-p3L"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-q2-nBN">
+                                <rect key="frame" x="863" y="155" width="43" height="43"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.41960784309999999" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="k9Q-q2-nBN" secondAttribute="height" multiplier="1:1" id="8Pl-4w-7F2"/>
+                                    <constraint firstAttribute="width" constant="43" id="yAL-cK-pWp"/>
+                                </constraints>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zxa-Ic-zn5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.33725490196078434" green="0.87450980392156863" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -157,6 +169,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gux-n3-OvA" secondAttribute="bottom" constant="15" id="2AG-yK-OK0"/>
                             <constraint firstItem="Z1c-Jv-wuw" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" id="7lN-ZO-VT3"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="height" secondItem="gux-n3-OvA" secondAttribute="height" constant="-8.5" id="BnJ-J1-Qku"/>
+                            <constraint firstItem="k9Q-q2-nBN" firstAttribute="trailing" secondItem="Z1c-Jv-wuw" secondAttribute="trailing" constant="-5" id="HCe-dX-k4Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gux-n3-OvA" secondAttribute="trailing" constant="-20" id="MIc-4O-DuH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mZN-zp-x0Q" secondAttribute="bottom" constant="23" id="R3R-uq-yIh"/>
                             <constraint firstItem="atN-t5-coM" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" multiplier="0.155" id="Vx2-HC-6yk"/>
@@ -165,6 +178,7 @@
                             <constraint firstItem="JDR-82-hJH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.779" id="bLk-6l-Cer"/>
                             <constraint firstItem="JDR-82-hJH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="fOW-70-HUN"/>
                             <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="nah-2x-HzJ"/>
+                            <constraint firstItem="k9Q-q2-nBN" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="top" constant="5" id="neO-rB-Cxv"/>
                             <constraint firstItem="atN-t5-coM" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="pza-kW-gDX"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="6" id="sWf-dg-NOx"/>
                             <constraint firstItem="JDR-82-hJH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x44-6O-iUS"/>
@@ -186,6 +200,7 @@
                         <outlet property="filteredVideoView" destination="Z1c-Jv-wuw" id="sN6-Pl-oXq"/>
                         <outlet property="recordButton" destination="mZN-zp-x0Q" id="dla-sh-QId"/>
                         <outlet property="savedVideosCollectionView" destination="Cpu-8t-q0m" id="jsT-ka-I1y"/>
+                        <outlet property="switchCameraButton" destination="k9Q-q2-nBN" id="Cgy-90-BAm"/>
                         <outlet property="videoCaptureView" destination="Z1c-Jv-wuw" id="cyZ-2A-iR4"/>
                     </connections>
                 </viewController>

@@ -28,13 +28,13 @@ typedef enum{
     GPUImageUIElement *uiElementInput;
     GPUImagePicture *gpuImagePicture;
     CGRect faceCGRect;
-    CGPoint centerFacePoint;
     int selectedIndex;
     
     TocaFilter *selectedFilter;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
+@property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *filterCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *savedVideosCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *videoCaptureView;
