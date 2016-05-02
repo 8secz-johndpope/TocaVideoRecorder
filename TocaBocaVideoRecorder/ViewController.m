@@ -221,7 +221,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 [alertController addAction:okAction];
                  
                  dispatch_async(dispatch_get_main_queue(), ^{
-                     [_previewView removeFromSuperview];
                      [self presentViewController:alertController animated:YES completion:nil];
                      [self resetVideoCamera];
                  });
@@ -241,8 +240,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             });
         }];
     }else{
-        
-        //[_previewView removeFromSuperview];
         
         _isRecording = true;
 
@@ -355,6 +352,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)resetVideoCamera {
     // index 0 is reset
+    if(_previewView) {
+        [_previewView removeFromSuperview];
+        _previewView = nil;
+    }
+    
     NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:1];
     [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
 }
@@ -460,10 +462,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     videoCamera.delegate = nil;
                     _isUserInterfaceElementVideo = NO;
                     
+                    float height = [selectedFilter animationHeight];
+                    float width = [selectedFilter animationWidth];
+                    
+                    float framex = ((contentView.frame.size.width - width) / 2);
+                    float framey = ((contentView.frame.size.height - height) / 2);
+                    
                     _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
                     
                     _previewView.backgroundColor = [UIColor clearColor];
-                    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 40, 200, 150)];
+                    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
                     
                     _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
                     [contentView addSubview:_animatedImageView];

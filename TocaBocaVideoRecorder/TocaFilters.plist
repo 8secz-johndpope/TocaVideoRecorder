@@ -41,6 +41,10 @@
 		<integer>0</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_WINDOW_</string>
+		<key>animation-height</key>
+		<integer>640</integer>
+		<key>animation-width</key>
+		<integer>590</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -69,6 +73,10 @@
 		<integer>143</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_CLOUD_</string>
+		<key>animation-height</key>
+		<integer>458</integer>
+		<key>animation-width</key>
+		<integer>444</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -117,6 +125,10 @@
 		<integer>47</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_HAND_</string>
+		<key>animation-height</key>
+		<integer>640</integer>
+		<key>animation-width</key>
+		<integer>250</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -129,6 +141,10 @@
 		<integer>155</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_DOG_</string>
+		<key>animation-height</key>
+		<integer>411</integer>
+		<key>animation-width</key>
+		<integer>305</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -185,6 +201,10 @@
 		<integer>47</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_BEE_</string>
+		<key>animation-height</key>
+		<integer>462</integer>
+		<key>animation-width</key>
+		<integer>425</integer>
 	</dict>
 </array>
 </plist>
