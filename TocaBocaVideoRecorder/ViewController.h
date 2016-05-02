@@ -28,6 +28,7 @@ typedef enum{
     GPUImageUIElement *uiElementInput;
     GPUImagePicture *gpuImagePicture;
     CGRect faceCGRect;
+    CGPoint centerFacePoint;
     int selectedIndex;
     
     TocaFilter *selectedFilter;

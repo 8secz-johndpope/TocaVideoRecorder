@@ -221,6 +221,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 [alertController addAction:okAction];
                  
                  dispatch_async(dispatch_get_main_queue(), ^{
+                     [_previewView removeFromSuperview];
                      [self presentViewController:alertController animated:YES completion:nil];
                      [self resetVideoCamera];
                  });
@@ -241,7 +242,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }];
     }else{
         
-        [_previewView removeFromSuperview];
+        //[_previewView removeFromSuperview];
         
         _isRecording = true;
 
@@ -408,6 +409,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         
         if(selectedIndex != indexPath.item){
             
+            if (_faceView) {
+                [_faceView removeFromSuperview];
+                _faceView = nil;
+            }
+            
             _isUserInterfaceElementVideo = NO;
             if(_previewView) {
                 [_previewView removeFromSuperview];
@@ -458,6 +464,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     
                     _previewView.backgroundColor = [UIColor clearColor];
                     _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 40, 200, 150)];
+                    
                     _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
                     [contentView addSubview:_animatedImageView];
                     
@@ -499,7 +506,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             }
             
             
-//            if([selectedFilter filterType] == FilterTypeSticker) {
+            if([selectedFilter filterType] == FilterTypeSticker) {
             
 //                NSMutableArray *images = [[NSMutableArray alloc] init];
 //                for (int i = 0; i < ([selectedFilter animationFramesAmount]+1); i++) {
@@ -508,15 +515,21 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 //                    image = nil;
 //                }
 //                _animatedImageView.animationImages = images;
-//                
-//                UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
-//                _animatedImageView.userInteractionEnabled = YES;
-//                _animatedImageView.gestureRecognizers = @[dragRecognizer];
-//                [_previewView addSubview:_animatedImageView];
-//                [self.view addSubview:_previewView];
-//                
+//
+                UIImageView *testImage = [[UIImageView alloc] initWithFrame:_animatedImageView.frame];
+                testImage.backgroundColor = [UIColor clearColor];
+                
+                
+                UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
+                testImage.userInteractionEnabled = YES;
+                testImage.gestureRecognizers = @[dragRecognizer];
+                
+                [_previewView addSubview:testImage];
+                testImage = nil;
+                [self.view addSubview:_previewView];
+                
 //                [_animatedImageView startAnimating];
-//            }
+            }
             
             
             contentView = nil;
@@ -531,7 +544,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __block TocaFilter *weakFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                 
-//                if([weakFilter filterType] != FilterTypeSticker) {
+
                  if([weakFilter animationFramesAmount] > 0) {
                     if (indexItem > [weakFilter animationFramesAmount]) {
                         indexItem = 0;
@@ -541,7 +554,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakFilter animationImagePrefix], indexItem]];
                     weakanimatedView.image = image;
                     image = nil;
-//                }
                  }
        
                 [weakUIElementInput update];
@@ -604,11 +616,14 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 #pragma mark - Face Detection Delegate Callback
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-    if (!faceThinking) {
-        CFAllocatorRef allocator = CFAllocatorGetDefault();
-        CMSampleBufferRef sbufCopyOut;
-        CMSampleBufferCreateCopy(allocator,sampleBuffer,&sbufCopyOut);
-        [self performSelectorInBackground:@selector(grepFacesForSampleBuffer:) withObject:CFBridgingRelease(sbufCopyOut)];
+
+    if([selectedFilter filterType] == FilterTypeFaceTracking) {
+        if (!faceThinking) {
+            CFAllocatorRef allocator = CFAllocatorGetDefault();
+            CMSampleBufferRef sbufCopyOut;
+            CMSampleBufferCreateCopy(allocator,sampleBuffer,&sbufCopyOut);
+            [self performSelectorInBackground:@selector(grepFacesForSampleBuffer:) withObject:CFBridgingRelease(sbufCopyOut)];
+        }
     }
 }
 
@@ -688,7 +703,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
     
     
+    
     [self GPUVCWillOutputFeatures:features forClap:clap andOrientation:curDeviceOrientation];
+    
     faceThinking = FALSE;
     
 }
@@ -723,7 +740,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 
                 CGFloat widthScaleBy = previewBox.size.width / clap.size.width;
                 CGFloat heightScaleBy = previewBox.size.height / clap.size.height;
-                //NSLog(@"ratiowidth: %1.f  ratioheight:  %1.f", widthScaleBy, heightScaleBy);
+                NSLog(@"ratiowidth: %1f  ratioheight:  %1f", widthScaleBy, heightScaleBy);
                 faceRect.size.width *= widthScaleBy;
                 faceRect.size.height *= heightScaleBy;
                 faceRect.origin.x *= widthScaleBy;
@@ -738,9 +755,28 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     _faceView =  nil;
                 }
                 
-                faceRect = CGRectMake(faceRect.origin.x, (-faceRect.origin.y)+180, faceRect.size.width, faceRect.size.height+30);
+                float faceOffset = faceRect.origin.y * 0.25;
+                float faceHeightOffset = faceRect.size.height * 0.25;
+                NSLog(@"%1f", faceRect.size.height);
+                NSLog(@"face offset %1f", faceOffset);
+                NSLog(@"face height %1f", faceHeightOffset);
+                
+            faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y, faceRect.size.width, faceRect.size.height+faceHeightOffset);
                 
                 // create a UIView using the bounds of the face
+                
+                ///
+//                float hat_width = 290.0;
+//                float hat_height = 281.0; //360
+//                float head_start_y = 250.0; //part of hat image is transparent
+//                float head_start_x = 78.0;
+//                
+//                float width = faceRect.size.width * (hat_width / (hat_width - head_start_x));
+//                float height = width * hat_height/hat_width;
+//                float y = faceRect.origin.y - (height * head_start_y) / hat_height;
+//                float x = faceRect.origin.x - (head_start_x * width/hat_width);
+//                CGRect newFrame = CGRectMake(x, y, width, height);
+                ///
                 _faceView = [[UIView alloc] initWithFrame:faceRect];
                 
                 faceCGRect = faceRect;
@@ -751,6 +787,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                
                 _faceView.layer.borderWidth = 1;
                 _faceView.layer.borderColor = [[UIColor redColor] CGColor];
+                
+                //centerFacePoint = _faceView.center;
                 
                 // add the new view to create a box around the face
                 
@@ -790,6 +828,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     } else if([uiPanGestureRecognizer state] == UIGestureRecognizerStateChanged ){
         CGPoint translation = [uiPanGestureRecognizer translationInView:uiPanGestureRecognizer.view.superview];
         uiPanGestureRecognizer.view.center = CGPointMake(lastStickerDragPoint.x + translation.x, lastStickerDragPoint.y + translation.y);
+        
+        NSLog(@"%1f %1f", uiPanGestureRecognizer.view.frame.origin.x, uiPanGestureRecognizer.view.frame.origin.y);
+        
+        faceCGRect = uiPanGestureRecognizer.view.frame;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateFaceTrackingFrame" object:self];
     }
 }
 
