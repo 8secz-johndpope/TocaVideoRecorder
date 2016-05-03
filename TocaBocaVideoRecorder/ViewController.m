@@ -63,14 +63,10 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     // They want video output to be 16:9
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
-//    videoCamera.horizontallyMirrorFrontFacingCamera = NO;
-//    videoCamera.horizontallyMirrorRearFacingCamera = NO;
-    //videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    
-    
-    videoCamera.outputImageOrientation = UIInterfaceOrientationMaskLandscape;
 
-    [videoCamera setHorizontallyMirrorFrontFacingCamera:NO];
+    videoCamera.outputImageOrientation = [UIApplication sharedApplication].statusBarOrientation;
+
+    [videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
     [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
     
     _filter = [[GPUImageFilter alloc] init];
@@ -611,8 +607,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 // utility routing used during image capture to set up capture orientation
-- (AVCaptureVideoOrientation)avOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation
-{
+- (AVCaptureVideoOrientation)avOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation {
     AVCaptureVideoOrientation result = deviceOrientation;
     if ( deviceOrientation == UIDeviceOrientationLandscapeLeft )
         result = AVCaptureVideoOrientationLandscapeRight;
@@ -623,7 +618,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 #pragma mark - Face Detection Delegate Callback
-- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+- (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer {
 
     if([selectedFilter filterType] == FilterTypeFaceTracking) {
         if (!faceThinking) {
@@ -820,7 +815,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 
-#pragma mark - UIGesturesFor Sticker Filter
+#pragma mark - UIGestures For Sticker Filter
 
 - (void)dragSticker:(UIPanGestureRecognizer *) uiPanGestureRecognizer {
     NSLog(@"drag sticker");
@@ -880,8 +875,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         default:
             newOrientation = UIInterfaceOrientationLandscapeLeft;
     }
-     videoCamera.outputImageOrientation = newOrientation;
+    AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
 
+    if (currentCameraPosition != AVCaptureDevicePositionBack)
+    {
+        [videoCamera setHorizontallyMirrorFrontFacingCamera: YES];
+    } else {
+        [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
+    }
+    
+    videoCamera.outputImageOrientation = newOrientation;
 }
     
 
