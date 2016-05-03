@@ -29,8 +29,8 @@ typedef enum{
     GPUImagePicture *gpuImagePicture;
     CGRect faceCGRect;
     int selectedIndex;
-    
     TocaFilter *selectedFilter;
+    UIInterfaceOrientation currentInterfaceOrientation;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
