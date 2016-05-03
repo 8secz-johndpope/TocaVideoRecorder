@@ -694,8 +694,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
     CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
     
-    
-    
     [self GPUVCWillOutputFeatures:features forClap:clap andOrientation:curDeviceOrientation];
     
     faceThinking = FALSE;
@@ -703,37 +701,30 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 - (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
-                 andOrientation:(UIDeviceOrientation)curDeviceOrientation
-{
+                 andOrientation:(UIDeviceOrientation)curDeviceOrientation {
    
         dispatch_async(dispatch_get_main_queue(), ^{
             
             CGRect previewBox = _filteredVideoView.bounds;
             
-            //NSLog(@"preview %1.f %1.f %1.f %1.f", previewBox.origin.x, previewBox.origin.y, previewBox.size.height, previewBox.size.width);
-            
             if (featureArray == nil && _faceView) {
                 [_faceView removeFromSuperview];
                 _faceView = nil;
             }
-            
-            
+
             for ( CIFaceFeature *faceFeature in featureArray) {
-                
-                // find the correct position for the square layer within the previewLayer
-                // the feature box originates in the bottom left of the video frame.
-                // (Bottom right if mirroring is turned on)
-                //NSLog(@"%@", NSStringFromCGRect([faceFeature bounds]));
-                
                 //Update face bounds for iOS Coordinate System
+                CGRect faceRect = [faceFeature bounds];
+                
+                if(currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+                    //invert for left orientation
+                    faceRect = CGRectMake(previewBox.size.width - faceRect.origin.x, previewBox.size.height - faceRect.origin.y, faceRect.size.width, faceRect.size.height);
+                }
                 
                 if (_faceView) {
                     [_faceView removeFromSuperview];
                     _faceView =  nil;
                 }
-                
-                
-                CGRect faceRect = [faceFeature bounds];
                 
                 CGFloat widthScaleBy = (previewBox.size.width / clap.size.width) ;
                 CGFloat heightScaleBy = (previewBox.size.height / clap.size.height) ;
@@ -746,52 +737,35 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 faceRect.size.width *= [selectedFilter animationScale];
                 faceRect.size.height *= [selectedFilter animationScale];
                 
-                // this is determined by orientation of device
-                // on left is opposite
+                faceRect.origin.x *= widthScaleBy;
+                faceRect.origin.y *= heightScaleBy;
+                
+                CGFloat xOffset = faceRect.size.width * [selectedFilter animationXOffset];
+                CGFloat yOffset = faceRect.size.height * [selectedFilter animationYOffset];
+                
+                faceRect.origin.x -= (faceRect.size.width-originWidth)/2;
+                faceRect.origin.y -= (faceRect.size.height-originHeight)/2;
+                
+                faceRect.origin.x += xOffset;
+                faceRect.origin.y += yOffset;
+                
+                
+                faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
+                float faceOffset = faceRect.origin.y * 0.3;
+                
+                // orientation change to landscape left
                 if(currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-                    NSLog(@"left");
-                    
-                    faceRect.origin.x *= widthScaleBy;
-                    faceRect.origin.y *= heightScaleBy;
-                    
-                    CGFloat xOffset = faceRect.size.width * [selectedFilter animationXOffset];
-                    CGFloat yOffset = faceRect.size.height * [selectedFilter animationYOffset];
-                    
-                    faceRect.origin.x -= (faceRect.size.width-originWidth)/2;
-                    faceRect.origin.y -= (faceRect.size.height-originHeight)/2;
-                    
-                    faceRect.origin.x += xOffset;
-                    faceRect.origin.y += yOffset;
-                    
-                    
-                    faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
-                    float faceOffset = faceRect.origin.y * 0.3;
-                    faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y-faceOffset, faceRect.size.width, faceRect.size.height+(faceOffset/2));
-                    
-                    faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y, faceRect.size.width, faceRect.size.height);
-                    
-                    
+                    float faceXOffset = faceRect.size.width * 0.4;
+                    faceRect = CGRectMake(faceRect.origin.x+faceXOffset, faceRect.origin.y-faceOffset, faceRect.size.width, faceRect.size.height+(faceOffset/2));
                 } else {
-                    
-                    faceRect.origin.x *= widthScaleBy;
-                    faceRect.origin.y *= heightScaleBy;
-                    
-                    CGFloat xOffset = faceRect.size.width * [selectedFilter animationXOffset];
-                    CGFloat yOffset = faceRect.size.height * [selectedFilter animationYOffset];
-                    
-                    faceRect.origin.x -= (faceRect.size.width-originWidth)/2;
-                    faceRect.origin.y -= (faceRect.size.height-originHeight)/2;
-                    
-                    faceRect.origin.x += xOffset;
-                    faceRect.origin.y += yOffset;
-                    
-                    
-                    faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
-                    float faceOffset = faceRect.origin.y * 0.3;
-                    faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y-faceOffset, faceRect.size.width, faceRect.size.height+(faceOffset/2));
+                     faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y-faceOffset, faceRect.size.width, faceRect.size.height+(faceOffset/2));
                 }
-               
+                NSLog(@"x: %1f y: %1f", faceRect.origin.x, faceRect.origin.y);
+
+        
                 _faceView = [[UIView alloc] initWithFrame:faceRect];
+//                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
+//                _faceView.layer.borderWidth = 1;
                 
                 faceCGRect = faceRect;
                 
@@ -872,7 +846,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     switch (orientation) {
         case UIDeviceOrientationPortrait:
             newOrientation = UIInterfaceOrientationPortrait;
-            
             break;
         case UIDeviceOrientationPortraitUpsideDown:
             newOrientation = UIInterfaceOrientationPortraitUpsideDown;
@@ -884,15 +857,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             newOrientation = UIInterfaceOrientationLandscapeLeft;
             break;
         default:
-            newOrientation = UIInterfaceOrientationLandscapeLeft;
+            newOrientation = [UIApplication sharedApplication].statusBarOrientation;
     }
-    AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
-    if (currentCameraPosition != AVCaptureDevicePositionBack)
-    {
-        [videoCamera setHorizontallyMirrorFrontFacingCamera: YES];
-    } else {
-        [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
-    }
+    
     currentInterfaceOrientation = newOrientation;
     videoCamera.outputImageOrientation = newOrientation;
 }
