@@ -33,5 +33,9 @@ typedef enum{
 
 - (float)animationHeight;
 - (float)animationWidth;
+// for face tracking only
+- (float)animationScale;
+- (float)animationXOffset;
+- (float)animationYOffset;
 
 @end

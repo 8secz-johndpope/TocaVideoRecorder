@@ -70,4 +70,29 @@
     return self.filterItem[@"animation-image-prefix"];
 }
 
+// for face tracking
+- (float)animationScale {
+    if(!self.filterItem[@"animation-scale"]) {
+        return 1.0;
+    } else {
+        return [self.filterItem[@"animation-scale"] floatValue];
+    }
+}
+
+- (float)animationXOffset {
+    if(!self.filterItem[@"animation-x-offset"]) {
+        return 0.0;
+    } else {
+        return [self.filterItem[@"animation-x-offset"] floatValue];
+    }
+}
+
+- (float)animationYOffset {
+    if(!self.filterItem[@"animation-y-offset"]) {
+        return 0.0;
+    } else {
+        return [self.filterItem[@"animation-y-offset"] floatValue];
+    }
+}
+
 @end

@@ -43,7 +43,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
-
     _isRecording = false;
     selectedIndex = 0;
     
@@ -58,9 +57,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     _filters = [[[TocaFilter alloc] initAtIndex:-1] filterList];
     
-    // removing original filters
-    //@"Sepia", @"BW", @"Sketch", @"Invert", @"Cartoon", @"Miss Etikate", @"Amatorka",
-    
     // They want video output to be 16:9
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
 
@@ -72,8 +68,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     _filter = [[GPUImageFilter alloc] init];
     [videoCamera addTarget:_filter];
     [_filter addTarget:_filteredVideoView];
-  
-    
     
     [videoCamera startCameraCapture];
     
@@ -94,10 +88,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-}
-
-- (void)updateFaceTrackingFrame:(NSNotification *)notification {
-    _animatedImageView.frame = faceCGRect;
 }
 
 - (NSMutableArray *)savedVideos{
@@ -234,11 +224,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         
         videoCamera = nil;
         videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:currentCameraPosition];
-        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft) {
-            videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
-        }else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-            videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
-        }
+        
+        [videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
+        [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
+        
+        videoCamera.outputImageOrientation = [UIApplication sharedApplication].statusBarOrientation;
 
         //stored in Documents which can  be accessed by iTunes (this can change)
         NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Toca-%@.m4v", [self videoFileName:6]]];
@@ -248,11 +238,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(1280.0, 720.0)];
         
         _movieWriter.encodingLiveVideo = YES;
-        //    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(640.0, 480.0)];
-        //    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(720.0, 1280.0)];
-        //    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(1080.0, 1920.0)];
-        
+       
        // if (_isUserInterfaceElementVideo) {
+        
             _filter = [[GPUImageSaturationFilter alloc] init];
             [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
             GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
@@ -260,7 +248,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             [videoCamera addTarget:_filter];
 
- 
             UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
             contentView.backgroundColor = [UIColor clearColor];
             
@@ -290,8 +277,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             __block TocaFilter *weakTocaFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                
-
                 if([weakTocaFilter animationFramesAmount] > 0) {
+                    
                     if (indexItem > [weakTocaFilter animationFramesAmount]) {
                         indexItem = 0;
                     } else {
@@ -353,6 +340,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 
+#pragma mark
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -718,9 +706,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 {
    
         dispatch_async(dispatch_get_main_queue(), ^{
-            //NSLog(@"Did receive array");
-           
-        
+            
             CGRect previewBox = _filteredVideoView.bounds;
             
             //NSLog(@"preview %1.f %1.f %1.f %1.f", previewBox.origin.x, previewBox.origin.y, previewBox.size.height, previewBox.size.width);
@@ -741,45 +727,39 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 //Update face bounds for iOS Coordinate System
                 CGRect faceRect = [faceFeature bounds];
                 
-                CGFloat widthScaleBy = previewBox.size.width / clap.size.width;
-                CGFloat heightScaleBy = previewBox.size.height / clap.size.height;
-                NSLog(@"ratiowidth: %1f  ratioheight:  %1f", widthScaleBy, heightScaleBy);
+                CGFloat widthScaleBy = (previewBox.size.width / clap.size.width) ;
+                CGFloat heightScaleBy = (previewBox.size.height / clap.size.height) ;
+
+                //TODO: need to deteermine when orientation is opposite
+                float originWidth = faceRect.size.width * widthScaleBy;
+                float originHeight = faceRect.size.height * heightScaleBy;
+                
                 faceRect.size.width *= widthScaleBy;
                 faceRect.size.height *= heightScaleBy;
+                faceRect.size.width *= [selectedFilter animationScale];
+                faceRect.size.height *= [selectedFilter animationScale];
                 faceRect.origin.x *= widthScaleBy;
                 faceRect.origin.y *= heightScaleBy;
                 
+                CGFloat xOffset = faceRect.size.width * [selectedFilter animationXOffset];
+                CGFloat yOffset = faceRect.size.height * [selectedFilter animationYOffset];
+                
+                faceRect.origin.x -= (faceRect.size.width-originWidth)/2;
+                faceRect.origin.y -= (faceRect.size.height-originHeight)/2;
+                
+                faceRect.origin.x += xOffset;
+                faceRect.origin.y += yOffset;
+                
                 faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
                 
-                
-              
                 if (_faceView) {
                     [_faceView removeFromSuperview];
                     _faceView =  nil;
                 }
                 
-                float faceOffset = faceRect.origin.y * 0.25;
-                float faceHeightOffset = faceRect.size.height * 0.25;
-                NSLog(@"%1f", faceRect.size.height);
-                NSLog(@"face offset %1f", faceOffset);
-                NSLog(@"face height %1f", faceHeightOffset);
+                float faceOffset = faceRect.origin.y * 0.3;
+                faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y-faceOffset, faceRect.size.width, faceRect.size.height+(faceOffset/2));
                 
-            faceRect = CGRectMake(faceRect.origin.x, faceRect.origin.y, faceRect.size.width, faceRect.size.height+faceHeightOffset);
-                
-                // create a UIView using the bounds of the face
-                
-                ///
-//                float hat_width = 290.0;
-//                float hat_height = 281.0; //360
-//                float head_start_y = 250.0; //part of hat image is transparent
-//                float head_start_x = 78.0;
-//                
-//                float width = faceRect.size.width * (hat_width / (hat_width - head_start_x));
-//                float 8height = width * hat_height/hat_width;
-//                float y = faceRect.origin.y - (height * head_start_y) / hat_height;
-//                float x = faceRect.origin.x - (head_start_x * width/hat_width);
-//                CGRect newFrame = CGRectMake(x, y, width, height);
-                ///
                 _faceView = [[UIView alloc] initWithFrame:faceRect];
                 
                 faceCGRect = faceRect;
@@ -787,12 +767,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 if(_isUserInterfaceElementVideo) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateFaceTrackingFrame" object:self];
                 }
-               
-                _faceView.layer.borderWidth = 1;
-                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
-                
-                // add the new view to create a box around the face
-                
+            
                 [_filteredVideoView addSubview:_faceView];
             }
         });
@@ -812,6 +787,10 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 //        [videoCamera setDelegate:self];
         _isFaceSwitched = NO;
     }
+}
+
+- (void)updateFaceTrackingFrame:(NSNotification *)notification {
+    _animatedImageView.frame = faceCGRect;
 }
 
 
