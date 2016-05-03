@@ -246,14 +246,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         [_recordButton setImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateNormal];
         [_recordButton setImage:[UIImage imageNamed:@"StopPress.png"] forState:UIControlStateHighlighted];
         [_recordButton setImage:[UIImage imageNamed:@"StopPress.png"] forState:UIControlStateHighlighted];
-        
-        videoCamera = nil;
-        videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:currentCameraPosition];
-        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft) {
-            videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
-        }else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-            videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
-        }
 
         //stored in Documents which can  be accessed by iTunes (this can change)
         NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Toca-%@.m4v", [self videoFileName:6]]];
@@ -332,8 +324,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 //            //_filteredVideoView.fillMode = kGPUImageFillModeStretch;
 //        }
         
-        [videoCamera stopCameraCapture];
-        [videoCamera startCameraCapture];
         
         double delayToStartRecording = 0.5;
         dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
