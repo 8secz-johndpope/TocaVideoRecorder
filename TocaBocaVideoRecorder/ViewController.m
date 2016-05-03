@@ -37,8 +37,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                                              selector:@selector(updateFaceTrackingFrame:)
                                                  name:@"updateFaceTrackingFrame"
                                                object:nil];
-
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+
     _isRecording = false;
     selectedIndex = 0;
     
@@ -613,6 +618,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         result = AVCaptureVideoOrientationLandscapeRight;
     else if ( deviceOrientation == UIDeviceOrientationLandscapeRight )
         result = AVCaptureVideoOrientationLandscapeLeft;
+    
     return result;
 }
 
@@ -774,7 +780,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 //                float head_start_x = 78.0;
 //                
 //                float width = faceRect.size.width * (hat_width / (hat_width - head_start_x));
-//                float height = width * hat_height/hat_width;
+//                float 8height = width * hat_height/hat_width;
 //                float y = faceRect.origin.y - (height * head_start_y) / hat_height;
 //                float x = faceRect.origin.x - (head_start_x * width/hat_width);
 //                CGRect newFrame = CGRectMake(x, y, width, height);
@@ -787,8 +793,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateFaceTrackingFrame" object:self];
                 }
                
-//                _faceView.layer.borderWidth = 1;
-//                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
+                _faceView.layer.borderWidth = 1;
+                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
                 
                 // add the new view to create a box around the face
                 
@@ -836,15 +842,50 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     }
 }
 
-#pragma mark - 
+
+
+#pragma mark - Orientation
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
     
 }
+
+- (void)deviceOrientationDidChange:(NSNotification*)notification {
+    NSString *notificationName = [notification name];
+    if ([notificationName isEqualToString:UIDeviceOrientationDidChangeNotification]) {
+        UIDeviceOrientation deviceOrientation = (UIDeviceOrientation)[[UIDevice currentDevice] orientation];
+        [self setOrientationOfVideoCamera:deviceOrientation];
+    }
+}
+
+- (void)setOrientationOfVideoCamera:(UIDeviceOrientation)orientation {
+
+    UIInterfaceOrientation newOrientation;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            newOrientation = UIInterfaceOrientationPortrait;
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            newOrientation = UIInterfaceOrientationPortraitUpsideDown;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            newOrientation = UIInterfaceOrientationLandscapeRight;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            newOrientation = UIInterfaceOrientationLandscapeLeft;
+            break;
+        default:
+            newOrientation = UIInterfaceOrientationLandscapeLeft;
+    }
+     videoCamera.outputImageOrientation = newOrientation;
+
+}
+    
+
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 }
