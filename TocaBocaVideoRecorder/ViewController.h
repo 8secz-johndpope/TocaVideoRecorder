@@ -40,6 +40,7 @@ typedef enum{
 @property (weak, nonatomic) IBOutlet UIView *videoCaptureView;
 @property (weak, nonatomic) IBOutlet GPUImageView *filteredVideoView;
 @property (strong, nonatomic) GPUImageOutput<GPUImageInput> *filter;
+@property (strong, nonatomic) GPUImageAlphaBlendFilter *blendFilter;
 @property (strong, nonatomic) GPUImageMovieWriter *movieWriter;
 @property (strong, nonatomic) CIDetector*faceDetector;
 @property (strong, nonatomic) UIView *faceView;

@@ -66,7 +66,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
     [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
     
-    _filter = [[GPUImageFilter alloc] init];
+//    _filter = [[GPUImageFilter alloc] init];
+    _filter = [[GPUImageSaturationFilter alloc] init];
     [videoCamera addTarget:_filter];
     [_filter addTarget:_filteredVideoView];
     
@@ -125,18 +126,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (IBAction)recordStartStop:(id)sender{
     
-    AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
+    //AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
     
     //record the video
-    if (_isRecording){
+    if (_isRecording) {
         //stop recording
         _isRecording = false;
         
-        //[_recordButton setTitle:@"RECORD" forState:UIControlStateNormal];
         [_recordButton setImage:[UIImage imageNamed:@"Record.png"] forState:UIControlStateNormal];
         [_recordButton setImage:[UIImage imageNamed:@"RecordPress.png"] forState:UIControlStateHighlighted];
         [_recordButton setImage:[UIImage imageNamed:@"RecordPress.png"] forState:UIControlStateHighlighted];
-        
         
         _activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame), 30, 30)];
         _activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
@@ -153,7 +152,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             //refresh collection view
             _savedVideos = nil;
             _savedVideos = [self savedVideos];
-            
             
             [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^
              {
@@ -232,12 +230,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         
         _movieWriter.encodingLiveVideo = YES;
    
-        [self startVideoFilterWithRecording:YES];
-
+        [_blendFilter addTarget:_movieWriter];
+        
         [videoCamera stopCameraCapture];
         [videoCamera startCameraCapture];
-        
-        double delayToStartRecording = 0.6;
+   
+        double delayToStartRecording = 1.5;
         dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
         dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
             NSLog(@"Start recording");
@@ -250,118 +248,116 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 
 
-- (void)startVideoFilterWithRecording:(BOOL)isRecording {
-    _filter = [[GPUImageSaturationFilter alloc] init];
-    [(GPUImageSaturationFilter *)_filter setSaturation:1.0];
-    GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-    blendFilter.mix = 1.0;
+- (void)startVideoFilter {
+    //[(GPUImageSaturationFilter *)_filter setSaturation:1.0];
+    
+    _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    _blendFilter.mix = 1.0;
     
     [videoCamera addTarget:_filter];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
     contentView.backgroundColor = [UIColor clearColor];
     
-    if(isRecording) {
-        _animatedImageView = [[UIImageView alloc] initWithFrame:_animatedImageView.frame];
-    } else {
-        switch ([selectedFilter filterType]) {
-            case FilterTypeReset:
-                NSLog(@"reset select");
-                
-                float height = 0;
-                float width = 0;
-                float framex = 0;
-                float framey = 0;
-                
-                videoCamera.delegate = nil;
-                _isUserInterfaceElementVideo = NO;
-                
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                break;
-                
-            case FilterTypeSticker:
-                NSLog(@"sticker select");
-                videoCamera.delegate = nil;
-                _isUserInterfaceElementVideo = NO;
-                
-                height = [selectedFilter animationHeight];
-                width = [selectedFilter animationWidth];
-                
-                NSLog(@"height: %1f width %1f ", height, width);
-                
-                framex = ((contentView.frame.size.width - width) / 2);
-                framey = ((contentView.frame.size.height - height) / 2);
-                
-                _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
-                
-                _previewView.backgroundColor = [UIColor clearColor];
-                _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
-                
-                _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
-                [contentView addSubview:_animatedImageView];
-                
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                break;
-                
-            case FilterTypeFrame:
-                NSLog(@"frame select");
-                videoCamera.delegate = nil;
-                _isUserInterfaceElementVideo = NO;
-                
-                height = [selectedFilter animationHeight];
-                width = [selectedFilter animationWidth];
-                
-                _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-                _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
-                
-                [contentView addSubview:_animatedImageView];
-                
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                break;
-                
-            case FilterTypeFaceTracking:
-                NSLog(@"face tracking select");
-                _isUserInterfaceElementVideo = YES;
-                videoCamera.delegate = self;
-                
-                height = [selectedFilter animationHeight];
-                width = [selectedFilter animationWidth];
-                
-                framex = ((contentView.frame.size.width - width) / 2);
-                framey = ((contentView.frame.size.height - height) / 2);
-                
-                _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
-                _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
-                
-                [contentView addSubview:_animatedImageView];
-                
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                break;
-                
-            default:
-                NSLog(@"default select");
-                _isUserInterfaceElementVideo = NO;
-                videoCamera.delegate = nil;
-                uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-                break;
-        }
-        
-        if([selectedFilter filterType] == FilterTypeSticker) {
+  
+    switch ([selectedFilter filterType]) {
+        case FilterTypeReset:
+            NSLog(@"reset select");
             
-            // making a fake image to attach uigesture to for dragging while recording
-            UIImageView *testImage = [[UIImageView alloc] initWithFrame:_animatedImageView.frame];
-            testImage.backgroundColor = [UIColor clearColor];
+            float height = 0;
+            float width = 0;
+            float framex = 0;
+            float framey = 0;
             
-            UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
-            testImage.userInteractionEnabled = YES;
-            testImage.gestureRecognizers = @[dragRecognizer];
+            videoCamera.delegate = nil;
+            _isUserInterfaceElementVideo = NO;
             
-            [_previewView addSubview:testImage];
-            testImage = nil;
-            [self.view addSubview:_previewView];
-            [self.view bringSubviewToFront:_switchCameraButton];
-        }
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            break;
+            
+        case FilterTypeSticker:
+            NSLog(@"sticker select");
+            videoCamera.delegate = nil;
+            _isUserInterfaceElementVideo = NO;
+            
+            height = [selectedFilter animationHeight];
+            width = [selectedFilter animationWidth];
+            
+            NSLog(@"height: %1f width %1f ", height, width);
+            
+            framex = ((contentView.frame.size.width - width) / 2);
+            framey = ((contentView.frame.size.height - height) / 2);
+            
+            _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
+            
+            _previewView.backgroundColor = [UIColor clearColor];
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
+            
+            _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+            [contentView addSubview:_animatedImageView];
+            
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            break;
+            
+        case FilterTypeFrame:
+            NSLog(@"frame select");
+            videoCamera.delegate = nil;
+            _isUserInterfaceElementVideo = NO;
+            
+            height = [selectedFilter animationHeight];
+            width = [selectedFilter animationWidth];
+            
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+            _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+            
+            [contentView addSubview:_animatedImageView];
+            
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            break;
+            
+        case FilterTypeFaceTracking:
+            NSLog(@"face tracking select");
+            _isUserInterfaceElementVideo = YES;
+            videoCamera.delegate = self;
+            
+            height = [selectedFilter animationHeight];
+            width = [selectedFilter animationWidth];
+            
+            framex = ((contentView.frame.size.width - width) / 2);
+            framey = ((contentView.frame.size.height - height) / 2);
+            
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
+            _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+            
+            [contentView addSubview:_animatedImageView];
+            
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            break;
+            
+        default:
+            NSLog(@"default select");
+            _isUserInterfaceElementVideo = NO;
+            videoCamera.delegate = nil;
+            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            break;
     }
+    
+    if([selectedFilter filterType] == FilterTypeSticker) {
+        
+        // making a fake image to attach uigesture to for dragging while recording
+        UIImageView *testImage = [[UIImageView alloc] initWithFrame:_animatedImageView.frame];
+        testImage.backgroundColor = [UIColor clearColor];
+        
+        UIPanGestureRecognizer *dragRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragSticker:)];
+        testImage.userInteractionEnabled = YES;
+        testImage.gestureRecognizers = @[dragRecognizer];
+        
+        [_previewView addSubview:testImage];
+        testImage = nil;
+        [self.view addSubview:_previewView];
+        [self.view bringSubviewToFront:_switchCameraButton];
+    }
+
     
     [videoCamera setDelegate:self];
     
@@ -371,16 +367,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
     contentView = nil;
+
+    [_filter addTarget:_blendFilter];
+    [uiElementInput addTarget:_blendFilter];
     
-    [_filter addTarget:blendFilter];
-    [uiElementInput addTarget:blendFilter];
+    [_blendFilter addTarget:_filteredVideoView];
     
-    [blendFilter addTarget:_filteredVideoView];
-    
-    if(isRecording) {
-        [blendFilter addTarget:_movieWriter];
-    }
-    
+
     GPUImageUIElement *weakUIElementInput = uiElementInput;
     __block int indexItem = 0;
     UIImageView *weakImageView = _animatedImageView;
@@ -394,13 +387,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             } else {
                 indexItem++;
             }
-            NSLog(@"image index: %d", indexItem);
+            
             UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakTocaFilter animationImagePrefix], indexItem]];
             weakImageView.image = image;
             image = nil;
         }
         [weakUIElementInput update];
     }];
+   
+    [videoCamera stopCameraCapture];
+    [videoCamera startCameraCapture];
 }
 
 - (IBAction)switchCamera:(id)sender {
@@ -492,13 +488,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             selectedIndex = indexPath.item;
             selectedFilter = [[TocaFilter alloc] initAtIndex:indexPath.item];
             
-            [self startVideoFilterWithRecording:NO];
+            [self startVideoFilter];
             
 //            _isFaceSwitched = YES;
 //            [self facesSwitched];
             
-            [videoCamera stopCameraCapture];
-            [videoCamera startCameraCapture];
+            
         }
     
     }else{
@@ -703,8 +698,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 }
                 
                 _faceView = [[UIView alloc] initWithFrame:faceRect];
-                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
-                _faceView.layer.borderWidth = 1;
+//                _faceView.layer.borderColor = [[UIColor redColor] CGColor];
+//                _faceView.layer.borderWidth = 1;
                 
                 faceCGRect = faceRect;
                 
@@ -719,19 +714,19 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 
--(void)facesSwitched{
-    if (!_isFaceSwitched) {
-        _isFaceSwitched = YES;
-        [videoCamera setDelegate:nil];
-        if (_faceView) {
-            [_faceView removeFromSuperview];
-            _faceView = nil;
-        }
-    }else{
-//        [videoCamera setDelegate:self];
-        _isFaceSwitched = NO;
-    }
-}
+//-(void)facesSwitched{
+//    if (!_isFaceSwitched) {
+//        _isFaceSwitched = YES;
+//        [videoCamera setDelegate:nil];
+//        if (_faceView) {
+//            [_faceView removeFromSuperview];
+//            _faceView = nil;
+//        }
+//    }else{
+////        [videoCamera setDelegate:self];
+//        _isFaceSwitched = NO;
+//    }
+//}
 
 - (void)updateFaceTrackingFrame:(NSNotification *)notification {
     _animatedImageView.frame = faceCGRect;
