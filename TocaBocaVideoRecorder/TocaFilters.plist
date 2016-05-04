@@ -68,9 +68,9 @@
 		<key>animation-width</key>
 		<integer>400</integer>
 		<key>animation-scale</key>
-		<string>1.1</string>
+		<string>1.3</string>
 		<key>animation-y-offset</key>
-		<string>0</string>
+		<string>-0.18</string>
 		<key>animation-x-offset</key>
 		<string>0</string>
 	</dict>
