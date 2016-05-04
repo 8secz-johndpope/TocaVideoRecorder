@@ -223,11 +223,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         [_recordButton setImage:[UIImage imageNamed:@"StopPress.png"] forState:UIControlStateHighlighted];
         [_recordButton setImage:[UIImage imageNamed:@"StopPress.png"] forState:UIControlStateHighlighted];
         
-        videoCamera = nil;
-        videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:currentCameraPosition];
+        //removed by ben
+        //videoCamera = nil;
+        //videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:currentCameraPosition];
         
-        [videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
-        [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
+        //[videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
+        //[videoCamera setHorizontallyMirrorRearFacingCamera:NO];
         
         videoCamera.outputImageOrientation = [UIApplication sharedApplication].statusBarOrientation;
 
@@ -272,9 +273,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             [_filter addTarget:blendFilter];
             [uiElementInput addTarget:blendFilter];
             
-            __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
+            //__unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
+            GPUImageUIElement *weakUIElementInput = uiElementInput;
             __block int indexItem = 0;
-            __unsafe_unretained UIImageView *weakImageView = _animatedImageView;
+            //__unsafe_unretained UIImageView *weakImageView = _animatedImageView;
+            UIImageView *weakImageView = _animatedImageView;
             __block TocaFilter *weakTocaFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
                
@@ -530,8 +533,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             [blendFilter addTarget:_filteredVideoView];
             
-            __unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
-            __unsafe_unretained UIImageView *weakanimatedView = _animatedImageView;
+            //commented out by ben
+            //__unsafe_unretained GPUImageUIElement *weakUIElementInput = uiElementInput;
+            //__unsafe_unretained UIImageView *weakanimatedView = _animatedImageView;
+             GPUImageUIElement *weakUIElementInput = uiElementInput;
+             UIImageView *weakanimatedView = _animatedImageView;
             __block int indexItem = 0;
             __block TocaFilter *weakFilter = selectedFilter;
             [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
