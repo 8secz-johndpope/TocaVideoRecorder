@@ -233,13 +233,14 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 - (void)videoTimerFired {
-   
-    if(countForProgress >= videoDurationMaximum) {
-        [self recordStartStop:nil];
-    } else {
-        countForProgress+=0.10;
+    if(_isRecording) {
+        if(countForProgress >= videoDurationMaximum) {
+            [self recordStartStop:nil];
+        } else {
+            countForProgress+=0.10;
+        }
+        [_videoProgressView setProgress:(countForProgress / videoDurationMaximum) animated:YES];
     }
-    [_videoProgressView setProgress:(countForProgress / videoDurationMaximum) animated:YES];
 }
 
 
