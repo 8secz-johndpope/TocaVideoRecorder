@@ -10,6 +10,8 @@
 #import "CustomCollectionCell.h"
 
 //static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+static CGFloat videoDurationMaximum = 29.0;
+static CGFloat buttonSize = 108.0;
 
 @interface ViewController ()
 {
@@ -32,6 +34,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    countForProgress = 0.0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateFaceTrackingFrame:)
@@ -109,7 +113,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }
     }];
     
-        return m4vFiles;
+    return m4vFiles;
 }
 
 -(NSString *)videoFileName: (int) len {
@@ -124,9 +128,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     return randomString;
 }
 
+- (IBAction)switchCamera:(id)sender {
+    if(videoCamera) {
+        [videoCamera rotateCamera];
+    }
+}
+
 - (IBAction)recordStartStop:(id)sender{
-    
-    //AVCaptureDevicePosition currentCameraPosition = [videoCamera cameraPosition];
     
     //record the video
     if (_isRecording) {
@@ -153,63 +161,28 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             _savedVideos = nil;
             _savedVideos = [self savedVideos];
             
-            [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^
-             {
-                 NSURL *videoURL = [NSURL URLWithString:fileSavedPath];
-                 NSLog(@"photo library %@", videoURL);
-                 
-                 PHAssetCreationRequest *createRequest = [PHAssetCreationRequest creationRequestForAssetFromVideoAtFileURL:videoURL];
-                 createRequest.creationDate = [NSDate date];
-             } completionHandler:^(BOOL success, NSError *error)
-             {
-                 NSString *title;
-                 NSString *message;
-                 if (success)
-                 {
-                     NSLog(@"photo library successfully saved");
-                     title = @"Video Saved";
-                     message = @"Check your Camera Roll for your saved video";
-                 }
-                 else
-                 {
-                     title = @"Error";
-                     message = @"There was an error saving your video";
-                     
-                     NSLog(@"photo library error saving to photos: %@", error);
-                 }
-                 
-                 
-                 UIAlertController *alertController = [UIAlertController
-                                                       alertControllerWithTitle:title
-                                                       message:message
-                                                       preferredStyle:UIAlertControllerStyleAlert];
-                 
-                 UIAlertAction *okAction = [UIAlertAction
-                                            actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                                            style:UIAlertActionStyleCancel
-                                            handler:^(UIAlertAction *action)
-                                            {
-                                                NSLog(@"OK action");
-                                            }];
-                 
-                [alertController addAction:okAction];
-                 
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [self presentViewController:alertController animated:YES completion:nil];
-                     [self resetVideoCamera];
-                 });
-                 
-                 fileSavedPath = nil;
-                 
-             }];
-            
+           
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                
                 [_activityView stopAnimating];
                 [_activityView removeFromSuperview];
+                
                 [weakSelf.savedVideosCollectionView reloadData];
+                [self resetVideoCamera];
+                
+                [self showSavedVideoView];
+                
+                if(videoRecordTimeOutTimer) {
+                    [videoRecordTimeOutTimer invalidate];
+                    videoRecordTimeOutTimer = nil;
+                }
+                countForProgress = 0.0;
+                _videoProgressView.progress = 0.0;
                 
                 NSLog(@"completed");
             });
+            
         }];
     }else{
         
@@ -229,16 +202,20 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(1280.0, 720.0)];
         
         _movieWriter.encodingLiveVideo = YES;
-   
         [_blendFilter addTarget:_movieWriter];
         
-        [videoCamera stopCameraCapture];
-        [videoCamera startCameraCapture];
-   
-        double delayToStartRecording = 1.5;
+        double delayToStartRecording = 1.2;
         dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
         dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
             NSLog(@"Start recording");
+            
+            if(videoRecordTimeOutTimer) {
+                [videoRecordTimeOutTimer invalidate];
+                videoRecordTimeOutTimer = nil;
+            }
+            countForProgress = 0.0;
+            
+            videoRecordTimeOutTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(videoTimerFired) userInfo:nil repeats:YES];
             
             videoCamera.audioEncodingTarget = _movieWriter;
             [_movieWriter startRecording];
@@ -246,10 +223,18 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     }
 }
 
+- (void)videoTimerFired {
+   
+    if(countForProgress >= videoDurationMaximum) {
+        [self recordStartStop:nil];
+    } else {
+        countForProgress+=0.10;
+    }
+    [_videoProgressView setProgress:(countForProgress / videoDurationMaximum) animated:YES];
+}
 
 
 - (void)startVideoFilter {
-    //[(GPUImageSaturationFilter *)_filter setSaturation:1.0];
     
     _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
     _blendFilter.mix = 1.0;
@@ -399,12 +384,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [videoCamera startCameraCapture];
 }
 
-- (IBAction)switchCamera:(id)sender {
-    if(videoCamera) {
-        [videoCamera rotateCamera];
-    }
-}
-
 - (void)resetVideoCamera {
     // index 0 is reset
     if(_previewView) {
@@ -414,6 +393,208 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:1];
     [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
+}
+
+#pragma mark - Saving Video
+
+- (void)showSavedVideoView {
+    NSLog(@"show saved cameraview");
+    [videoCamera stopCameraCapture];
+    
+    _recordButton.userInteractionEnabled = NO;
+    _filterCollectionView.userInteractionEnabled = NO;
+    
+    _previewMovieView = [[UIView alloc] initWithFrame:_filteredVideoView.frame];
+    
+    AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:fileSavedPath]];
+    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
+    _previewMoviePlayer = [AVPlayer playerWithPlayerItem:playerItem];
+    
+    AVPlayerLayer *previewMovieLayer =[AVPlayerLayer playerLayerWithPlayer:_previewMoviePlayer];
+    previewMovieLayer.frame = CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height);
+    
+    previewMovieLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    previewMovieLayer.needsDisplayOnBoundsChange = YES;
+   
+    [_previewMovieView.layer addSublayer:previewMovieLayer];
+    [self.view addSubview:_previewMovieView];
+    
+    [_previewMoviePlayer play];
+    
+    _deleteVideoButton = [[UIButton alloc] initWithFrame:CGRectMake((_filteredVideoView.frame.origin.x - (buttonSize/2)), (_filteredVideoView.frame.origin.y - (buttonSize/2)), buttonSize, buttonSize)];
+    [_deleteVideoButton setImage:[UIImage imageNamed:@"Trash.png"] forState:UIControlStateNormal];
+    [_deleteVideoButton setImage:[UIImage imageNamed:@"TrashPress.png"] forState:UIControlStateHighlighted];
+    [_deleteVideoButton setImage:[UIImage imageNamed:@"TrashPress.png"] forState:UIControlStateHighlighted];
+    [_deleteVideoButton addTarget:nil action:@selector(tapDeleteIcon:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_deleteVideoButton];
+    
+    _saveVideoButton = [[UIButton alloc] initWithFrame:CGRectMake(((_filteredVideoView.frame.origin.x+_filteredVideoView.frame.size.width) - (buttonSize/2)), (_filteredVideoView.frame.origin.y - (buttonSize/2)), buttonSize, buttonSize)];
+    [_saveVideoButton setImage:[UIImage imageNamed:@"SaveCollect.png"] forState:UIControlStateNormal];
+    [_saveVideoButton setImage:[UIImage imageNamed:@"SaveCollectPress.png"] forState:UIControlStateHighlighted];
+    [_saveVideoButton setImage:[UIImage imageNamed:@"SaveCollectPress.png"] forState:UIControlStateHighlighted];
+    [_saveVideoButton addTarget:nil action:@selector(tapSaveIcon:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_saveVideoButton];
+    
+    asset = nil;
+    playerItem = nil;
+    previewMovieLayer = nil;
+}
+
+- (void)removeSavedVideoView {
+    [_deleteVideoButton removeFromSuperview];
+    _deleteVideoButton = nil;
+    
+    [_saveVideoButton removeFromSuperview];
+    _saveVideoButton = nil;
+    
+    [_previewMovieView removeFromSuperview];
+    _previewMovieView = nil;
+    
+    if(_videoNameLabel){
+        if([_videoNameLabel isFirstResponder]){
+            [_videoNameLabel resignFirstResponder];
+        }
+        [_videoNameLabel removeFromSuperview];
+        _videoNameLabel = nil;
+    }
+    
+    if(_previewMoviePlayer){
+        [_previewMoviePlayer pause];
+        _previewMoviePlayer = nil;
+    }
+    
+    NSError *error;
+    if([[NSFileManager defaultManager] fileExistsAtPath:fileSavedPath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:fileSavedPath error:&error];
+        if(!error){
+            fileSavedPath = nil;
+            NSLog(@"delete the file");
+        }
+    }
+    _recordButton.userInteractionEnabled = YES;
+    _filterCollectionView.userInteractionEnabled = YES;
+    
+    [videoCamera startCameraCapture];
+}
+
+- (void)hideCreationToolButtons {
+    [UIView animateWithDuration:1.5 animations:^{
+        _recordButton.alpha = 0.0;
+        _filterCollectionView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        _recordButton.hidden = YES;
+        _filterCollectionView.hidden = YES;
+    }];
+}
+
+- (void)showCreationToolButtons {
+    _recordButton.hidden = NO;
+    _filterCollectionView.hidden = NO;
+    [UIView animateWithDuration:1.5 animations:^{
+        _recordButton.alpha = 1.0;
+        _filterCollectionView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (IBAction)tapDeleteIcon:(id)sender {
+    [self removeSavedVideoView];
+}
+
+- (IBAction)tapSaveIcon:(id)sender {
+    
+    if(_videoNameLabel.text.length > 0) {
+        [self saveVideoToCameraRoll];
+    } else {
+        _videoNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x+60, _filteredVideoView.frame.origin.y+60, _filteredVideoView.frame.size.width - 120, 45)];
+        _videoNameLabel.borderStyle = UITextBorderStyleLine;
+        _videoNameLabel.backgroundColor = [UIColor whiteColor];
+        _videoNameLabel.keyboardType = UIKeyboardTypeAlphabet;
+        _videoNameLabel.autocorrectionType = UITextAutocapitalizationTypeWords;
+        _videoNameLabel.returnKeyType = UIReturnKeyDone;
+        _videoNameLabel.font = [UIFont systemFontOfSize:18];
+        _videoNameLabel.delegate = self;
+        
+        [self.view addSubview:_videoNameLabel];
+        [_videoNameLabel becomeFirstResponder];
+    }
+}
+
+- (void)saveVideoToCameraRoll {
+    
+    _videoNameLabel.userInteractionEnabled = NO;
+    [self.view bringSubviewToFront:_activityView];
+    [_activityView startAnimating];
+    
+    
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^
+     {
+         NSURL *videoURL = [NSURL URLWithString:fileSavedPath];
+         
+         PHAssetCreationRequest *createRequest = [PHAssetCreationRequest creationRequestForAssetFromVideoAtFileURL:videoURL];
+         createRequest.creationDate = [NSDate date];
+     } completionHandler:^(BOOL success, NSError *error)
+     {
+         NSString *title;
+         NSString *message;
+         if (success)
+         {
+             NSLog(@"photo library successfully saved");
+             title = @"Video Saved";
+             message = @"Check your Camera Roll for your saved video";
+             
+             
+             fileSavedPath = nil;
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self animateSavedVideoToCollection];
+                 
+                 [_videoNameLabel removeFromSuperview];
+                 _videoNameLabel = nil;
+                 
+                 [_deleteVideoButton removeFromSuperview];
+                 _deleteVideoButton = nil;
+                 
+                 [_saveVideoButton removeFromSuperview];
+                 _saveVideoButton = nil;
+                 
+             });
+         }
+         else
+         {
+             title = @"Error";
+             message = @"There was an error saving your video please ";
+
+             NSLog(@"photo library error saving to photos: %@", error);
+         }
+
+
+         UIAlertController *alertController = [UIAlertController
+                                               alertControllerWithTitle:title
+                                               message:message
+                                               preferredStyle:UIAlertControllerStyleAlert];
+
+         UIAlertAction *okAction = [UIAlertAction
+                                    actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                    style:UIAlertActionStyleCancel
+                                    handler:^(UIAlertAction *action)
+                                    {
+                                        NSLog(@"OK action");
+                                    }];
+
+        [alertController addAction:okAction];
+
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [_activityView stopAnimating];
+             [self presentViewController:alertController animated:YES completion:nil];
+         });
+     }];
+}
+
+- (void)animateSavedVideoToCollection {
+    
+    [self hideCreationToolButtons];
+
 }
 
 
@@ -755,6 +936,35 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     }
 }
 
+
+#pragma mark - <UITextField Delegate>
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if([_videoNameLabel.text isEqualToString:@""]) {
+        
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:nil
+                                              message:@"Please name your video"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"OK action");
+                                   }];
+        
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return NO;
+    } else {
+        [self saveVideoToCameraRoll];
+        [textField resignFirstResponder];
+        return YES;
+    }
+}
 
 
 #pragma mark - Orientation

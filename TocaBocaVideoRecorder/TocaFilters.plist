@@ -162,9 +162,9 @@
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_DOG_</string>
 		<key>animation-height</key>
-		<integer>411</integer>
-		<key>animation-width</key>
 		<integer>305</integer>
+		<key>animation-width</key>
+		<integer>411</integer>
 	</dict>
 	<dict>
 		<key>type</key>

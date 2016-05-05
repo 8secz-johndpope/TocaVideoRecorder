@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
+#import <AVKit/AVKit.h>
 #import "GPUImage.h"
 #import "TocaFilter.h"
 @import AVFoundation;
@@ -20,7 +21,7 @@ typedef enum{
 } VideoElementType;
 
 
-@interface ViewController : UIViewController <GPUImageVideoCameraDelegate>
+@interface ViewController : UIViewController <GPUImageVideoCameraDelegate, UITextFieldDelegate>
 {
     NSString *fileSavedPath;
     GPUImageVideoCamera *videoCamera;
@@ -31,6 +32,8 @@ typedef enum{
     int selectedIndex;
     TocaFilter *selectedFilter;
     UIInterfaceOrientation currentInterfaceOrientation;
+    NSTimer *videoRecordTimeOutTimer;
+    float countForProgress;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
@@ -39,12 +42,22 @@ typedef enum{
 @property (weak, nonatomic) IBOutlet UICollectionView *savedVideosCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *videoCaptureView;
 @property (weak, nonatomic) IBOutlet GPUImageView *filteredVideoView;
+@property (weak, nonatomic) IBOutlet UIProgressView *videoProgressView;
+
+
+@property (strong, nonatomic) UITextField *videoNameLabel;
+@property (strong, nonatomic) UILabel *videoAuthorLabel;
+
+@property (strong, nonatomic) UIButton *deleteVideoButton;
+@property (strong, nonatomic) UIButton *saveVideoButton;
+@property (strong, nonatomic) AVPlayer *previewMoviePlayer;
 @property (strong, nonatomic) GPUImageOutput<GPUImageInput> *filter;
 @property (strong, nonatomic) GPUImageAlphaBlendFilter *blendFilter;
 @property (strong, nonatomic) GPUImageMovieWriter *movieWriter;
 @property (strong, nonatomic) CIDetector*faceDetector;
 @property (strong, nonatomic) UIView *faceView;
 @property (strong, nonatomic) UIView *previewView;
+@property (strong, nonatomic) UIView *previewMovieView;
 @property (strong, nonatomic) UIImageView *animatedImageView;
 @property BOOL isRecording;
 @property BOOL isFaceSwitched;
