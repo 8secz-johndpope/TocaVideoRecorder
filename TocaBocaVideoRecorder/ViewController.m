@@ -212,7 +212,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _movieWriter.encodingLiveVideo = YES;
         [_blendFilter addTarget:_movieWriter];
         
-        double delayToStartRecording = 1.2;
+        //add image view on top ov filter view, of the frame, then remove once started
+        UIImageView *tempOverlay = [[UIImageView alloc] initWithImage:[self takeSnapshot:_filteredVideoView]];
+        tempOverlay.frame = _filteredVideoView.frame;
+        [_videoItemsContainer addSubview:tempOverlay];
+        
+        double delayToStartRecording = 0.2;
         dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
         dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
             NSLog(@"Start recording");
@@ -228,8 +233,20 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             videoCamera.audioEncodingTarget = _movieWriter;
             [_movieWriter startRecording];
+            [tempOverlay removeFromSuperview];
         });
     }
+}
+
+- (UIImage *)takeSnapshot:(UIView *)view {
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, [UIScreen mainScreen].scale);
+    
+    
+    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 - (void)videoTimerFired {

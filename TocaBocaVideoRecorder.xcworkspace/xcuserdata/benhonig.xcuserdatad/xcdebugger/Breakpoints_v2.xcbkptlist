@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TocaBocaVideoRecorder/ViewController.m"
-            timestampString = "484066975.624354"
+            timestampString = "484181127.343448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "@implementation ViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TocaBocaVideoRecorder/ViewController.m"
-            timestampString = "484066975.624354"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "-startVideoFilter"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TocaBocaVideoRecorder/ViewController.m"
-            timestampString = "484066975.624354"
+            timestampString = "484181127.343448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "-startVideoFilter"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +58,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TocaBocaVideoRecorder/ViewController.m"
-            timestampString = "484066975.624354"
+            timestampString = "484181127.343448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
+            landmarkName = "-showSavedVideoView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TocaBocaVideoRecorder/ViewController.m"
+            timestampString = "484181127.343448"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
+            landmarkName = "-removeSavedVideoView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

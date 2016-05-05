@@ -22,26 +22,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ag-2C-MTC">
                                 <rect key="frame" x="57" y="30" width="911" height="589"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card-Body.png" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-82-hJH">
-                                        <rect key="frame" x="56" y="100" width="798" height="488.5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Card-Body.png" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-82-hJH">
+                                        <rect key="frame" x="56" y="100" width="798" height="489"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="height" multiplier="889:544" id="pT3-0j-uwM"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Head_1_Face1_BLINK00002.png" translatesAutoresizingMaskIntoConstraints="NO" id="atN-t5-coM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Head_1_Face1_BLINK00002.png" translatesAutoresizingMaskIntoConstraints="NO" id="atN-t5-coM">
                                         <rect key="frame" x="393" y="54" width="124" height="83"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="atN-t5-coM" secondAttribute="height" multiplier="3:2" id="fEI-RQ-qAo"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1c-Jv-wuw" customClass="GPUImageView">
-                                        <rect key="frame" x="56" y="120" width="798" height="448.5"/>
+                                        <rect key="frame" x="56" y="120" width="798" height="449"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="16:9" id="rxI-Eh-p3L"/>
                                         </constraints>
                                     </view>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-KD-Vp4">
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-KD-Vp4">
                                         <rect key="frame" x="56" y="568" width="798" height="2"/>
                                         <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="trackTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,7 +118,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZN-zp-x0Q">
-                                <rect key="frame" x="26" y="638" width="106.5" height="106.5"/>
+                                <rect key="frame" x="26" y="638" width="107" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mZN-zp-x0Q" secondAttribute="height" multiplier="1:1" id="2i9-YG-jPV"/>
                                 </constraints>
@@ -129,7 +129,7 @@
                                     <action selector="recordStartStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vzt-MS-4px"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gux-n3-OvA" userLabel="Filters Collection View">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gux-n3-OvA" userLabel="Filters Collection View">
                                 <rect key="frame" x="155" y="638" width="869" height="115"/>
                                 <color key="backgroundColor" red="0.30980392156862746" green="0.80000000000000004" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
