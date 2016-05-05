@@ -255,6 +255,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     contentView.backgroundColor = [UIColor clearColor];
     
   
+    uiElementInput = nil;
+    
     switch ([selectedFilter filterType]) {
         case FilterTypeReset:
             NSLog(@"reset select");
@@ -267,7 +269,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             videoCamera.delegate = nil;
             _isUserInterfaceElementVideo = NO;
             
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+           // uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
             break;
             
         case FilterTypeSticker:
@@ -277,8 +279,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             height = [selectedFilter animationHeight];
             width = [selectedFilter animationWidth];
-            
-            NSLog(@"height: %1f width %1f ", height, width);
             
             framex = ((contentView.frame.size.width - width) / 2);
             framey = ((contentView.frame.size.height - height) / 2);
@@ -291,7 +291,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
             [contentView addSubview:_animatedImageView];
             
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
             break;
             
         case FilterTypeFrame:
@@ -323,7 +322,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             [contentView addSubview:_animatedImageView];
             
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
             break;
             
         case FilterTypeFaceTracking:
@@ -342,14 +340,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             [contentView addSubview:_animatedImageView];
             
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
             break;
             
         default:
             NSLog(@"default select");
             _isUserInterfaceElementVideo = NO;
             videoCamera.delegate = nil;
-            uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
+            
             break;
     }
     
@@ -384,10 +381,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     [_blendFilter addTarget:_filteredVideoView];
     
-
+    _animatedImage = nil;
+    _animatedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+    
     GPUImageUIElement *weakUIElementInput = uiElementInput;
     __block int indexItem = 0;
     UIImageView *weakImageView = _animatedImageView;
+   // __block UIImage *weakImage = _animatedImage;
     __block TocaFilter *weakTocaFilter = selectedFilter;
     [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
         
@@ -399,9 +399,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 indexItem++;
             }
             
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakTocaFilter animationImagePrefix], indexItem]];
-            weakImageView.image = image;
-            image = nil;
+            //for malloc error
+//            dispatch_async(dispatch_get_global_queue
+//                           (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+                UIImage *weakImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakTocaFilter animationImagePrefix], indexItem]];
+                weakImageView.image = weakImage;
+                weakImage = nil;
+               //image = nil;
+               
+//            });
         }
         [weakUIElementInput update];
     }];
@@ -528,9 +535,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _videoItemsContainer.transform = CGAffineTransformConcat(videoPlayerShrink, videoPlayerShift);
     
         _collectionTabImage.frame = CGRectMake(dragToOpenConstant, 0, tabWidth, self.view.frame.size.height);
-        
-        //[self.view layoutIfNeeded];
-        
+    
     } completion:^(BOOL finished) {
         _recordButton.hidden = YES;
         _filterCollectionView.hidden = YES;
@@ -554,7 +559,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 - (void)closeCollectionTab {
-    [UIView animateWithDuration:1.0f delay:0.7f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    
+    _recordButton.hidden = NO;
+    _filterCollectionView.hidden = NO;
+    
+    [UIView animateWithDuration:1.0f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
         
         CGRect newCollection = _collectionTabImage.frame;
         newCollection.origin.x += 600;
@@ -564,6 +573,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         newContainer.origin.x += 600;
         _videoItemsContainer.frame = newContainer;
         
+       
+        _recordButton.alpha = 1.0;
+        _filterCollectionView.alpha = 1.0;
         
     } completion:^(BOOL finished) {
         _videoItemsContainer.alpha = 0.0;
@@ -592,23 +604,19 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }
         
         [self showCreationToolButtons];
+        
+        [videoCamera startCameraCapture];
     }];
 }
      
 
 - (void)showCreationToolButtons {
     _videoItemsContainer.frame = originalVideoContainerFrame;
-    
-    _recordButton.hidden = NO;
-    _filterCollectionView.hidden = NO;
     _filteredVideoView.hidden = NO;
     
-    [UIView animateWithDuration:1.5 animations:^{
-        _recordButton.alpha = 1.0;
-        _filterCollectionView.alpha = 1.0;
+    [UIView animateWithDuration:0.4 animations:^{
         _videoItemsContainer.alpha = 1.0;
     } completion:^(BOOL finished) {
-        [videoCamera startCameraCapture];
         _recordButton.userInteractionEnabled = YES;
         _filterCollectionView.userInteractionEnabled = YES;
     }];
@@ -681,7 +689,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
          else
          {
              title = @"Error";
-             message = @"There was an error saving your video please ";
+             message = @"There was an error saving your video";
 
              NSLog(@"photo library error saving to photos: %@", error);
          }

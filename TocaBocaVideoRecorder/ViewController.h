@@ -62,6 +62,7 @@ typedef enum{
 @property (strong, nonatomic) UIView *previewView;
 @property (strong, nonatomic) UIView *previewMovieView;
 @property (strong, nonatomic) UIImageView *animatedImageView;
+@property (strong, nonatomic) UIImage *animatedImage;
 @property BOOL isRecording;
 @property BOOL isFaceSwitched;
 @property BOOL isUserInterfaceElementVideo;
