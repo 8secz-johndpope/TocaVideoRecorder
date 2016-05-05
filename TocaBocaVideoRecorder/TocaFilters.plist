@@ -102,13 +102,13 @@
 		<key>animation-image-prefix</key>
 		<string>OL_AS_ICE_CREAM_</string>
 		<key>animation-height</key>
-		<integer>400</integer>
-		<key>animation-width</key>
 		<integer>540</integer>
-		<key>animation-y-offset</key>
-		<string></string>
-		<key>animation-x-offset</key>
-		<string></string>
+		<key>animation-width</key>
+		<integer>400</integer>
+		<key>animation-y</key>
+		<string>0</string>
+		<key>animation-x</key>
+		<string>600</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -121,6 +121,14 @@
 		<integer>119</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_AS_MOUTH_</string>
+		<key>animation-height</key>
+		<integer>540</integer>
+		<key>animation-width</key>
+		<integer>960</integer>
+		<key>animation-x</key>
+		<string>0</string>
+		<key>animation-y</key>
+		<string>0</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -133,6 +141,14 @@
 		<integer>95</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_AS_Audience_</string>
+		<key>animation-height</key>
+		<string>238</string>
+		<key>animation-width</key>
+		<string>960</string>
+		<key>animation-x</key>
+		<string>0</string>
+		<key>animation-y</key>
+		<string>430</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -221,6 +237,14 @@
 		<integer>83</integer>
 		<key>animation-image-prefix</key>
 		<string>OL_AS_ELEPHANT_</string>
+		<key>animation-height</key>
+		<integer>540</integer>
+		<key>animation-width</key>
+		<integer>960</integer>
+		<key>animation-x</key>
+		<string>0</string>
+		<key>animation-y</key>
+		<string>0</string>
 	</dict>
 	<dict>
 		<key>type</key>

@@ -34,15 +34,18 @@ typedef enum{
     UIInterfaceOrientation currentInterfaceOrientation;
     NSTimer *videoRecordTimeOutTimer;
     float countForProgress;
+    CGRect originalVideoContainerFrame;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
+@property (weak, nonatomic) IBOutlet UIView *videoItemsContainer;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *filterCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *savedVideosCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *videoCaptureView;
 @property (weak, nonatomic) IBOutlet GPUImageView *filteredVideoView;
 @property (weak, nonatomic) IBOutlet UIProgressView *videoProgressView;
+@property (strong, nonatomic) IBOutlet UIImageView *collectionTabImage;
 
 
 @property (strong, nonatomic) UITextField *videoNameLabel;

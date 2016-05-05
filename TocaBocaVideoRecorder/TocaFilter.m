@@ -70,7 +70,7 @@
     return self.filterItem[@"animation-image-prefix"];
 }
 
-// for face tracking
+// for face tracking need percentage away from origin
 - (float)animationScale {
     if(!self.filterItem[@"animation-scale"]) {
         return 1.0;
@@ -92,6 +92,23 @@
         return 0.0;
     } else {
         return [self.filterItem[@"animation-y-offset"] floatValue];
+    }
+}
+
+// for frames need specific pixels, have exact pixels for 1024 X 768 and I convert
+- (float)animationX {
+    if(!self.filterItem[@"animation-x"]) {
+        return 0.0;
+    } else {
+        return [self.filterItem[@"animation-x"] floatValue];
+    }
+}
+
+- (float)animationY {
+    if(!self.filterItem[@"animation-y"]) {
+        return 0.0;
+    } else {
+        return [self.filterItem[@"animation-y"] floatValue];
     }
 }
 

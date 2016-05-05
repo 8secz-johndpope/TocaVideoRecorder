@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -20,18 +19,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card-Body.png" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-82-hJH">
-                                <rect key="frame" x="113" y="130" width="798" height="488.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ag-2C-MTC">
+                                <rect key="frame" x="57" y="30" width="911" height="589"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card-Body.png" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-82-hJH">
+                                        <rect key="frame" x="56" y="100" width="798" height="488.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="height" multiplier="889:544" id="pT3-0j-uwM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Head_1_Face1_BLINK00002.png" translatesAutoresizingMaskIntoConstraints="NO" id="atN-t5-coM">
+                                        <rect key="frame" x="393" y="54" width="124" height="83"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="atN-t5-coM" secondAttribute="height" multiplier="3:2" id="fEI-RQ-qAo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1c-Jv-wuw" customClass="GPUImageView">
+                                        <rect key="frame" x="56" y="120" width="798" height="448.5"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="16:9" id="rxI-Eh-p3L"/>
+                                        </constraints>
+                                    </view>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-KD-Vp4">
+                                        <rect key="frame" x="56" y="568" width="798" height="2"/>
+                                        <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="trackTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-q2-nBN">
+                                        <rect key="frame" x="789" y="140" width="43" height="43"/>
+                                        <color key="backgroundColor" red="0.1215686275" green="0.41960784309999999" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="k9Q-q2-nBN" secondAttribute="height" multiplier="1:1" id="8Pl-4w-7F2"/>
+                                            <constraint firstAttribute="width" constant="43" id="yAL-cK-pWp"/>
+                                        </constraints>
+                                        <state key="normal" title="&gt;"/>
+                                        <connections>
+                                            <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zxa-Ic-zn5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="height" multiplier="889:544" id="pT3-0j-uwM"/>
+                                    <constraint firstItem="atN-t5-coM" firstAttribute="bottom" secondItem="JDR-82-hJH" secondAttribute="top" multiplier="1.37" id="0Xs-DJ-Bp1"/>
+                                    <constraint firstItem="atN-t5-coM" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" multiplier="0.155" id="5mi-jB-zkR"/>
+                                    <constraint firstItem="XHt-KD-Vp4" firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="width" id="Bjg-P9-s0z"/>
+                                    <constraint firstItem="k9Q-q2-nBN" firstAttribute="leading" secondItem="Z1c-Jv-wuw" secondAttribute="trailing" constant="-65" id="DAe-O8-Xra"/>
+                                    <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerY" secondItem="JDR-82-hJH" secondAttribute="centerY" id="HLe-KM-pup"/>
+                                    <constraint firstItem="JDR-82-hJH" firstAttribute="width" secondItem="8Ag-2C-MTC" secondAttribute="width" multiplier="0.875" id="JUW-Jj-flu"/>
+                                    <constraint firstItem="XHt-KD-Vp4" firstAttribute="centerX" secondItem="Z1c-Jv-wuw" secondAttribute="centerX" id="KAv-Tu-uf1"/>
+                                    <constraint firstItem="Z1c-Jv-wuw" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" id="ba1-jS-oRh"/>
+                                    <constraint firstItem="JDR-82-hJH" firstAttribute="centerX" secondItem="8Ag-2C-MTC" secondAttribute="centerX" id="hsd-NE-n1d"/>
+                                    <constraint firstItem="atN-t5-coM" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="jBy-u3-4qa"/>
+                                    <constraint firstAttribute="width" secondItem="8Ag-2C-MTC" secondAttribute="height" multiplier="911:589" id="nkE-dr-ZbJ"/>
+                                    <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="oAY-u7-gLM"/>
+                                    <constraint firstItem="Z1c-Jv-wuw" firstAttribute="top" secondItem="k9Q-q2-nBN" secondAttribute="bottom" constant="-63" id="rg5-Lf-hjk"/>
+                                    <constraint firstAttribute="bottom" secondItem="JDR-82-hJH" secondAttribute="bottom" id="tiT-dJ-UwV"/>
+                                    <constraint firstItem="XHt-KD-Vp4" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="bottom" id="vlC-kh-2bb"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Head_1_Face1_BLINK00002.png" translatesAutoresizingMaskIntoConstraints="NO" id="atN-t5-coM">
-                                <rect key="frame" x="450" y="84" width="124" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="atN-t5-coM" secondAttribute="height" multiplier="3:2" id="fEI-RQ-qAo"/>
-                                </constraints>
-                            </imageView>
+                            </view>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cpu-8t-q0m" userLabel="Saved Videos Collection View">
                                 <rect key="frame" x="103" y="756" width="921" height="91"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,55 +188,20 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Idw-4B-fIh"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1c-Jv-wuw" customClass="GPUImageView">
-                                <rect key="frame" x="113" y="150" width="798" height="448.5"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="16:9" id="rxI-Eh-p3L"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-q2-nBN">
-                                <rect key="frame" x="863" y="155" width="43" height="43"/>
-                                <color key="backgroundColor" red="0.1215686275" green="0.41960784309999999" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="k9Q-q2-nBN" secondAttribute="height" multiplier="1:1" id="8Pl-4w-7F2"/>
-                                    <constraint firstAttribute="width" constant="43" id="yAL-cK-pWp"/>
-                                </constraints>
-                                <state key="normal" title="&gt;"/>
-                                <connections>
-                                    <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zxa-Ic-zn5"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-KD-Vp4">
-                                <rect key="frame" x="113" y="598.5" width="798" height="2"/>
-                                <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="trackTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.33725490196078434" green="0.87450980392156863" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.104" id="0b4-T9-Qxg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gux-n3-OvA" secondAttribute="bottom" constant="15" id="2AG-yK-OK0"/>
-                            <constraint firstItem="Z1c-Jv-wuw" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" id="7lN-ZO-VT3"/>
+                            <constraint firstItem="8Ag-2C-MTC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3cQ-H3-vSL"/>
+                            <constraint firstItem="8Ag-2C-MTC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" multiplier="1.5" id="3hf-UP-hEu"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="height" secondItem="gux-n3-OvA" secondAttribute="height" constant="-8.5" id="BnJ-J1-Qku"/>
-                            <constraint firstItem="XHt-KD-Vp4" firstAttribute="centerX" secondItem="Z1c-Jv-wuw" secondAttribute="centerX" id="GEm-HZ-77j"/>
-                            <constraint firstItem="k9Q-q2-nBN" firstAttribute="trailing" secondItem="Z1c-Jv-wuw" secondAttribute="trailing" constant="-5" id="HCe-dX-k4Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gux-n3-OvA" secondAttribute="trailing" constant="-20" id="MIc-4O-DuH"/>
+                            <constraint firstItem="8Ag-2C-MTC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.89" id="PgE-Is-NOq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mZN-zp-x0Q" secondAttribute="bottom" constant="23" id="R3R-uq-yIh"/>
-                            <constraint firstItem="atN-t5-coM" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" multiplier="0.155" id="Vx2-HC-6yk"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="centerY" secondItem="gux-n3-OvA" secondAttribute="centerY" constant="-4.25" id="Xj8-s9-Yrm"/>
-                            <constraint firstItem="atN-t5-coM" firstAttribute="centerY" secondItem="JDR-82-hJH" secondAttribute="top" constant="-5" id="Xow-1T-n3K"/>
-                            <constraint firstItem="XHt-KD-Vp4" firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="width" id="ane-SX-W6F"/>
-                            <constraint firstItem="JDR-82-hJH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.779" id="bLk-6l-Cer"/>
-                            <constraint firstItem="JDR-82-hJH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="fOW-70-HUN"/>
-                            <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="nah-2x-HzJ"/>
-                            <constraint firstItem="k9Q-q2-nBN" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="top" constant="5" id="neO-rB-Cxv"/>
-                            <constraint firstItem="XHt-KD-Vp4" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="bottom" id="od5-3E-1Gc"/>
-                            <constraint firstItem="atN-t5-coM" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="pza-kW-gDX"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="6" id="sWf-dg-NOx"/>
-                            <constraint firstItem="JDR-82-hJH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x44-6O-iUS"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="centerY" secondItem="gux-n3-OvA" secondAttribute="centerY" id="xHY-kY-qfP"/>
-                            <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerY" secondItem="JDR-82-hJH" secondAttribute="centerY" id="zRh-Ho-Sd1"/>
                             <constraint firstItem="gux-n3-OvA" firstAttribute="leading" secondItem="mZN-zp-x0Q" secondAttribute="trailing" constant="23" id="zYr-M8-Di4"/>
                         </constraints>
                         <variation key="default">
@@ -210,6 +220,7 @@
                         <outlet property="savedVideosCollectionView" destination="Cpu-8t-q0m" id="jsT-ka-I1y"/>
                         <outlet property="switchCameraButton" destination="k9Q-q2-nBN" id="Cgy-90-BAm"/>
                         <outlet property="videoCaptureView" destination="Z1c-Jv-wuw" id="cyZ-2A-iR4"/>
+                        <outlet property="videoItemsContainer" destination="8Ag-2C-MTC" id="Zpy-F9-ben"/>
                         <outlet property="videoProgressView" destination="XHt-KD-Vp4" id="ONs-uA-RRN"/>
                     </connections>
                 </viewController>

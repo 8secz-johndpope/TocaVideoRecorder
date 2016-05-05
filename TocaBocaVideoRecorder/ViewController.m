@@ -37,6 +37,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     countForProgress = 0.0;
     
+    originalVideoContainerFrame = _videoItemsContainer.frame;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateFaceTrackingFrame:)
                                                  name:@"updateFaceTrackingFrame"
@@ -94,6 +96,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+   /// originalVideoContainerFrame = _videoItemsContainer.frame;
+    
 }
 
 - (NSMutableArray *)savedVideos{
@@ -138,6 +142,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     //record the video
     if (_isRecording) {
+        
+        _recordButton.userInteractionEnabled = NO;
+        
         //stop recording
         _isRecording = false;
         
@@ -185,6 +192,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
         }];
     }else{
+         _recordButton.userInteractionEnabled = NO;
         
         _isRecording = true;
 
@@ -209,6 +217,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
             NSLog(@"Start recording");
             
+            _recordButton.userInteractionEnabled = YES;
             if(videoRecordTimeOutTimer) {
                 [videoRecordTimeOutTimer invalidate];
                 videoRecordTimeOutTimer = nil;
@@ -289,10 +298,26 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             videoCamera.delegate = nil;
             _isUserInterfaceElementVideo = NO;
             
-            height = [selectedFilter animationHeight];
-            width = [selectedFilter animationWidth];
+            float ratioX = _filteredVideoView.frame.size.width / 1024.0;
+            float ratioY = _filteredVideoView.frame.size.height / 768.0;
             
-            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+            float newX = [selectedFilter animationX] * ratioX;
+            float newY = [selectedFilter animationY] * ratioY;
+            
+            width = [selectedFilter animationWidth];
+            height = [selectedFilter animationHeight];
+            
+            if(width == 960) {
+                
+                width = _filteredVideoView.frame.size.width;
+                height = [selectedFilter animationHeight] * (_filteredVideoView.frame.size.width / [selectedFilter animationWidth]);
+            } else if (height == 540) {
+                height = _filteredVideoView.frame.size.height;
+                width = [selectedFilter animationWidth] * (_filteredVideoView.frame.size.height / [selectedFilter animationHeight]);
+            }
+            
+            _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(newX, newY, width, height)];
+            
             _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
             
             [contentView addSubview:_animatedImageView];
@@ -339,8 +364,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         
         [_previewView addSubview:testImage];
         testImage = nil;
-        [self.view addSubview:_previewView];
-        [self.view bringSubviewToFront:_switchCameraButton];
+        [_videoItemsContainer addSubview:_previewView];
+        [_videoItemsContainer bringSubviewToFront:_switchCameraButton];
     }
 
     
@@ -395,7 +420,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
 }
 
-#pragma mark - Saving Video
+#pragma mark - Saving Video + Animations
 
 - (void)showSavedVideoView {
     NSLog(@"show saved cameraview");
@@ -417,7 +442,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     previewMovieLayer.needsDisplayOnBoundsChange = YES;
    
     [_previewMovieView.layer addSublayer:previewMovieLayer];
-    [self.view addSubview:_previewMovieView];
+    [_videoItemsContainer addSubview:_previewMovieView];
     
     [_previewMoviePlayer play];
     
@@ -426,14 +451,14 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [_deleteVideoButton setImage:[UIImage imageNamed:@"TrashPress.png"] forState:UIControlStateHighlighted];
     [_deleteVideoButton setImage:[UIImage imageNamed:@"TrashPress.png"] forState:UIControlStateHighlighted];
     [_deleteVideoButton addTarget:nil action:@selector(tapDeleteIcon:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_deleteVideoButton];
+    [_videoItemsContainer addSubview:_deleteVideoButton];
     
     _saveVideoButton = [[UIButton alloc] initWithFrame:CGRectMake(((_filteredVideoView.frame.origin.x+_filteredVideoView.frame.size.width) - (buttonSize/2)), (_filteredVideoView.frame.origin.y - (buttonSize/2)), buttonSize, buttonSize)];
     [_saveVideoButton setImage:[UIImage imageNamed:@"SaveCollect.png"] forState:UIControlStateNormal];
     [_saveVideoButton setImage:[UIImage imageNamed:@"SaveCollectPress.png"] forState:UIControlStateHighlighted];
     [_saveVideoButton setImage:[UIImage imageNamed:@"SaveCollectPress.png"] forState:UIControlStateHighlighted];
     [_saveVideoButton addTarget:nil action:@selector(tapSaveIcon:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_saveVideoButton];
+    [_videoItemsContainer addSubview:_saveVideoButton];
     
     asset = nil;
     playerItem = nil;
@@ -477,25 +502,118 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [videoCamera startCameraCapture];
 }
 
-- (void)hideCreationToolButtons {
-    [UIView animateWithDuration:1.5 animations:^{
+- (void)hideCreationToolButtonsAndShiftVideoPlayer {
+    
+    _filteredVideoView.hidden = YES;
+    float translationAmount = -(self.view.frame.size.width / 5);
+    float tabRatio = (1012.0 / 1024.0);
+    float tabWidth =  self.view.frame.size.width * tabRatio;
+    
+//    float collectionOriginX = (0.914 * tabWidth);
+    float dragToOpenConstant = self.view.frame.size.width - (self.view.frame.size.width / 3);
+    
+    _collectionTabImage = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width, 0, tabWidth, self.view.frame.size.height)];
+    _collectionTabImage.image = [UIImage imageNamed:@"Collection-Tab-BG.png"];
+    [self.view addSubview:_collectionTabImage];
+
+    [self.view bringSubviewToFront:_videoItemsContainer];
+    
+    [UIView animateWithDuration:0.33f delay:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
         _recordButton.alpha = 0.0;
         _filterCollectionView.alpha = 0.0;
+        
+        CGAffineTransform videoPlayerShrink = CGAffineTransformScale(_videoItemsContainer.transform, 0.70, 0.70);
+        CGAffineTransform videoPlayerShift = CGAffineTransformMakeTranslation(translationAmount, 0);
+        _videoItemsContainer.transform = CGAffineTransformConcat(videoPlayerShrink, videoPlayerShift);
+    
+        _collectionTabImage.frame = CGRectMake(dragToOpenConstant, 0, tabWidth, self.view.frame.size.height);
+        
+        //[self.view layoutIfNeeded];
+        
     } completion:^(BOOL finished) {
         _recordButton.hidden = YES;
         _filterCollectionView.hidden = YES;
+        [self moveVideoToCollectionTab];
     }];
 }
 
+- (void)moveVideoToCollectionTab {
+    [UIView animateWithDuration:0.33f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        CGAffineTransform videoPlayerShrink = CGAffineTransformScale(_videoItemsContainer.transform, 0.4, 0.4);
+        
+        _videoItemsContainer.transform = videoPlayerShrink;
+        _videoItemsContainer.frame = CGRectMake(((self.view.frame.size.width - _videoItemsContainer.frame.size.width) - 12), _collectionTabImage.frame.origin.y + 55, _videoItemsContainer.frame.size.width, _videoItemsContainer.frame.size.height);
+        
+    } completion:^(BOOL finished) {
+        
+        [self closeCollectionTab];
+        
+    }];
+}
+
+- (void)closeCollectionTab {
+    [UIView animateWithDuration:1.0f delay:0.7f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        CGRect newCollection = _collectionTabImage.frame;
+        newCollection.origin.x += 600;
+        _collectionTabImage.frame = newCollection;
+        
+        CGRect newContainer = _videoItemsContainer.frame;
+        newContainer.origin.x += 600;
+        _videoItemsContainer.frame = newContainer;
+        
+        
+    } completion:^(BOOL finished) {
+        _videoItemsContainer.alpha = 0.0;
+        _videoItemsContainer.transform = CGAffineTransformIdentity;
+        
+        [_deleteVideoButton removeFromSuperview];
+        _deleteVideoButton = nil;
+        
+        [_saveVideoButton removeFromSuperview];
+        _saveVideoButton = nil;
+        
+        [_previewMovieView removeFromSuperview];
+        _previewMovieView = nil;
+        
+        if(_videoNameLabel){
+            if([_videoNameLabel isFirstResponder]){
+                [_videoNameLabel resignFirstResponder];
+            }
+            [_videoNameLabel removeFromSuperview];
+            _videoNameLabel = nil;
+        }
+        
+        if(_previewMoviePlayer){
+            [_previewMoviePlayer pause];
+            _previewMoviePlayer = nil;
+        }
+        
+        [self showCreationToolButtons];
+    }];
+}
+     
+
 - (void)showCreationToolButtons {
+    _videoItemsContainer.frame = originalVideoContainerFrame;
+    
     _recordButton.hidden = NO;
     _filterCollectionView.hidden = NO;
+    _filteredVideoView.hidden = NO;
+    
     [UIView animateWithDuration:1.5 animations:^{
         _recordButton.alpha = 1.0;
         _filterCollectionView.alpha = 1.0;
+        _videoItemsContainer.alpha = 1.0;
     } completion:^(BOOL finished) {
+        [videoCamera startCameraCapture];
+        _recordButton.userInteractionEnabled = YES;
+        _filterCollectionView.userInteractionEnabled = YES;
     }];
 }
+
+#pragma mark -
 
 - (IBAction)tapDeleteIcon:(id)sender {
     [self removeSavedVideoView];
@@ -515,7 +633,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _videoNameLabel.font = [UIFont systemFontOfSize:18];
         _videoNameLabel.delegate = self;
         
-        [self.view addSubview:_videoNameLabel];
+        [_videoItemsContainer addSubview:_videoNameLabel];
         [_videoNameLabel becomeFirstResponder];
     }
 }
@@ -525,7 +643,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     _videoNameLabel.userInteractionEnabled = NO;
     [self.view bringSubviewToFront:_activityView];
     [_activityView startAnimating];
-    
     
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^
      {
@@ -592,9 +709,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 - (void)animateSavedVideoToCollection {
-    
-    [self hideCreationToolButtons];
-
+    [self hideCreationToolButtonsAndShiftVideoPlayer];
 }
 
 

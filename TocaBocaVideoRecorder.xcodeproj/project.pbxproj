@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		02F428D82C5036BFBBF96042 /* libPods-TocaBocaVideoRecorder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */; };
+		596F382B1CDB9BB500413701 /* Repeat-Button-Press.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F38291CDB9BB500413701 /* Repeat-Button-Press.png */; };
+		596F382C1CDB9BB500413701 /* Repeat-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F382A1CDB9BB500413701 /* Repeat-Button.png */; };
+		596F382E1CDB9C0600413701 /* Collection-Tab-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F382D1CDB9C0600413701 /* Collection-Tab-BG.png */; };
 		59EF00001CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00062.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFF6381CDA4D0D000F7246 /* OL_FACE_TRACK_SHEEP_00062.png */; };
 		59EF00011CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00062@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFF6391CDA4D0D000F7246 /* OL_FACE_TRACK_SHEEP_00062@2x.png */; };
 		59EF00021CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00063.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFF63A1CDA4D0D000F7246 /* OL_FACE_TRACK_SHEEP_00063.png */; };
@@ -2633,6 +2636,9 @@
 
 /* Begin PBXFileReference section */
 		0B4393EF3F3B30F80C5D964A /* libPods-TocaBocaVideoRecorder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TocaBocaVideoRecorder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		596F38291CDB9BB500413701 /* Repeat-Button-Press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Repeat-Button-Press.png"; sourceTree = "<group>"; };
+		596F382A1CDB9BB500413701 /* Repeat-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Repeat-Button.png"; sourceTree = "<group>"; };
+		596F382D1CDB9C0600413701 /* Collection-Tab-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Collection-Tab-BG.png"; sourceTree = "<group>"; };
 		59EFD7D41CD26F6F000F7246 /* Card-Body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-Body.png"; sourceTree = "<group>"; };
 		59EFD8481CD281DC000F7246 /* back-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-blue.png"; sourceTree = "<group>"; };
 		59EFD8491CD281DC000F7246 /* back-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-blue@2x.png"; sourceTree = "<group>"; };
@@ -5400,6 +5406,9 @@
 		59EFD8471CD281C7000F7246 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				596F382D1CDB9C0600413701 /* Collection-Tab-BG.png */,
+				596F38291CDB9BB500413701 /* Repeat-Button-Press.png */,
+				596F382A1CDB9BB500413701 /* Repeat-Button.png */,
 				59EFD8481CD281DC000F7246 /* back-blue.png */,
 				59EFD8491CD281DC000F7246 /* back-blue@2x.png */,
 				59EFD84A1CD281DC000F7246 /* BackButtonPress.png */,
@@ -8796,6 +8805,7 @@
 				59EF02001CDA4D10000F7246 /* OL_STICKER_CLOUD_00006.png in Resources */,
 				59EFFE911CDA4D10000F7246 /* OL_FACE_TRACK_NOVA_00070@2x.png in Resources */,
 				59EFFCA41CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00040.png in Resources */,
+				596F382B1CDB9BB500413701 /* Repeat-Button-Press.png in Resources */,
 				59EFFBBC1CDA4D0F000F7246 /* OL_AS_ELEPHANT_00008.png in Resources */,
 				59EFFC101CDA4D0F000F7246 /* OL_AS_ELEPHANT_00050.png in Resources */,
 				59EFFFB01CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00022.png in Resources */,
@@ -9219,6 +9229,7 @@
 				59EF01901CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00094.png in Resources */,
 				59EF01291CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00042@2x.png in Resources */,
 				59EFFB351CDA4D0F000F7246 /* OL_AS_Audience_00036@2x.png in Resources */,
+				596F382C1CDB9BB500413701 /* Repeat-Button.png in Resources */,
 				59EF02441CDA4D10000F7246 /* OL_STICKER_CLOUD_00040.png in Resources */,
 				59EFFD541CDA4D0F000F7246 /* OL_AS_MOUTH_00032.png in Resources */,
 				59EFFBFC1CDA4D0F000F7246 /* OL_AS_ELEPHANT_00040.png in Resources */,
@@ -9621,6 +9632,7 @@
 				59EF03771CDA4D10000F7246 /* OL_STICKER_DOG_00049@2x.png in Resources */,
 				59EFFFCF1CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00037@2x.png in Resources */,
 				59EFFCB61CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00049.png in Resources */,
+				596F382E1CDB9C0600413701 /* Collection-Tab-BG.png in Resources */,
 				59EF04091CDA4D10000F7246 /* OL_STICKER_DOG_00122@2x.png in Resources */,
 				59EFDB0A1CD3AA43000F7246 /* windowblue@2x.png in Resources */,
 				59EF02881CDA4D10000F7246 /* OL_STICKER_CLOUD_00074.png in Resources */,

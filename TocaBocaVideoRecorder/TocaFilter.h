@@ -38,4 +38,7 @@ typedef enum{
 - (float)animationXOffset;
 - (float)animationYOffset;
 
+- (float)animationX;
+- (float)animationY;
+
 @end
