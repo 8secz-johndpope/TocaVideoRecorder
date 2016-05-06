@@ -146,11 +146,10 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gux-n3-OvA" userLabel="Filters Collection View">
                                 <rect key="frame" x="156" y="638" width="868" height="115"/>
-                                <color key="backgroundColor" red="0.30980392156862746" green="0.80000000000000004" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gux-n3-OvA" secondAttribute="height" multiplier="434:53" id="nyF-0U-Lrw"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QqQ-JS-Spw">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="QqQ-JS-Spw">
                                     <size key="itemSize" width="115" height="115"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -164,32 +163,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-m7-k7g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rol-ca-CpB">
-                                                    <rect key="frame" x="0.0" y="-1" width="115" height="117"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vvy-rA-eKb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="3" height="115"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="3" id="70r-Ba-xru"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7X-Kb-uGk">
+                                                    <rect key="frame" x="3" y="0.0" width="115" height="115"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="XSQ-m7-k7g" firstAttribute="centerY" secondItem="LMO-AV-P3L" secondAttribute="centerY" id="3ak-kG-n92"/>
-                                            <constraint firstItem="XSQ-m7-k7g" firstAttribute="height" secondItem="LMO-AV-P3L" secondAttribute="height" id="9vv-pi-r74"/>
-                                            <constraint firstItem="rol-ca-CpB" firstAttribute="centerY" secondItem="LMO-AV-P3L" secondAttribute="centerY" id="BWt-J4-y0b"/>
-                                            <constraint firstItem="rol-ca-CpB" firstAttribute="centerX" secondItem="LMO-AV-P3L" secondAttribute="centerX" id="Ujp-hQ-yRH"/>
-                                            <constraint firstItem="XSQ-m7-k7g" firstAttribute="width" secondItem="LMO-AV-P3L" secondAttribute="width" id="aTR-9z-9UC"/>
-                                            <constraint firstItem="XSQ-m7-k7g" firstAttribute="centerX" secondItem="LMO-AV-P3L" secondAttribute="centerX" id="p0a-cs-5oR"/>
-                                            <constraint firstItem="rol-ca-CpB" firstAttribute="width" secondItem="LMO-AV-P3L" secondAttribute="width" id="vf6-n1-T7S"/>
-                                            <constraint firstItem="rol-ca-CpB" firstAttribute="height" secondItem="LMO-AV-P3L" secondAttribute="height" constant="2" id="zPF-l8-MVb"/>
+                                            <constraint firstItem="Vvy-rA-eKb" firstAttribute="leading" secondItem="LMO-AV-P3L" secondAttribute="leadingMargin" constant="-8" id="9qZ-Tt-7qV"/>
+                                            <constraint firstItem="D7X-Kb-uGk" firstAttribute="centerX" secondItem="LMO-AV-P3L" secondAttribute="centerX" constant="3" id="C68-hb-3ES"/>
+                                            <constraint firstItem="Vvy-rA-eKb" firstAttribute="top" secondItem="LMO-AV-P3L" secondAttribute="topMargin" constant="-8" id="cyt-b1-mJw"/>
+                                            <constraint firstItem="D7X-Kb-uGk" firstAttribute="width" secondItem="LMO-AV-P3L" secondAttribute="width" id="d2r-MF-a9g"/>
+                                            <constraint firstItem="Vvy-rA-eKb" firstAttribute="height" secondItem="LMO-AV-P3L" secondAttribute="height" id="ndF-pe-zGg"/>
+                                            <constraint firstItem="D7X-Kb-uGk" firstAttribute="height" secondItem="LMO-AV-P3L" secondAttribute="height" id="pyC-lP-0iG"/>
+                                            <constraint firstItem="D7X-Kb-uGk" firstAttribute="centerY" secondItem="LMO-AV-P3L" secondAttribute="centerY" id="ygV-No-QxF"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageView" destination="rol-ca-CpB" id="Eeg-C2-COt"/>
-                                            <outlet property="textLabel" destination="XSQ-m7-k7g" id="FYN-qj-Oo0"/>
+                                            <outlet property="iconButton" destination="D7X-Kb-uGk" id="Eug-H3-PBn"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -249,6 +245,7 @@
         <image name="Flip-camera-press.png" width="64" height="50"/>
         <image name="Flip-camera.png" width="64" height="50"/>
         <image name="Head_1_Face1_BLINK00002.png" width="225" height="150"/>
+        <image name="Line.png" width="3" height="119"/>
         <image name="Record.png" width="109" height="109"/>
         <image name="RecordPress.png" width="109" height="109"/>
     </resources>

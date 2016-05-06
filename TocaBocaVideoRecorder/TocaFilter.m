@@ -113,7 +113,7 @@
 }
 
 - (NSString *)soundFilePath {
-    if(!self.filterItem[@"sound-file"]) {
+    if(!self.filterItem[@"sound-file"] || [self.filterItem[@"sound-file"] isEqualToString:@""]) {
         return @"";
     } else {
         return [[NSBundle mainBundle] pathForResource:self.filterItem[@"sound-file"] ofType:@"mp3"];

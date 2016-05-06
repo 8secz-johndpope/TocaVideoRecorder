@@ -35,6 +35,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+ 
+    [self initialCreationToolsAnimation];
     
     countForProgress = 0.0;
     
@@ -64,6 +66,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     self.filterCollectionView.allowsSelection = YES;
     self.filterCollectionView.tag = 1;
+    self.filterCollectionView.backgroundView.backgroundColor = [UIColor clearColor];
+    self.filterCollectionView.backgroundColor = [UIColor clearColor];
+    
     self.savedVideosCollectionView.allowsSelection = YES;
     self.savedVideosCollectionView.tag = 2;
    
@@ -103,6 +108,20 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+}
+
+- (void)initialCreationToolsAnimation {
+    _filterCollectionView.hidden = YES;
+    
+    CGRect originalFrame = _filterCollectionView.frame;
+    CGRect startFrame = _filterCollectionView.frame;
+    startFrame.origin.x = _filterCollectionView.frame.origin.x + _filterCollectionView.frame.size.width;
+    _filterCollectionView.frame = startFrame;
+    _filterCollectionView.hidden = NO;
+    
+    [UIView animateWithDuration:0.8f animations:^{
+        _filterCollectionView.frame = originalFrame;
+    }];
 }
 
 - (NSMutableArray *)savedVideos{
@@ -272,6 +291,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     _blendFilter.mix = 1.0;
     
     [videoCamera addTarget:_filter];
+    [videoCamera setDelegate:nil];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
     contentView.backgroundColor = [UIColor clearColor];
@@ -397,8 +417,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }
     }
     
-    [videoCamera setDelegate:self];
-    
     _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
     
     [contentView addSubview:_animatedImageView];
@@ -457,6 +475,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         [_sound stopSound];
     }
 }
+
 
 #pragma mark - Saving Video + Animations
 
@@ -700,15 +719,11 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
          createRequest.creationDate = [NSDate date];
      } completionHandler:^(BOOL success, NSError *error)
      {
-         NSString *title;
-         NSString *message;
+
          if (success)
          {
              NSLog(@"photo library successfully saved");
-             title = @"Video Saved";
-             message = @"Check your Camera Roll for your saved video";
-             
-             
+          
              fileSavedPath = nil;
              
              dispatch_async(dispatch_get_main_queue(), ^{
@@ -727,31 +742,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
          }
          else
          {
-             title = @"Error";
-             message = @"There was an error saving your video";
-
+             
              NSLog(@"photo library error saving to photos: %@", error);
          }
-
-
-         UIAlertController *alertController = [UIAlertController
-                                               alertControllerWithTitle:title
-                                               message:message
-                                               preferredStyle:UIAlertControllerStyleAlert];
-
-         UIAlertAction *okAction = [UIAlertAction
-                                    actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                                    style:UIAlertActionStyleCancel
-                                    handler:^(UIAlertAction *action)
-                                    {
-                                        NSLog(@"OK action");
-                                    }];
-
-        [alertController addAction:okAction];
-
+//
          dispatch_async(dispatch_get_main_queue(), ^{
              [_activityView stopAnimating];
-             [self presentViewController:alertController animated:YES completion:nil];
+             //[self presentViewController:alertController animated:YES completion:nil];
          });
      }];
 }
@@ -787,19 +784,26 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     // Configure the cell
     //filterCollectionView is tag 1
     if (collectionView.tag == 1){
-        cell.textLabel.text = @"";
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.imageView.image = [filterItem filterIcon];
-        cell.imageView.backgroundColor = [UIColor colorWithRed:(86.0/255.0) green:(223.0/255.0) blue:(219.0/255.0) alpha:1.0];
-        cell.backgroundColor = [UIColor colorWithRed:(86.0/255.0) green:(223.0/255.0) blue:(219.0/255.0) alpha:1.0];
-    }else{
-        //savedVideosCollectionView is tag 2
-        NSString *videoPath = _savedVideos[indexPath.item];
-        NSString *videoName = [videoPath lastPathComponent];
-        cell.textLabel.text = videoName;
+    
+        cell.backgroundColor = [UIColor clearColor];
+        
+        cell.iconButton.backgroundColor = [UIColor clearColor];
+        [cell.iconButton setImage:[filterItem filterIcon] forState:UIControlStateNormal];
+        [cell.iconButton setImage:[filterItem filterIconPressed] forState:UIControlStateSelected];
+        [cell.iconButton setImage:[filterItem filterIconPressed] forState:UIControlStateHighlighted];
+        cell.iconButton.tag = indexPath.item;
+        [cell.iconButton addTarget:self action:@selector(selectAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+        
+//        cell.backgroundColor = [UIColor colorWithRed:(86.0/255.0) green:(223.0/255.0) blue:(219.0/255.0) alpha:1.0];
     }
     
     return cell;
+}
+
+-(void)selectAtIndexPath:(id)sender {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[sender tag] inSection:0];
+    [self collectionView:_filterCollectionView didSelectItemAtIndexPath:indexPath];
+    indexPath = nil;
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -840,6 +844,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 [self playAnimationSoundFX];
                 
             }
+        } else {
+            [self resetVideoCamera];
         }
     
     }else{
@@ -984,7 +990,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)GPUVCWillOutputFeatures:(NSArray*)featureArray forClap:(CGRect)clap
                  andOrientation:(UIDeviceOrientation)curDeviceOrientation {
-   
+
         dispatch_async(dispatch_get_main_queue(), ^{
             
             CGRect previewBox = _filteredVideoView.bounds;
@@ -1056,7 +1062,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 [_filteredVideoView addSubview:_faceView];
             }
         });
-    
 }
 
 
@@ -1106,29 +1111,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if([_videoNameLabel.text isEqualToString:@""]) {
-        
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:nil
-                                              message:@"Please name your video"
-                                              preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction
-                                   actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"OK action");
-                                   }];
-        
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-        
-        return NO;
-    } else {
-        [self saveVideoToCameraRoll];
-        [textField resignFirstResponder];
-        return YES;
+        _videoNameLabel.text = @"My Awesome Video!";
     }
+    [self saveVideoToCameraRoll];
+    [textField resignFirstResponder];
+    return YES;
+    
 }
 
 

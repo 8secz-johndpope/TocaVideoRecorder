@@ -13,8 +13,6 @@
 		<integer>0</integer>
 		<key>animation-image-prefix</key>
 		<string></string>
-		<key>sound-file</key>
-		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -37,8 +35,6 @@
 		<string>-0.1</string>
 		<key>animation-x-offset</key>
 		<string>0</string>
-		<key>sound-file</key>
-		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -55,8 +51,6 @@
 		<integer>320</integer>
 		<key>animation-width</key>
 		<integer>295</integer>
-		<key>sound-file</key>
-		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -178,11 +172,9 @@
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_HAND_</string>
 		<key>animation-height</key>
-		<integer>250</integer>
+		<integer>188</integer>
 		<key>animation-width</key>
-		<integer>640</integer>
-		<key>sound-file</key>
-		<string></string>
+		<integer>480</integer>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -287,8 +279,6 @@
 		<integer>393</integer>
 		<key>animation-width</key>
 		<integer>361</integer>
-		<key>sound-file</key>
-		<string></string>
 	</dict>
 </array>
 </plist>
