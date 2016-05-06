@@ -13,6 +13,8 @@
 		<integer>0</integer>
 		<key>animation-image-prefix</key>
 		<string></string>
+		<key>sound-file</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -35,6 +37,8 @@
 		<string>-0.1</string>
 		<key>animation-x-offset</key>
 		<string>0</string>
+		<key>sound-file</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -51,6 +55,8 @@
 		<integer>320</integer>
 		<key>animation-width</key>
 		<integer>295</integer>
+		<key>sound-file</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -73,6 +79,8 @@
 		<string>-0.18</string>
 		<key>animation-x-offset</key>
 		<string>0</string>
+		<key>sound-file</key>
+		<string>bugs</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -89,6 +97,8 @@
 		<integer>458</integer>
 		<key>animation-width</key>
 		<integer>444</integer>
+		<key>sound-file</key>
+		<string>clouds</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -109,6 +119,8 @@
 		<string>0</string>
 		<key>animation-x</key>
 		<string>600</string>
+		<key>sound-file</key>
+		<string>icecream</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -129,6 +141,8 @@
 		<string>0</string>
 		<key>animation-y</key>
 		<string>0</string>
+		<key>sound-file</key>
+		<string>mouth</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -149,6 +163,8 @@
 		<string>0</string>
 		<key>animation-y</key>
 		<string>430</string>
+		<key>sound-file</key>
+		<string>fans</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -165,6 +181,8 @@
 		<integer>250</integer>
 		<key>animation-width</key>
 		<integer>640</integer>
+		<key>sound-file</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -181,6 +199,8 @@
 		<integer>305</integer>
 		<key>animation-width</key>
 		<integer>411</integer>
+		<key>sound-file</key>
+		<string>dog</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -203,6 +223,8 @@
 		<string>-0.6</string>
 		<key>animation-x-offset</key>
 		<string>0.8</string>
+		<key>sound-file</key>
+		<string>bubble_thought_sheep</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -225,6 +247,8 @@
 		<string>-0.18</string>
 		<key>animation-x-offset</key>
 		<string>0</string>
+		<key>sound-file</key>
+		<string>monster</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -245,6 +269,8 @@
 		<string>0</string>
 		<key>animation-y</key>
 		<string>0</string>
+		<key>sound-file</key>
+		<string>elephant</string>
 	</dict>
 	<dict>
 		<key>type</key>
@@ -258,9 +284,11 @@
 		<key>animation-image-prefix</key>
 		<string>OL_STICKER_BEE_</string>
 		<key>animation-height</key>
-		<integer>462</integer>
+		<integer>393</integer>
 		<key>animation-width</key>
-		<integer>425</integer>
+		<integer>361</integer>
+		<key>sound-file</key>
+		<string></string>
 	</dict>
 </array>
 </plist>

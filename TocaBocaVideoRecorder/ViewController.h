@@ -11,6 +11,7 @@
 #import <AVKit/AVKit.h>
 #import "GPUImage.h"
 #import "TocaFilter.h"
+#import "Sound.h"
 @import AVFoundation;
 @import AVKit;
 

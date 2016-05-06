@@ -22,13 +22,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ag-2C-MTC">
                                 <rect key="frame" x="57" y="30" width="911" height="589"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Card-Body.png" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-82-hJH">
-                                        <rect key="frame" x="56" y="100" width="798" height="489"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card-Body.png" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-82-hJH">
+                                        <rect key="frame" x="56" y="100" width="798" height="488.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="height" multiplier="889:544" id="pT3-0j-uwM"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Head_1_Face1_BLINK00002.png" translatesAutoresizingMaskIntoConstraints="NO" id="atN-t5-coM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Head_1_Face1_BLINK00002.png" translatesAutoresizingMaskIntoConstraints="NO" id="atN-t5-coM">
                                         <rect key="frame" x="393" y="54" width="124" height="83"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="atN-t5-coM" secondAttribute="height" multiplier="3:2" id="fEI-RQ-qAo"/>
@@ -41,19 +41,28 @@
                                             <constraint firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="height" multiplier="16:9" id="rxI-Eh-p3L"/>
                                         </constraints>
                                     </view>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-KD-Vp4">
-                                        <rect key="frame" x="56" y="568" width="798" height="2"/>
-                                        <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-KD-Vp4">
+                                        <rect key="frame" x="56" y="569" width="798" height="2"/>
+                                        <color key="progressTintColor" red="0.0" green="0.52941176470588236" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="trackTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </progressView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-q2-nBN">
-                                        <rect key="frame" x="789" y="140" width="43" height="43"/>
-                                        <color key="backgroundColor" red="0.1215686275" green="0.41960784309999999" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-q2-nBN">
+                                        <rect key="frame" x="775" y="135" width="64" height="50"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="2gc-Mi-Vfh"/>
                                             <constraint firstAttribute="width" secondItem="k9Q-q2-nBN" secondAttribute="height" multiplier="1:1" id="8Pl-4w-7F2"/>
+                                            <constraint firstAttribute="width" secondItem="k9Q-q2-nBN" secondAttribute="height" multiplier="32:25" id="b2Z-BI-zkg"/>
                                             <constraint firstAttribute="width" constant="43" id="yAL-cK-pWp"/>
                                         </constraints>
-                                        <state key="normal" title="&gt;"/>
+                                        <state key="normal" image="Flip-camera.png"/>
+                                        <state key="selected" image="Flip-camera-press.png"/>
+                                        <state key="highlighted" image="Flip-camera-press.png"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8Pl-4w-7F2"/>
+                                                <exclude reference="yAL-cK-pWp"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zxa-Ic-zn5"/>
                                         </connections>
@@ -63,19 +72,25 @@
                                     <constraint firstItem="atN-t5-coM" firstAttribute="bottom" secondItem="JDR-82-hJH" secondAttribute="top" multiplier="1.37" id="0Xs-DJ-Bp1"/>
                                     <constraint firstItem="atN-t5-coM" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" multiplier="0.155" id="5mi-jB-zkR"/>
                                     <constraint firstItem="XHt-KD-Vp4" firstAttribute="width" secondItem="Z1c-Jv-wuw" secondAttribute="width" id="Bjg-P9-s0z"/>
-                                    <constraint firstItem="k9Q-q2-nBN" firstAttribute="leading" secondItem="Z1c-Jv-wuw" secondAttribute="trailing" constant="-65" id="DAe-O8-Xra"/>
                                     <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerY" secondItem="JDR-82-hJH" secondAttribute="centerY" id="HLe-KM-pup"/>
+                                    <constraint firstItem="k9Q-q2-nBN" firstAttribute="trailing" secondItem="Z1c-Jv-wuw" secondAttribute="trailing" constant="-15" id="Itq-cp-Il2"/>
                                     <constraint firstItem="JDR-82-hJH" firstAttribute="width" secondItem="8Ag-2C-MTC" secondAttribute="width" multiplier="0.875" id="JUW-Jj-flu"/>
                                     <constraint firstItem="XHt-KD-Vp4" firstAttribute="centerX" secondItem="Z1c-Jv-wuw" secondAttribute="centerX" id="KAv-Tu-uf1"/>
+                                    <constraint firstItem="k9Q-q2-nBN" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="top" constant="15" id="Liu-s2-dBo"/>
                                     <constraint firstItem="Z1c-Jv-wuw" firstAttribute="width" secondItem="JDR-82-hJH" secondAttribute="width" id="ba1-jS-oRh"/>
                                     <constraint firstItem="JDR-82-hJH" firstAttribute="centerX" secondItem="8Ag-2C-MTC" secondAttribute="centerX" id="hsd-NE-n1d"/>
                                     <constraint firstItem="atN-t5-coM" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="jBy-u3-4qa"/>
                                     <constraint firstAttribute="width" secondItem="8Ag-2C-MTC" secondAttribute="height" multiplier="911:589" id="nkE-dr-ZbJ"/>
                                     <constraint firstItem="Z1c-Jv-wuw" firstAttribute="centerX" secondItem="JDR-82-hJH" secondAttribute="centerX" id="oAY-u7-gLM"/>
-                                    <constraint firstItem="Z1c-Jv-wuw" firstAttribute="top" secondItem="k9Q-q2-nBN" secondAttribute="bottom" constant="-63" id="rg5-Lf-hjk"/>
+                                    <constraint firstItem="Z1c-Jv-wuw" firstAttribute="top" secondItem="k9Q-q2-nBN" secondAttribute="top" multiplier="1.3" id="rg5-Lf-hjk"/>
                                     <constraint firstAttribute="bottom" secondItem="JDR-82-hJH" secondAttribute="bottom" id="tiT-dJ-UwV"/>
                                     <constraint firstItem="XHt-KD-Vp4" firstAttribute="top" secondItem="Z1c-Jv-wuw" secondAttribute="bottom" id="vlC-kh-2bb"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rg5-Lf-hjk"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cpu-8t-q0m" userLabel="Saved Videos Collection View">
                                 <rect key="frame" x="103" y="756" width="921" height="91"/>
@@ -129,8 +144,8 @@
                                     <action selector="recordStartStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vzt-MS-4px"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gux-n3-OvA" userLabel="Filters Collection View">
-                                <rect key="frame" x="155" y="638" width="869" height="115"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gux-n3-OvA" userLabel="Filters Collection View">
+                                <rect key="frame" x="156" y="638" width="868" height="115"/>
                                 <color key="backgroundColor" red="0.30980392156862746" green="0.80000000000000004" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gux-n3-OvA" secondAttribute="height" multiplier="434:53" id="nyF-0U-Lrw"/>
@@ -231,6 +246,8 @@
     </scenes>
     <resources>
         <image name="Card-Body.png" width="1433" height="879"/>
+        <image name="Flip-camera-press.png" width="64" height="50"/>
+        <image name="Flip-camera.png" width="64" height="50"/>
         <image name="Head_1_Face1_BLINK00002.png" width="225" height="150"/>
         <image name="Record.png" width="109" height="109"/>
         <image name="RecordPress.png" width="109" height="109"/>

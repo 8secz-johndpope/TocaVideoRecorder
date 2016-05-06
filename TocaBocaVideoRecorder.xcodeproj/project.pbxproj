@@ -11,6 +11,20 @@
 		596F382B1CDB9BB500413701 /* Repeat-Button-Press.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F38291CDB9BB500413701 /* Repeat-Button-Press.png */; };
 		596F382C1CDB9BB500413701 /* Repeat-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F382A1CDB9BB500413701 /* Repeat-Button.png */; };
 		596F382E1CDB9C0600413701 /* Collection-Tab-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F382D1CDB9C0600413701 /* Collection-Tab-BG.png */; };
+		596F38391CDCFFDD00413701 /* mouth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38301CDCFFDD00413701 /* mouth.mp3 */; };
+		596F383A1CDCFFDD00413701 /* monster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38311CDCFFDD00413701 /* monster.mp3 */; };
+		596F383B1CDCFFDD00413701 /* fans.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38321CDCFFDD00413701 /* fans.mp3 */; };
+		596F383C1CDCFFDD00413701 /* icecream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38331CDCFFDD00413701 /* icecream.mp3 */; };
+		596F383D1CDCFFDD00413701 /* elephant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38341CDCFFDD00413701 /* elephant.mp3 */; };
+		596F383E1CDCFFDD00413701 /* clouds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38351CDCFFDD00413701 /* clouds.mp3 */; };
+		596F383F1CDCFFDD00413701 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38361CDCFFDD00413701 /* dog.mp3 */; };
+		596F38401CDCFFDD00413701 /* bugs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38371CDCFFDD00413701 /* bugs.mp3 */; };
+		596F38411CDCFFDD00413701 /* bubble_thought_sheep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596F38381CDCFFDD00413701 /* bubble_thought_sheep.mp3 */; };
+		596F38441CDD032600413701 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 596F38431CDD032600413701 /* Sound.m */; };
+		596F38491CDD19EB00413701 /* Flip-camera-press.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F38451CDD19EB00413701 /* Flip-camera-press.png */; };
+		596F384A1CDD19EB00413701 /* Flip-camera-press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F38461CDD19EB00413701 /* Flip-camera-press@2x.png */; };
+		596F384B1CDD19EB00413701 /* Flip-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F38471CDD19EB00413701 /* Flip-camera.png */; };
+		596F384C1CDD19EB00413701 /* Flip-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 596F38481CDD19EB00413701 /* Flip-camera@2x.png */; };
 		59EF00001CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00062.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFF6381CDA4D0D000F7246 /* OL_FACE_TRACK_SHEEP_00062.png */; };
 		59EF00011CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00062@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFF6391CDA4D0D000F7246 /* OL_FACE_TRACK_SHEEP_00062@2x.png */; };
 		59EF00021CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00063.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EFF63A1CDA4D0D000F7246 /* OL_FACE_TRACK_SHEEP_00063.png */; };
@@ -2639,6 +2653,21 @@
 		596F38291CDB9BB500413701 /* Repeat-Button-Press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Repeat-Button-Press.png"; sourceTree = "<group>"; };
 		596F382A1CDB9BB500413701 /* Repeat-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Repeat-Button.png"; sourceTree = "<group>"; };
 		596F382D1CDB9C0600413701 /* Collection-Tab-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Collection-Tab-BG.png"; sourceTree = "<group>"; };
+		596F38301CDCFFDD00413701 /* mouth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mouth.mp3; sourceTree = "<group>"; };
+		596F38311CDCFFDD00413701 /* monster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monster.mp3; sourceTree = "<group>"; };
+		596F38321CDCFFDD00413701 /* fans.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fans.mp3; sourceTree = "<group>"; };
+		596F38331CDCFFDD00413701 /* icecream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = icecream.mp3; sourceTree = "<group>"; };
+		596F38341CDCFFDD00413701 /* elephant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elephant.mp3; sourceTree = "<group>"; };
+		596F38351CDCFFDD00413701 /* clouds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clouds.mp3; sourceTree = "<group>"; };
+		596F38361CDCFFDD00413701 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
+		596F38371CDCFFDD00413701 /* bugs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bugs.mp3; sourceTree = "<group>"; };
+		596F38381CDCFFDD00413701 /* bubble_thought_sheep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble_thought_sheep.mp3; sourceTree = "<group>"; };
+		596F38421CDD032600413701 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		596F38431CDD032600413701 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
+		596F38451CDD19EB00413701 /* Flip-camera-press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flip-camera-press.png"; sourceTree = "<group>"; };
+		596F38461CDD19EB00413701 /* Flip-camera-press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flip-camera-press@2x.png"; sourceTree = "<group>"; };
+		596F38471CDD19EB00413701 /* Flip-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flip-camera.png"; sourceTree = "<group>"; };
+		596F38481CDD19EB00413701 /* Flip-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flip-camera@2x.png"; sourceTree = "<group>"; };
 		59EFD7D41CD26F6F000F7246 /* Card-Body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Card-Body.png"; sourceTree = "<group>"; };
 		59EFD8481CD281DC000F7246 /* back-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-blue.png"; sourceTree = "<group>"; };
 		59EFD8491CD281DC000F7246 /* back-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-blue@2x.png"; sourceTree = "<group>"; };
@@ -5299,6 +5328,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		596F382F1CDCFFA500413701 /* Animation Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				596F38301CDCFFDD00413701 /* mouth.mp3 */,
+				596F38311CDCFFDD00413701 /* monster.mp3 */,
+				596F38321CDCFFDD00413701 /* fans.mp3 */,
+				596F38331CDCFFDD00413701 /* icecream.mp3 */,
+				596F38341CDCFFDD00413701 /* elephant.mp3 */,
+				596F38351CDCFFDD00413701 /* clouds.mp3 */,
+				596F38361CDCFFDD00413701 /* dog.mp3 */,
+				596F38371CDCFFDD00413701 /* bugs.mp3 */,
+				596F38381CDCFFDD00413701 /* bubble_thought_sheep.mp3 */,
+			);
+			name = "Animation Sounds";
+			sourceTree = "<group>";
+		};
 		59EFD20B1CCFE019000F7246 /* Animation Sequences */ = {
 			isa = PBXGroup;
 			children = (
@@ -5327,6 +5372,7 @@
 				59EFD7D61CD2795D000F7246 /* Overlay Buttons */,
 				59EFD7B31CD26C35000F7246 /* Player Graphics */,
 				59EFD20B1CCFE019000F7246 /* Animation Sequences */,
+				596F382F1CDCFFA500413701 /* Animation Sounds */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -5406,6 +5452,10 @@
 		59EFD8471CD281C7000F7246 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				596F38451CDD19EB00413701 /* Flip-camera-press.png */,
+				596F38461CDD19EB00413701 /* Flip-camera-press@2x.png */,
+				596F38471CDD19EB00413701 /* Flip-camera.png */,
+				596F38481CDD19EB00413701 /* Flip-camera@2x.png */,
 				596F382D1CDB9C0600413701 /* Collection-Tab-BG.png */,
 				596F38291CDB9BB500413701 /* Repeat-Button-Press.png */,
 				596F382A1CDB9BB500413701 /* Repeat-Button.png */,
@@ -8071,6 +8121,8 @@
 				59EFD4DF1CD26ACA000F7246 /* Images */,
 				FEF6A1E81CCA6A3900743F07 /* AppDelegate.h */,
 				FEF6A1E91CCA6A3900743F07 /* AppDelegate.m */,
+				596F38421CDD032600413701 /* Sound.h */,
+				596F38431CDD032600413701 /* Sound.m */,
 				59EFD8821CD28D79000F7246 /* TocaFilter.h */,
 				59EFD8831CD28D79000F7246 /* TocaFilter.m */,
 				FEF6A1EB1CCA6A3900743F07 /* ViewController.h */,
@@ -8186,7 +8238,7 @@
 				TargetAttributes = {
 					FEF6A1E11CCA6A3900743F07 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = XVM6S28FTY;
+						DevelopmentTeam = 342X3P8CQX;
 					};
 					FEF6A1FA1CCA6A3900743F07 = {
 						CreatedOnToolsVersion = 7.3;
@@ -8239,6 +8291,7 @@
 				59EF00221CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00079.png in Resources */,
 				59EF02371CDA4D10000F7246 /* OL_STICKER_CLOUD_00033@2x.png in Resources */,
 				59EFFD9B1CDA4D10000F7246 /* OL_AS_MOUTH_00067@2x.png in Resources */,
+				596F384A1CDD19EB00413701 /* Flip-camera-press@2x.png in Resources */,
 				59EFFCB71CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00049@2x.png in Resources */,
 				59EF01C31CDA4D10000F7246 /* OL_STICKER_BEE_00023@2x.png in Resources */,
 				59EFFD6D1CDA4D0F000F7246 /* OL_AS_MOUTH_00044@2x.png in Resources */,
@@ -8440,6 +8493,7 @@
 				59EF02F21CDA4D10000F7246 /* OL_STICKER_CLOUD_00127.png in Resources */,
 				59EFFB641CDA4D0F000F7246 /* OL_AS_Audience_00060.png in Resources */,
 				59EF012A1CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00043.png in Resources */,
+				596F38491CDD19EB00413701 /* Flip-camera-press.png in Resources */,
 				59EFFB1C1CDA4D0F000F7246 /* OL_AS_Audience_00024.png in Resources */,
 				59EFFC861CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00025.png in Resources */,
 				59EF04961CDA4D10000F7246 /* OL_STICKER_HAND_00037.png in Resources */,
@@ -8654,6 +8708,7 @@
 				59EFFF1C1CDA4D10000F7246 /* OL_FACE_TRACK_OCTO_00044.png in Resources */,
 				59EFFB471CDA4D0F000F7246 /* OL_AS_Audience_00045@2x.png in Resources */,
 				59EF01F31CDA4D10000F7246 /* OL_STICKER_BEE_00047@2x.png in Resources */,
+				596F383F1CDCFFDD00413701 /* dog.mp3 in Resources */,
 				59EF03DB1CDA4D10000F7246 /* OL_STICKER_DOG_00099@2x.png in Resources */,
 				59EF01341CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00048.png in Resources */,
 				59EF009F1CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00141@2x.png in Resources */,
@@ -8955,6 +9010,7 @@
 				59EFFD1C1CDA4D0F000F7246 /* OL_AS_MOUTH_00004.png in Resources */,
 				59EF04011CDA4D10000F7246 /* OL_STICKER_DOG_00118@2x.png in Resources */,
 				59EF048A1CDA4D10000F7246 /* OL_STICKER_HAND_00031.png in Resources */,
+				596F38391CDCFFDD00413701 /* mouth.mp3 in Resources */,
 				59EF01BA1CDA4D10000F7246 /* OL_STICKER_BEE_00019.png in Resources */,
 				59EFFDAA1CDA4D10000F7246 /* OL_AS_MOUTH_00075.png in Resources */,
 				59EFFEC81CDA4D10000F7246 /* OL_FACE_TRACK_OCTO_00002.png in Resources */,
@@ -9375,6 +9431,7 @@
 				59EF03931CDA4D10000F7246 /* OL_STICKER_DOG_00063@2x.png in Resources */,
 				59EFFFAE1CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00021.png in Resources */,
 				59EF02D11CDA4D10000F7246 /* OL_STICKER_CLOUD_00110@2x.png in Resources */,
+				596F384B1CDD19EB00413701 /* Flip-camera.png in Resources */,
 				59EFFBB71CDA4D0F000F7246 /* OL_AS_ELEPHANT_00005@2x.png in Resources */,
 				59EF04001CDA4D10000F7246 /* OL_STICKER_DOG_00118.png in Resources */,
 				59EF00261CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00081.png in Resources */,
@@ -9520,6 +9577,7 @@
 				59EFFE3A1CDA4D10000F7246 /* OL_FACE_TRACK_NOVA_00027.png in Resources */,
 				59EFFE601CDA4D10000F7246 /* OL_FACE_TRACK_NOVA_00046.png in Resources */,
 				59EF01921CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00095.png in Resources */,
+				596F383A1CDCFFDD00413701 /* monster.mp3 in Resources */,
 				59EFFB021CDA4D0F000F7246 /* OL_AS_Audience_00011.png in Resources */,
 				59EF04321CDA4D10000F7246 /* OL_STICKER_DOG_00143.png in Resources */,
 				59EF04221CDA4D10000F7246 /* OL_STICKER_DOG_00135.png in Resources */,
@@ -9554,6 +9612,7 @@
 				59EF00191CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00074@2x.png in Resources */,
 				59EFFCB41CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00048.png in Resources */,
 				59EF009D1CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00140@2x.png in Resources */,
+				596F38411CDCFFDD00413701 /* bubble_thought_sheep.mp3 in Resources */,
 				59EF012E1CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00045.png in Resources */,
 				59EF01AE1CDA4D10000F7246 /* OL_STICKER_BEE_00013.png in Resources */,
 				59EF00591CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00106@2x.png in Resources */,
@@ -9807,6 +9866,7 @@
 				59EF00301CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00086.png in Resources */,
 				59EF02CD1CDA4D10000F7246 /* OL_STICKER_CLOUD_00108@2x.png in Resources */,
 				59EFFE8D1CDA4D10000F7246 /* OL_FACE_TRACK_NOVA_00068@2x.png in Resources */,
+				596F383C1CDCFFDD00413701 /* icecream.mp3 in Resources */,
 				59EFFD0A1CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00091.png in Resources */,
 				59EF04081CDA4D10000F7246 /* OL_STICKER_DOG_00122.png in Resources */,
 				59EFFC661CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00009.png in Resources */,
@@ -10491,6 +10551,7 @@
 				59EFFBE81CDA4D0F000F7246 /* OL_AS_ELEPHANT_00030.png in Resources */,
 				59EFFF4E1CDA4D10000F7246 /* OL_FACE_TRACK_OCTO_00069.png in Resources */,
 				59EF03691CDA4D10000F7246 /* OL_STICKER_DOG_00042@2x.png in Resources */,
+				596F383D1CDCFFDD00413701 /* elephant.mp3 in Resources */,
 				59EFFDFC1CDA4D10000F7246 /* OL_AS_MOUTH_00116.png in Resources */,
 				59EFFD761CDA4D0F000F7246 /* OL_AS_MOUTH_00049.png in Resources */,
 				59EF02891CDA4D10000F7246 /* OL_STICKER_CLOUD_00074@2x.png in Resources */,
@@ -10508,6 +10569,7 @@
 				59EFFDED1CDA4D10000F7246 /* OL_AS_MOUTH_00108@2x.png in Resources */,
 				59EF04551CDA4D10000F7246 /* OL_STICKER_HAND_00004@2x.png in Resources */,
 				59EFFC561CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00001.png in Resources */,
+				596F384C1CDD19EB00413701 /* Flip-camera@2x.png in Resources */,
 				59EFFF691CDA4D10000F7246 /* OL_FACE_TRACK_OCTO_00082@2x.png in Resources */,
 				59EF03861CDA4D10000F7246 /* OL_STICKER_DOG_00057.png in Resources */,
 				59EF00B71CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00153@2x.png in Resources */,
@@ -10623,6 +10685,7 @@
 				59EF01871CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00089@2x.png in Resources */,
 				59EF007A1CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00123.png in Resources */,
 				59EF04881CDA4D10000F7246 /* OL_STICKER_HAND_00030.png in Resources */,
+				596F38401CDCFFDD00413701 /* bugs.mp3 in Resources */,
 				59EF01681CDA4D10000F7246 /* OL_FACE_TRACKING_BUGS_00074.png in Resources */,
 				59EFFFA31CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00015@2x.png in Resources */,
 				59EFFEDB1CDA4D10000F7246 /* OL_FACE_TRACK_OCTO_00011@2x.png in Resources */,
@@ -10663,6 +10726,7 @@
 				59EFFCEE1CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00077.png in Resources */,
 				FEF6A2371CCAB69200743F07 /* lookup_miss_etikate.png in Resources */,
 				59EFFFE51CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00048@2x.png in Resources */,
+				596F383E1CDCFFDD00413701 /* clouds.mp3 in Resources */,
 				59EF02921CDA4D10000F7246 /* OL_STICKER_CLOUD_00079.png in Resources */,
 				59EFFE671CDA4D10000F7246 /* OL_FACE_TRACK_NOVA_00049@2x.png in Resources */,
 				59EFFC8B1CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00027@2x.png in Resources */,
@@ -10775,6 +10839,7 @@
 				59EFFD161CDA4D0F000F7246 /* OL_AS_MOUTH_00001.png in Resources */,
 				59EFFD071CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00089@2x.png in Resources */,
 				59EF006E1CDA4D10000F7246 /* OL_FACE_TRACK_SHEEP_00117.png in Resources */,
+				596F383B1CDCFFDD00413701 /* fans.mp3 in Resources */,
 				59EF02BF1CDA4D10000F7246 /* OL_STICKER_CLOUD_00101@2x.png in Resources */,
 				59EFFB391CDA4D0F000F7246 /* OL_AS_Audience_00038@2x.png in Resources */,
 				59EFFC691CDA4D0F000F7246 /* OL_AS_ICE_CREAM_00010@2x.png in Resources */,
@@ -10891,6 +10956,7 @@
 				FEF6A1ED1CCA6A3900743F07 /* ViewController.m in Sources */,
 				FEF6A1EA1CCA6A3900743F07 /* AppDelegate.m in Sources */,
 				FEF6A22E1CCAA3E300743F07 /* CustomCollectionCell.m in Sources */,
+				596F38441CDD032600413701 /* Sound.m in Sources */,
 				FEF6A1E71CCA6A3900743F07 /* main.m in Sources */,
 				59EFD8841CD28D79000F7246 /* TocaFilter.m in Sources */,
 			);

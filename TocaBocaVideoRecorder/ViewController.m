@@ -23,6 +23,7 @@ static CGFloat buttonSize = 108.0;
 @property (nonatomic, strong) NSArray* filters;
 @property (nonatomic, strong) UIActivityIndicatorView *activityView;
 @property (nonatomic, strong) NSURL *videoPlayerURL;
+@property (nonatomic, strong) Sound *sound;
 
 @end
 
@@ -37,11 +38,18 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     countForProgress = 0.0;
     
+    _sound = [[Sound alloc] init];
+    
     originalVideoContainerFrame = _videoItemsContainer.frame;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateFaceTrackingFrame:)
                                                  name:@"updateFaceTrackingFrame"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playAnimationSoundFX)
+                                                 name:@"playAnimationSound"
                                                object:nil];
     
     
@@ -95,9 +103,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-   /// originalVideoContainerFrame = _videoItemsContainer.frame;
-    
 }
 
 - (NSMutableArray *)savedVideos{
@@ -271,7 +276,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
     contentView.backgroundColor = [UIColor clearColor];
     
-  
     uiElementInput = nil;
     
     switch ([selectedFilter filterType]) {
@@ -286,7 +290,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             videoCamera.delegate = nil;
             _isUserInterfaceElementVideo = NO;
             
-           // uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
             break;
             
         case FilterTypeSticker:
@@ -323,7 +326,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             width = [selectedFilter animationWidth];
             height = [selectedFilter animationHeight];
-            
+
             if(width == 960) {
                 
                 width = _filteredVideoView.frame.size.width;
@@ -336,9 +339,10 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(newX, newY, width, height)];
             
             _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+          
             
             [contentView addSubview:_animatedImageView];
-            
+         
             break;
             
         case FilterTypeFaceTracking:
@@ -382,7 +386,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         [_videoItemsContainer addSubview:_previewView];
         [_videoItemsContainer bringSubviewToFront:_switchCameraButton];
     }
-
+    
+    // preload images in an array to save on memory
+    NSMutableArray *frames = [[NSMutableArray alloc] init];
+    if([selectedFilter animationFramesAmount] > 0) {
+        for (int i = 0; i <= [selectedFilter animationFramesAmount]; i++) {
+            UIImage *image =  [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [selectedFilter animationImagePrefix], i]];
+            [frames addObject:image];
+            image = nil;
+        }
+    }
     
     [videoCamera setDelegate:self];
     
@@ -406,26 +419,18 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     UIImageView *weakImageView = _animatedImageView;
    // __block UIImage *weakImage = _animatedImage;
     __block TocaFilter *weakTocaFilter = selectedFilter;
+    __block NSArray *weakFrames = [frames copy];
+//    __weak typeof(self) weakSelf = self;
     [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
         
         if([weakTocaFilter animationFramesAmount] > 0) {
-            
             if (indexItem == [weakTocaFilter animationFramesAmount]) {
                 indexItem = 0;
             } else {
                 indexItem++;
             }
+            weakImageView.image = [weakFrames objectAtIndex:indexItem];
             
-            //for malloc error
-//            dispatch_async(dispatch_get_global_queue
-//                           (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-                UIImage *weakImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%05d.png", [weakTocaFilter animationImagePrefix], indexItem]];
-                weakImageView.image = weakImage;
-                weakImage = nil;
-               //image = nil;
-               
-//            });
         }
         [weakUIElementInput update];
     }];
@@ -443,6 +448,14 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:1];
     [self collectionView:self.filterCollectionView didSelectItemAtIndexPath:path];
+}
+
+- (void)playAnimationSoundFX {
+    if(![[selectedFilter soundFilePath] isEqualToString:@""]) {
+        [_sound playSound:[selectedFilter soundFilePath]];
+    } else {
+        [_sound stopSound];
+    }
 }
 
 #pragma mark - Saving Video + Animations
@@ -664,7 +677,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _videoNameLabel.keyboardType = UIKeyboardTypeAlphabet;
         _videoNameLabel.autocorrectionType = UITextAutocapitalizationTypeWords;
         _videoNameLabel.returnKeyType = UIReturnKeyDone;
-        _videoNameLabel.font = [UIFont systemFontOfSize:18];
+        _videoNameLabel.placeholder = @"My Awesome Video!";
+        _videoNameLabel.font = [UIFont systemFontOfSize:25];
         _videoNameLabel.delegate = self;
         
         [_videoItemsContainer addSubview:_videoNameLabel];
@@ -820,10 +834,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             [self startVideoFilter];
             
-//            _isFaceSwitched = YES;
-//            [self facesSwitched];
-            
-            
+            if([selectedFilter filterType] == FilterTypeReset) {
+                [_sound stopSound];
+            } else {
+                [self playAnimationSoundFX];
+                
+            }
         }
     
     }else{

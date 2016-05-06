@@ -112,4 +112,12 @@
     }
 }
 
+- (NSString *)soundFilePath {
+    if(!self.filterItem[@"sound-file"]) {
+        return @"";
+    } else {
+        return [[NSBundle mainBundle] pathForResource:self.filterItem[@"sound-file"] ofType:@"mp3"];
+    }
+}
+
 @end

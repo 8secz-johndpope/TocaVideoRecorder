@@ -33,12 +33,16 @@ typedef enum{
 
 - (float)animationHeight;
 - (float)animationWidth;
+
 // for face tracking only
 - (float)animationScale;
 - (float)animationXOffset;
 - (float)animationYOffset;
 
+// for animated scenes
 - (float)animationX;
 - (float)animationY;
+
+- (NSString *)soundFilePath;
 
 @end
