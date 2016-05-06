@@ -19,6 +19,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cpu-8t-q0m" userLabel="Saved Videos Collection View">
+                                <rect key="frame" x="103" y="756" width="921" height="91"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qDa-QS-dQC">
+                                    <size key="itemSize" width="85" height="85"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionCell" id="Ia2-RW-6iF" customClass="CustomCollectionCell">
+                                        <rect key="frame" x="0.0" y="3" width="85" height="85"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-3K-bob">
+                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obW-Hl-9cl">
+                                                    <rect key="frame" x="8" y="8" width="69" height="69"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="RDW-3K-bob" id="xut-Zd-PAS"/>
+                                            <outlet property="textLabel" destination="obW-Hl-9cl" id="pbt-Cd-lLt"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cH3-e0-tnn"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pbJ-ow-5Uc"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6b-xd-doU">
+                                <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="D3N-iU-ZrF"/>
+                                    <constraint firstAttribute="width" secondItem="L6b-xd-doU" secondAttribute="height" multiplier="1:1" id="fPQ-27-0rZ"/>
+                                </constraints>
+                                <state key="normal" image="back-blue.png"/>
+                                <state key="selected" image="BackButtonPress.png"/>
+                                <state key="highlighted" image="BackButtonPress.png"/>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ag-2C-MTC">
                                 <rect key="frame" x="57" y="30" width="911" height="589"/>
                                 <subviews>
@@ -92,46 +142,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cpu-8t-q0m" userLabel="Saved Videos Collection View">
-                                <rect key="frame" x="103" y="756" width="921" height="91"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qDa-QS-dQC">
-                                    <size key="itemSize" width="85" height="85"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionCell" id="Ia2-RW-6iF" customClass="CustomCollectionCell">
-                                        <rect key="frame" x="0.0" y="3" width="85" height="85"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-3K-bob">
-                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obW-Hl-9cl">
-                                                    <rect key="frame" x="8" y="8" width="69" height="69"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="imageView" destination="RDW-3K-bob" id="xut-Zd-PAS"/>
-                                            <outlet property="textLabel" destination="obW-Hl-9cl" id="pbt-Cd-lLt"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cH3-e0-tnn"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pbJ-ow-5Uc"/>
-                                </connections>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZN-zp-x0Q">
                                 <rect key="frame" x="26" y="638" width="107" height="107"/>
                                 <constraints>
@@ -205,13 +215,15 @@
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.104" id="0b4-T9-Qxg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gux-n3-OvA" secondAttribute="bottom" constant="15" id="2AG-yK-OK0"/>
                             <constraint firstItem="8Ag-2C-MTC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3cQ-H3-vSL"/>
-                            <constraint firstItem="8Ag-2C-MTC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" multiplier="1.5" id="3hf-UP-hEu"/>
+                            <constraint firstItem="8Ag-2C-MTC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" multiplier="1.5" constant="30" id="3hf-UP-hEu"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="height" secondItem="gux-n3-OvA" secondAttribute="height" constant="-8.5" id="BnJ-J1-Qku"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gux-n3-OvA" secondAttribute="trailing" constant="-20" id="MIc-4O-DuH"/>
                             <constraint firstItem="8Ag-2C-MTC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.89" id="PgE-Is-NOq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mZN-zp-x0Q" secondAttribute="bottom" constant="23" id="R3R-uq-yIh"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="centerY" secondItem="gux-n3-OvA" secondAttribute="centerY" constant="-4.25" id="Xj8-s9-Yrm"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="6" id="sWf-dg-NOx"/>
+                            <constraint firstItem="L6b-xd-doU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="suj-Fy-Mc5"/>
+                            <constraint firstItem="L6b-xd-doU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="t6O-1T-xBz"/>
                             <constraint firstItem="mZN-zp-x0Q" firstAttribute="centerY" secondItem="gux-n3-OvA" secondAttribute="centerY" id="xHY-kY-qfP"/>
                             <constraint firstItem="gux-n3-OvA" firstAttribute="leading" secondItem="mZN-zp-x0Q" secondAttribute="trailing" constant="23" id="zYr-M8-Di4"/>
                         </constraints>
@@ -222,6 +234,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
@@ -241,6 +256,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackButtonPress.png" width="132" height="132"/>
         <image name="Card-Body.png" width="1433" height="879"/>
         <image name="Flip-camera-press.png" width="64" height="50"/>
         <image name="Flip-camera.png" width="64" height="50"/>
@@ -248,5 +264,6 @@
         <image name="Line.png" width="3" height="119"/>
         <image name="Record.png" width="109" height="109"/>
         <image name="RecordPress.png" width="109" height="109"/>
+        <image name="back-blue.png" width="132" height="132"/>
     </resources>
 </document>
