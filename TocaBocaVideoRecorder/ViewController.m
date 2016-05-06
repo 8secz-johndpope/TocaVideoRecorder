@@ -453,8 +453,13 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     _recordButton.userInteractionEnabled = NO;
     _filterCollectionView.userInteractionEnabled = NO;
+    //added
+    _filteredVideoView.userInteractionEnabled = NO;
+    _videoCaptureView.userInteractionEnabled = NO;
     
     _previewMovieView = [[UIView alloc] initWithFrame:_filteredVideoView.frame];
+    //added
+    _previewMovieView.userInteractionEnabled = NO;
     
     AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:fileSavedPath]];
     AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
@@ -523,6 +528,9 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     }
     _recordButton.userInteractionEnabled = YES;
     _filterCollectionView.userInteractionEnabled = YES;
+    _filteredVideoView.userInteractionEnabled = YES;
+    _videoCaptureView.userInteractionEnabled = YES;
+    _previewMovieView.userInteractionEnabled = YES;
     
     [videoCamera startCameraCapture];
 }
