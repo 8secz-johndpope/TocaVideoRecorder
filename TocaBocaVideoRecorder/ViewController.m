@@ -17,6 +17,7 @@ static CGFloat buttonSize = 108.0;
 {
     CGPoint initialStickerDragPoint;
     CGPoint lastStickerDragPoint;
+    BOOL previewPlayBackFinished;
 }
 
 @property (nonatomic, strong) NSMutableArray* savedVideos;
@@ -38,31 +39,27 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
  
     [self initialCreationToolsAnimation];
     
-    countForProgress = 0.0;
-    
-    _sound = [[Sound alloc] init];
-    
-    originalVideoContainerFrame = _videoItemsContainer.frame;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateFaceTrackingFrame:)
                                                  name:@"updateFaceTrackingFrame"
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playAnimationSoundFX)
-                                                 name:@"playAnimationSound"
-                                               object:nil];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
     _isRecording = false;
-    selectedIndex = 0;
+    previewPlayBackFinished = NO;
     
+    selectedIndex = 0;
+    countForProgress = 0.0;
     faceCGRect = CGRectMake(0, 0, 0, 0);
+    originalVideoContainerFrame = _videoItemsContainer.frame;
+    
+    _sound = [[Sound alloc] init];
+    
+    selectedFilter = [[TocaFilter alloc] initAtIndex:0]; // reset
+    
     
     self.filterCollectionView.allowsSelection = YES;
     self.filterCollectionView.tag = 1;
@@ -85,11 +82,28 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
     [videoCamera setHorizontallyMirrorRearFacingCamera:NO];
     
-//    _filter = [[GPUImageFilter alloc] init];
-    _filter = [[GPUImageSaturationFilter alloc] init];
+    _filter = [[GPUImageFilter alloc] init];
     [videoCamera addTarget:_filter];
     [_filter addTarget:_filteredVideoView];
     
+    // moved from filter selector to allow switching during recording
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
+    _contentView.backgroundColor = [UIColor clearColor];
+    
+    _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    _blendFilter.mix = 1.0;
+    
+    _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [_contentView addSubview:_animatedImageView];
+    uiElementInput = [[GPUImageUIElement alloc] initWithView:_contentView];
+    
+    [_filter addTarget:_blendFilter];
+    
+    [uiElementInput addTarget:_blendFilter];
+
+    [_blendFilter addTarget:_filteredVideoView];
+    
+    [videoCamera setDelegate:nil];
     [videoCamera startCameraCapture];
     
     //set up face detector
@@ -104,6 +118,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     _isUserInterfaceElementVideo = NO;
     
     _filteredVideoView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -287,16 +302,23 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)startVideoFilter {
     
-    _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-    _blendFilter.mix = 1.0;
+// cat- moved this to view did load so they can switch between filters mid-recording
+// initializing imageview in view did load and just switching the frames here.
     
-    [videoCamera addTarget:_filter];
-    [videoCamera setDelegate:nil];
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
-    contentView.backgroundColor = [UIColor clearColor];
+//    _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+//    _blendFilter.mix = 1.0;
+//    
+//    [videoCamera addTarget:_filter];
+//    [videoCamera setDelegate:nil];
     
-    uiElementInput = nil;
+//    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
+//    contentView.backgroundColor = [UIColor clearColor];
+    
+//    uiElementInput = nil;
+    
+    [[_contentView subviews]
+     makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     switch ([selectedFilter filterType]) {
         case FilterTypeReset:
@@ -310,6 +332,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             videoCamera.delegate = nil;
             _isUserInterfaceElementVideo = NO;
             
+            [_sound stopSound];
             break;
             
         case FilterTypeSticker:
@@ -320,16 +343,15 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             height = [selectedFilter animationHeight];
             width = [selectedFilter animationWidth];
             
-            framex = ((contentView.frame.size.width - width) / 2);
-            framey = ((contentView.frame.size.height - height) / 2);
+            framex = ((_contentView.frame.size.width - width) / 2);
+            framey = ((_contentView.frame.size.height - height) / 2);
             
             _previewView = [[UIView alloc] initWithFrame:CGRectMake(_filteredVideoView.frame.origin.x, _filteredVideoView.frame.origin.y, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height)];
             
             _previewView.backgroundColor = [UIColor clearColor];
             _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
-            
+            //_animatedImageView.frame = CGRectMake(framex, framey, width, height);
             _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
-            [contentView addSubview:_animatedImageView];
             
             break;
             
@@ -358,11 +380,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(newX, newY, width, height)];
             
+            //_animatedImageView.frame = CGRectMake(newX, newY, width, height);
             _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
-          
-            
-            [contentView addSubview:_animatedImageView];
-         
             break;
             
         case FilterTypeFaceTracking:
@@ -373,13 +392,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             height = [selectedFilter animationHeight];
             width = [selectedFilter animationWidth];
             
-            framex = ((contentView.frame.size.width - width) / 2);
-            framey = ((contentView.frame.size.height - height) / 2);
+            framex = ((_contentView.frame.size.width - width) / 2);
+            framey = ((_contentView.frame.size.height - height) / 2);
             
             _animatedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(framex, framey, width, height)];
+            //_animatedImageView.frame = CGRectMake(framex, framey, width, height);
             _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
-            
-            [contentView addSubview:_animatedImageView];
             
             break;
             
@@ -387,6 +405,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             NSLog(@"default select");
             _isUserInterfaceElementVideo = NO;
             videoCamera.delegate = nil;
+            [_sound stopSound];
             
             break;
     }
@@ -417,29 +436,28 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         }
     }
     
-    _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+    if([selectedFilter filterType] != FilterTypeReset) {
+        _animatedImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
+        
+        [_contentView addSubview:_animatedImageView];
+    }
     
-    [contentView addSubview:_animatedImageView];
+//    uiElementInput = [[GPUImageUIElement alloc] initWithView:_contentView];
+//    
+//
+//    [_filter addTarget:_blendFilter];
+//    [uiElementInput addTarget:_blendFilter];
+//    
+//    [_blendFilter addTarget:_filteredVideoView];
     
-    uiElementInput = [[GPUImageUIElement alloc] initWithView:contentView];
-    contentView = nil;
-
-    [_filter addTarget:_blendFilter];
-    [uiElementInput addTarget:_blendFilter];
-    
-    [_blendFilter addTarget:_filteredVideoView];
-    
-    _animatedImage = nil;
-    _animatedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@00000.png", [selectedFilter animationImagePrefix]]];
     
     GPUImageUIElement *weakUIElementInput = uiElementInput;
     __block int indexItem = 0;
     UIImageView *weakImageView = _animatedImageView;
-   // __block UIImage *weakImage = _animatedImage;
     __block TocaFilter *weakTocaFilter = selectedFilter;
     __block NSArray *weakFrames = [frames copy];
-//    __weak typeof(self) weakSelf = self;
     [_filter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
+        
         
         if([weakTocaFilter animationFramesAmount] > 0) {
             if (indexItem == [weakTocaFilter animationFramesAmount]) {
@@ -447,14 +465,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             } else {
                 indexItem++;
             }
+            NSLog(@"index item: %d", indexItem);
             weakImageView.image = [weakFrames objectAtIndex:indexItem];
             
         }
         [weakUIElementInput update];
     }];
-   
-    [videoCamera stopCameraCapture];
-    [videoCamera startCameraCapture];
 }
 
 - (void)resetVideoCamera {
@@ -481,7 +497,16 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 
 - (void)showSavedVideoView {
     NSLog(@"show saved cameraview");
+    
     [videoCamera stopCameraCapture];
+    
+    if(_recordButton.alpha == 1.0){
+        [UIView animateWithDuration:0.33f delay:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
+            _recordButton.alpha = 0.0;
+            _filterCollectionView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+        }];
+    }
     
     _recordButton.userInteractionEnabled = NO;
     _filterCollectionView.userInteractionEnabled = NO;
@@ -493,9 +518,12 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     //added
     _previewMovieView.userInteractionEnabled = NO;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(previewDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:_previewMoviePlayer];
     AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:fileSavedPath]];
     AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
     _previewMoviePlayer = [AVPlayer playerWithPlayerItem:playerItem];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(previewDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
     
     AVPlayerLayer *previewMovieLayer =[AVPlayerLayer playerLayerWithPlayer:_previewMoviePlayer];
     previewMovieLayer.frame = CGRectMake(0, 0, _filteredVideoView.frame.size.width, _filteredVideoView.frame.size.height);
@@ -508,6 +536,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     [_previewMoviePlayer play];
     
+    
+
     _deleteVideoButton = [[UIButton alloc] initWithFrame:CGRectMake((_filteredVideoView.frame.origin.x - (buttonSize/2)), (_filteredVideoView.frame.origin.y - (buttonSize/2)), buttonSize, buttonSize)];
     [_deleteVideoButton setImage:[UIImage imageNamed:@"Trash.png"] forState:UIControlStateNormal];
     [_deleteVideoButton setImage:[UIImage imageNamed:@"TrashPress.png"] forState:UIControlStateHighlighted];
@@ -522,17 +552,44 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [_saveVideoButton addTarget:nil action:@selector(tapSaveIcon:) forControlEvents:UIControlEventTouchUpInside];
     [_videoItemsContainer addSubview:_saveVideoButton];
     
+    
     asset = nil;
     playerItem = nil;
     previewMovieLayer = nil;
 }
 
+- (void)previewDidFinishPlaying:(NSNotification *)notification {
+    NSLog(@"preview DID finish");
+    if(!previewPlayBackFinished){
+        _replayVideoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonSize, buttonSize)];
+        _replayVideoButton.center = _filteredVideoView.center;
+        [_replayVideoButton setImage:[UIImage imageNamed:@"Repeat-Button.png"] forState:UIControlStateNormal];
+        [_replayVideoButton setImage:[UIImage imageNamed:@"Repeat-Button-Press.png"] forState:UIControlStateHighlighted];
+        [_replayVideoButton setImage:[UIImage imageNamed:@"Repeat-Button-Press.png"] forState:UIControlStateHighlighted];
+        [_replayVideoButton addTarget:nil action:@selector(tapReplayIcon:) forControlEvents:UIControlEventTouchUpInside];
+        _replayVideoButton.alpha = 0.0;
+        
+        [_videoItemsContainer addSubview:_replayVideoButton];
+        [UIView animateWithDuration:0.3 animations:^{
+            _replayVideoButton.alpha = 1.0;
+            previewPlayBackFinished = YES;
+        }];
+        
+    }
+}
+
+
 - (void)removeSavedVideoView {
+    previewPlayBackFinished = NO;
+    
     [_deleteVideoButton removeFromSuperview];
     _deleteVideoButton = nil;
     
     [_saveVideoButton removeFromSuperview];
     _saveVideoButton = nil;
+    
+    [_replayVideoButton removeFromSuperview];
+    _replayVideoButton = nil;
     
     [_previewMovieView removeFromSuperview];
     _previewMovieView = nil;
@@ -564,6 +621,17 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     _videoCaptureView.userInteractionEnabled = YES;
     _previewMovieView.userInteractionEnabled = YES;
     
+    _recordButton.hidden = NO;
+    _filterCollectionView.hidden = NO;
+    
+    if(_recordButton.alpha == 0.0){
+        [UIView animateWithDuration:0.33f delay:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
+            _recordButton.alpha = 1.0;
+            _filterCollectionView.alpha = 1.0;
+        } completion:^(BOOL finished) {
+        }];
+    }
+    
     [videoCamera startCameraCapture];
 }
 
@@ -582,6 +650,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     [self.view addSubview:_collectionTabImage];
 
     [self.view bringSubviewToFront:_videoItemsContainer];
+    _duplicateVideoImage.alpha = 0.0;
     
     [UIView animateWithDuration:0.33f delay:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
         _recordButton.alpha = 0.0;
@@ -609,9 +678,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         _videoItemsContainer.frame = CGRectMake(((self.view.frame.size.width - _videoItemsContainer.frame.size.width) - 12), _collectionTabImage.frame.origin.y + 55, _videoItemsContainer.frame.size.width, _videoItemsContainer.frame.size.height);
         
     } completion:^(BOOL finished) {
-        
         [self closeCollectionTab];
-        
     }];
 }
 
@@ -630,11 +697,15 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         newContainer.origin.x += 600;
         _videoItemsContainer.frame = newContainer;
         
-       
+
         _recordButton.alpha = 1.0;
         _filterCollectionView.alpha = 1.0;
+        _duplicateVideoImage.alpha = 1.0;
         
     } completion:^(BOOL finished) {
+        
+        [videoCamera startCameraCapture];
+        
         _videoItemsContainer.alpha = 0.0;
         _videoItemsContainer.transform = CGAffineTransformIdentity;
         
@@ -644,34 +715,32 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         [_saveVideoButton removeFromSuperview];
         _saveVideoButton = nil;
         
+        [_replayVideoButton removeFromSuperview];
+        _replayVideoButton = nil;
+        
         [_previewMovieView removeFromSuperview];
         _previewMovieView = nil;
         
-        if(_videoNameLabel){
-            if([_videoNameLabel isFirstResponder]){
-                [_videoNameLabel resignFirstResponder];
-            }
-            [_videoNameLabel removeFromSuperview];
-            _videoNameLabel = nil;
+        if([_videoNameLabel isFirstResponder]){
+            [_videoNameLabel resignFirstResponder];
         }
         
+        [_videoNameLabel removeFromSuperview];
+        _videoNameLabel = nil;
+   
         if(_previewMoviePlayer){
             [_previewMoviePlayer pause];
             _previewMoviePlayer = nil;
         }
-        
         [self showCreationToolButtons];
-        
-        [videoCamera startCameraCapture];
     }];
 }
-     
 
 - (void)showCreationToolButtons {
     _videoItemsContainer.frame = originalVideoContainerFrame;
     _filteredVideoView.hidden = NO;
     
-    [UIView animateWithDuration:0.4 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         _videoItemsContainer.alpha = 1.0;
     } completion:^(BOOL finished) {
         _recordButton.userInteractionEnabled = YES;
@@ -686,6 +755,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 - (IBAction)tapSaveIcon:(id)sender {
+    
+    previewPlayBackFinished = NO;
     
     if(_videoNameLabel.text.length > 0) {
         [self saveVideoToCameraRoll];
@@ -703,6 +774,19 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
         [_videoItemsContainer addSubview:_videoNameLabel];
         [_videoNameLabel becomeFirstResponder];
     }
+}
+
+- (IBAction)tapReplayIcon:(id)sender {
+    
+    previewPlayBackFinished = NO;
+    
+    _replayVideoButton.alpha = 0.0;
+    [_replayVideoButton removeFromSuperview];
+    _replayVideoButton = nil;
+    
+    
+    [_previewMoviePlayer seekToTime:CMTimeMake(0, 600)];
+    [_previewMoviePlayer play];
 }
 
 - (void)saveVideoToCameraRoll {
@@ -801,7 +885,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
 }
 
 -(void)selectAtIndexPath:(id)sender {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[sender tag] inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[sender tag] inSection:1];
     [self collectionView:_filterCollectionView didSelectItemAtIndexPath:indexPath];
     indexPath = nil;
 }
@@ -812,7 +896,7 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     
     if (collectionView.tag == 1){
         
-        if(selectedIndex != indexPath.item){
+        if(selectedIndex != indexPath.item || selectedIndex == 0){
             
             if (_faceView) {
                 [_faceView removeFromSuperview];
@@ -830,8 +914,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 _animatedImageView = nil;
             }
             
-            [videoCamera removeAllTargets];
-            [_filter removeAllTargets];
+//            [videoCamera removeAllTargets];
+//            [_filter removeAllTargets];
             
             selectedIndex = indexPath.item;
             selectedFilter = [[TocaFilter alloc] initAtIndex:indexPath.item];
@@ -842,7 +926,6 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                 [_sound stopSound];
             } else {
                 [self playAnimationSoundFX];
-                
             }
         } else {
             [self resetVideoCamera];
@@ -889,6 +972,8 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
     if ( deviceOrientation == UIDeviceOrientationLandscapeLeft )
         result = AVCaptureVideoOrientationLandscapeRight;
     else if ( deviceOrientation == UIDeviceOrientationLandscapeRight )
+        result = AVCaptureVideoOrientationLandscapeLeft;
+    else
         result = AVCaptureVideoOrientationLandscapeLeft;
     
     return result;
@@ -995,10 +1080,10 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
             
             CGRect previewBox = _filteredVideoView.bounds;
             
-//            if (featureArray == nil && _faceView) {
-//                [_faceView removeFromSuperview];
-//                _faceView = nil;
-//            }
+            if (featureArray == nil && _faceView) {
+                [_faceView removeFromSuperview];
+                _faceView = nil;
+            }
 
             for ( CIFaceFeature *faceFeature in featureArray) {
                 //Update face bounds for iOS Coordinate System
@@ -1009,10 +1094,10 @@ static NSString * const reuseIdentifier = @"CustomCollectionCell";
                     faceRect = CGRectMake(previewBox.size.width - faceRect.origin.x, previewBox.size.height - faceRect.origin.y, faceRect.size.width, faceRect.size.height);
                 }
                 
-                if (_faceView) {
-                    [_faceView removeFromSuperview];
-                    _faceView =  nil;
-                }
+//                if (_faceView) {
+//                    [_faceView removeFromSuperview];
+//                    _faceView =  nil;
+//                }
                 
                 CGFloat widthScaleBy = (previewBox.size.width / clap.size.width) ;
                 CGFloat heightScaleBy = (previewBox.size.height / clap.size.height) ;

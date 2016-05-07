@@ -47,6 +47,7 @@ typedef enum{
 @property (weak, nonatomic) IBOutlet GPUImageView *filteredVideoView;
 @property (weak, nonatomic) IBOutlet UIProgressView *videoProgressView;
 @property (strong, nonatomic) IBOutlet UIImageView *collectionTabImage;
+@property (strong, nonatomic) IBOutlet UIImageView *duplicateVideoImage;
 
 
 @property (strong, nonatomic) UITextField *videoNameLabel;
@@ -54,16 +55,18 @@ typedef enum{
 
 @property (strong, nonatomic) UIButton *deleteVideoButton;
 @property (strong, nonatomic) UIButton *saveVideoButton;
+@property (strong, nonatomic) UIButton *replayVideoButton;
 @property (strong, nonatomic) AVPlayer *previewMoviePlayer;
+
 @property (strong, nonatomic) GPUImageOutput<GPUImageInput> *filter;
 @property (strong, nonatomic) GPUImageAlphaBlendFilter *blendFilter;
 @property (strong, nonatomic) GPUImageMovieWriter *movieWriter;
 @property (strong, nonatomic) CIDetector*faceDetector;
 @property (strong, nonatomic) UIView *faceView;
 @property (strong, nonatomic) UIView *previewView;
+@property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIView *previewMovieView;
 @property (strong, nonatomic) UIImageView *animatedImageView;
-@property (strong, nonatomic) UIImage *animatedImage;
 @property BOOL isRecording;
 @property BOOL isFaceSwitched;
 @property BOOL isUserInterfaceElementVideo;
